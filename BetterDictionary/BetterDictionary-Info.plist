@@ -26,5 +26,16 @@
 	<string>Copyright © 2011 Tehran Polytechnic. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>SIMBLTargetApplications</key>
+	<array>
+		<dict>
+			<key>BundleIdentifier</key>
+			<string>com.apple.Dictionary</string>
+			<key>MaxBundleVersion</key>
+			<string>80.4</string>
+			<key>MinBundleVersion</key>
+			<string>80.4</string>
+		</dict>
+	</array>
 </dict>
 </plist>
