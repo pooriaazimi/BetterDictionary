@@ -1,0 +1,256 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
+		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FED757714047E8B008195D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9FED757A14047E8B008195D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9FED757B14047E8B008195D4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9FED757C14047E8B008195D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */ = {isa = PBXFileReference; path = "BetterDictionary-Info.plist"; sourceTree = "<group>"; };
+		9FED758114047E8B008195D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */ = {isa = PBXFileReference; path = "BetterDictionary-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FED757114047E8B008195D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9FED756914047E8B008195D4 = {
+			isa = PBXGroup;
+			children = (
+				9FED757D14047E8B008195D4 /* BetterDictionary */,
+				9FED757614047E8B008195D4 /* Frameworks */,
+				9FED757514047E8B008195D4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FED757514047E8B008195D4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FED757414047E8B008195D4 /* BetterDictionary.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FED757614047E8B008195D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FED757714047E8B008195D4 /* Cocoa.framework */,
+				9FED757914047E8B008195D4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FED757914047E8B008195D4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FED757A14047E8B008195D4 /* AppKit.framework */,
+				9FED757B14047E8B008195D4 /* CoreData.framework */,
+				9FED757C14047E8B008195D4 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				9FED757E14047E8B008195D4 /* Supporting Files */,
+			);
+			path = BetterDictionary;
+			sourceTree = "<group>";
+		};
+		9FED757E14047E8B008195D4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */,
+				9FED758014047E8B008195D4 /* InfoPlist.strings */,
+				9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FED757314047E8B008195D4 /* BetterDictionary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FED758614047E8B008195D4 /* Build configuration list for PBXNativeTarget "BetterDictionary" */;
+			buildPhases = (
+				9FED757014047E8B008195D4 /* Sources */,
+				9FED757114047E8B008195D4 /* Frameworks */,
+				9FED757214047E8B008195D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BetterDictionary;
+			productName = BetterDictionary;
+			productReference = 9FED757414047E8B008195D4 /* BetterDictionary.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FED756B14047E8B008195D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Tehran Polytechnic";
+			};
+			buildConfigurationList = 9FED756E14047E8B008195D4 /* Build configuration list for PBXProject "BetterDictionary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9FED756914047E8B008195D4;
+			productRefGroup = 9FED757514047E8B008195D4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FED757314047E8B008195D4 /* BetterDictionary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FED757214047E8B008195D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FED757014047E8B008195D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9FED758014047E8B008195D4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FED758114047E8B008195D4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FED758414047E8B008195D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9FED758514047E8B008195D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9FED758714047E8B008195D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BetterDictionary/BetterDictionary-Prefix.pch";
+				INFOPLIST_FILE = "BetterDictionary/BetterDictionary-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9FED758814047E8B008195D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BetterDictionary/BetterDictionary-Prefix.pch";
+				INFOPLIST_FILE = "BetterDictionary/BetterDictionary-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FED756E14047E8B008195D4 /* Build configuration list for PBXProject "BetterDictionary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FED758414047E8B008195D4 /* Debug */,
+				9FED758514047E8B008195D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FED758614047E8B008195D4 /* Build configuration list for PBXNativeTarget "BetterDictionary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FED758714047E8B008195D4 /* Debug */,
+				9FED758814047E8B008195D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FED756B14047E8B008195D4 /* Project object */;
+}
