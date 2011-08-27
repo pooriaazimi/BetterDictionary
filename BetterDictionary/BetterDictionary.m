@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)addSidebar
+- (void)initializeSidebar
 {
 	
 	NSWindow* win;
@@ -39,7 +39,8 @@
 	[ccc setBezelStyle:NSTexturedSquareBezelStyle];
 	[ccc setTarget:self];
 	[ccc setTitle:@"Add"];
-	[ccc setAction:@selector(addSidebar)];
+	[ccc setAction:@selector(initializeSidebar)];
+//	[ccc performClick:self];
 
 	NSString* itd = [[[[win toolbar] items] objectAtIndex:0] itemIdentifier];
 	[[win toolbar] insertItemWithItemIdentifier:itd atIndex:2];
@@ -189,10 +190,10 @@
 	[self _searchText:txt inDictionaryContoller:dd withSelection:txt];
 	// -----------------------------------------------------------------------------------
 	
-	
 	// -----------------------------------------------------------------------------------	
 	// and here, we put wikipedia dictionaries back
-	// TODO: (KNOWN BUG) inserts wikipedia dics at the end.
+	// TODO: (KNOWN BUG) inserts wikipedia dics at the end, but really should put them back
+	//       at their original index.
 	//
 	for (id doc in removedDictionaries) {
 		[dictionaryList addObject:doc];
@@ -215,7 +216,7 @@ void saveWordIMP(id self, SEL _cmd)
 	if ([self hasSidebar]) {
 		hasSidebar = YES;
 	}  else {
-		[self addSidebar]; // only the first time
+		[self initializeSidebar]; // only the first time
 	}
 	
 	
@@ -230,7 +231,7 @@ void saveWordIMP(id self, SEL _cmd)
 {
 	Class browserWindowControllerClass = objc_getClass("BrowserWindowController");
 	[self addMethod:(IMP)saveWordIMP forSelector:@selector(saveWord:) toClass:browserWindowControllerClass];	
-	[self addMethod:(IMP)emptyIMP forSelector:@selector(addSidebar) toClass:browserWindowControllerClass];
+	[self addMethod:(IMP)emptyIMP forSelector:@selector(initializeSidebar) toClass:browserWindowControllerClass];
 	[self addMethod:(IMP)emptyIMP forSelector:@selector(hasSidebar) toClass:browserWindowControllerClass];
 	[self addMethod:(IMP)emptyIMP forSelector:@selector(showSidebar) toClass:browserWindowControllerClass];
 	[self addMethod:(IMP)emptyIMP forSelector:@selector(hideSidebar) toClass:browserWindowControllerClass];	
@@ -246,8 +247,8 @@ void saveWordIMP(id self, SEL _cmd)
 	method_exchangeImplementations(orig, repl);
 	
 	
-	Method orig2 = class_getInstanceMethod(browserWindowControllerClass, @selector(addSidebar)); 
-	Method repl2 = class_getInstanceMethod([self class], @selector(addSidebar)); 
+	Method orig2 = class_getInstanceMethod(browserWindowControllerClass, @selector(initializeSidebar)); 
+	Method repl2 = class_getInstanceMethod([self class], @selector(initializeSidebar)); 
 	method_exchangeImplementations(orig2, repl2);
 	
 	
@@ -324,7 +325,13 @@ void saveWordIMP(id self, SEL _cmd)
 	NSLog(@"---------->:::::: %@", myApplication);
 	[myApplication searchText:@"fdfdfdfd"];
 	NSLog(@"++++++:   %@", [[myApplication mainWindow] windowController]);
-	[[[myApplication mainWindow] windowController] addSidebar];
+	[[[myApplication mainWindow] windowController] initializeSidebar];
+	
+	
+	
+	
+	
+	
 	
 	NSMenuItem* editMenuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
 	NSMenu* editMenu = [editMenuItem submenu];
