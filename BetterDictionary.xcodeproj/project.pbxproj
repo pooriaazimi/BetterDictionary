@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0503521408D92F00F586E6 /* BetterDictionary.m */; };
-		9F050389140901A700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F050381140901A700F586E6 /* add.png */; };
-		9F05038A140901A700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F050383140901A700F586E6 /* remove.png */; };
-		9F05038B140901A700F586E6 /* sidebar-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F050385140901A700F586E6 /* sidebar-dark.png */; };
-		9F05038C140901A700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F050387140901A700F586E6 /* sidebar-light.png */; };
+		9F0503911409067700F586E6 /* sidebar-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038D1409067700F586E6 /* sidebar-dark.png */; };
+		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
+		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
+		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
 		9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary_old.m_old */; };
@@ -20,10 +20,10 @@
 /* Begin PBXFileReference section */
 		9F0503511408D92F00F586E6 /* BetterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterDictionary.h; sourceTree = "<group>"; };
 		9F0503521408D92F00F586E6 /* BetterDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetterDictionary.m; sourceTree = "<group>"; };
-		9F050382140901A700F586E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/add.png; sourceTree = "<group>"; };
-		9F050384140901A700F586E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/remove.png; sourceTree = "<group>"; };
-		9F050386140901A700F586E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/sidebar-dark.png"; sourceTree = "<group>"; };
-		9F050388140901A700F586E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/sidebar-light.png"; sourceTree = "<group>"; };
+		9F05038D1409067700F586E6 /* sidebar-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-dark.png"; sourceTree = "<group>"; };
+		9F05038E1409067700F586E6 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
+		9F05038F1409067700F586E6 /* sidebar-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-light.png"; sourceTree = "<group>"; };
+		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FED757714047E8B008195D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9FED757A14047E8B008195D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -99,10 +99,10 @@
 		9FED757E14047E8B008195D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9F050381140901A700F586E6 /* add.png */,
-				9F050383140901A700F586E6 /* remove.png */,
-				9F050385140901A700F586E6 /* sidebar-dark.png */,
-				9F050387140901A700F586E6 /* sidebar-light.png */,
+				9F05038D1409067700F586E6 /* sidebar-dark.png */,
+				9F05038E1409067700F586E6 /* remove.png */,
+				9F05038F1409067700F586E6 /* sidebar-light.png */,
+				9F0503901409067700F586E6 /* add.png */,
 				9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */,
 				9FED758014047E8B008195D4 /* InfoPlist.strings */,
 				9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */,
@@ -162,10 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */,
-				9F050389140901A700F586E6 /* add.png in Resources */,
-				9F05038A140901A700F586E6 /* remove.png in Resources */,
-				9F05038B140901A700F586E6 /* sidebar-dark.png in Resources */,
-				9F05038C140901A700F586E6 /* sidebar-light.png in Resources */,
+				9F0503911409067700F586E6 /* sidebar-dark.png in Resources */,
+				9F0503921409067700F586E6 /* remove.png in Resources */,
+				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
+				9F0503941409067700F586E6 /* add.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,38 +200,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9F050381140901A700F586E6 /* add.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F050382140901A700F586E6 /* en */,
-			);
-			name = add.png;
-			sourceTree = "<group>";
-		};
-		9F050383140901A700F586E6 /* remove.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F050384140901A700F586E6 /* en */,
-			);
-			name = remove.png;
-			sourceTree = "<group>";
-		};
-		9F050385140901A700F586E6 /* sidebar-dark.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F050386140901A700F586E6 /* en */,
-			);
-			name = "sidebar-dark.png";
-			sourceTree = "<group>";
-		};
-		9F050387140901A700F586E6 /* sidebar-light.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F050388140901A700F586E6 /* en */,
-			);
-			name = "sidebar-light.png";
-			sourceTree = "<group>";
-		};
 		9FED758014047E8B008195D4 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
