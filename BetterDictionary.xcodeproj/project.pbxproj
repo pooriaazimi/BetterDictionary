@@ -12,6 +12,7 @@
 		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
+		9F0503A314090D9F00F586E6 /* SidebarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0503A214090D9F00F586E6 /* SidebarController.m */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
 		9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary_old.m_old */; };
@@ -24,6 +25,8 @@
 		9F05038E1409067700F586E6 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		9F05038F1409067700F586E6 /* sidebar-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-light.png"; sourceTree = "<group>"; };
 		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		9F0503A114090D9F00F586E6 /* SidebarController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SidebarController.h; sourceTree = "<group>"; };
+		9F0503A214090D9F00F586E6 /* SidebarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarController.m; sourceTree = "<group>"; };
 		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FED757714047E8B008195D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9FED757A14047E8B008195D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,8 @@
 				9FED759114048038008195D4 /* BetterDictionary_old.m_old */,
 				9F0503511408D92F00F586E6 /* BetterDictionary.h */,
 				9F0503521408D92F00F586E6 /* BetterDictionary.m */,
+				9F0503A114090D9F00F586E6 /* SidebarController.h */,
+				9F0503A214090D9F00F586E6 /* SidebarController.m */,
 			);
 			path = BetterDictionary;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 			files = (
 				9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */,
 				9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */,
+				9F0503A314090D9F00F586E6 /* SidebarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

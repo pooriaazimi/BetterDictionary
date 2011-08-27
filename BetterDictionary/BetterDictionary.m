@@ -25,11 +25,13 @@
 		
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
+		sidebarController = [[SidebarController alloc] init];
 		sidebarWidth = 170;
 		sidebarIsVisible = NO;
 		
 		mainApplication = [NSApplication sharedApplication];
-		dictionaryBrowserWindow = [[[mainApplication mainWindow] windowController] window];
+		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
+		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
 		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
 
 		[self instantiateToolbarItems];
@@ -39,6 +41,10 @@
 //		[self addMethod:@selector(saveWord:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(hideSidebar:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(showHideSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
+		
+//		NSLog(@"CHILDREN: %@", [[[dictionarySearchView subviews] objectAtIndex:0] subviews]);
+		
+		myArr = [NSArray arrayWithObjects:@"hello", @"there", @"how", nil];
 		
     }
     
@@ -143,16 +149,49 @@
 	dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
 	dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
 
-	viewWidth = [[dictionaryBrowserWindow contentView] frame].size.width;
-	viewHeight = [dictionaryWebView frame].size.height;
-
 	//XXX 
-	dictionarySidebar = [[NSButton alloc] init]; 
-	[dictionarySidebar setFrame:CGRectMake(-5, 0, 5, viewHeight)];
-	[dictionarySidebar setAutoresizesSubviews:YES];
-	[dictionarySidebar setAutoresizingMask:NSViewHeightSizable];
 	
-	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebar];
+	
+	
+	
+	
+	
+	
+	
+	NSRect scrollFrame = NSMakeRect( -5, 0, 5, self.viewHeight );
+    dictionarySidebarScrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
+	
+    [dictionarySidebarScrollView setBorderType:0];
+    [dictionarySidebarScrollView setHasVerticalScroller:YES];
+    [dictionarySidebarScrollView setAutohidesScrollers:YES];
+	
+    NSRect clipViewBounds = [[dictionarySidebar contentView] bounds];
+    dictionarySidebar = [[[NSTableView alloc] initWithFrame:clipViewBounds] autorelease];
+	
+    [dictionarySidebar  addTableColumn:[[[NSTableColumn alloc] initWithIdentifier:@"listOfWords"] autorelease]];
+	
+	[dictionarySidebar setHeaderView:nil];
+    [dictionarySidebar setDataSource:sidebarController];
+    [dictionarySidebar setDelegate:sidebarController];
+	
+    [dictionarySidebarScrollView setDocumentView:dictionarySidebar];
+	
+	
+	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebarScrollView];
+	
+	
+	
+	
+	
+	
+//	dictionarySidebar = [[NSTableView alloc] init]; 
+//	[dictionarySidebar setDataSource:[[Sidebar alloc] init]];
+//	
+//	[dictionarySidebar setFrame:CGRectMake(-5, 0, 150, self.viewHeight)];
+//	[dictionarySidebar setAutoresizesSubviews:YES];
+//	[dictionarySidebar setAutoresizingMask:NSViewHeightSizable];
+	
+//	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebar];
 	
 	
 	
@@ -176,14 +215,12 @@
 {
 	NSLog(@"SHOW SIDEBAR");
 	
-//	[showAllToolbarButton highlight:YES];
-	
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
 	
-	[[dictionarySidebar animator] setFrame:CGRectMake(0, 0, sidebarWidth, viewHeight)];
-	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, viewWidth-sidebarWidth, viewHeight)];
-	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, viewWidth-sidebarWidth, viewHeight)];
+	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(0, 0, sidebarWidth, self.viewHeight)];
+	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
+	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
 
 	[NSAnimationContext endGrouping];
 	
@@ -195,15 +232,13 @@
 - (void)_hideSidebar
 {
 	NSLog(@"HIDE SIDEBAR");
-	
-//	[showAllToolbarButton highlight:NO];
-	
+		
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
 	
-	[[dictionarySidebar animator] setFrame:CGRectMake(-5, 0, 5, viewHeight)];
-	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(-5, 0, 5, self.viewHeight)];
+	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
+	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
 	
 	[NSAnimationContext endGrouping];
 	
@@ -212,11 +247,50 @@
 	sidebarIsVisible = NO;
 }
 
+//FIXME: saveWord needs a wrapper (to hide sender)
 - (void)saveWord:(NSString*)wordToSave
 {
-	NSLog(@"SAVE WORD: %@, %f, %@", wordToSave, viewWidth, self);
+	NSLog(@"SAVE WORD: %@, %f, %@", wordToSave, self.viewWidth, self);
 	
-	//FIXME: saveWord needs a wrapper (to hide sender)
+	// -----------------------------------------------------------------------------------
+	// here we keep removed dictionaries (those from Wikipedia) safe
+	//
+	id _dictionaryController = [dictionaryBrowserWindowController _dictionaryController];
+	id _dictionaryBook = [_dictionaryController dictionaryBook];
+	NSArray* dictionaryList = [_dictionaryBook dictionaryList];
+	
+	NSMutableArray *removedDictionaries = [[NSMutableArray alloc] initWithCapacity:2];
+	
+	int index = 0;
+	while (index < [dictionaryList count]) {
+		id dic = [dictionaryList objectAtIndex:index];
+		NSString* dicName = [dic dictionaryName];
+		if ([dicName hasPrefix:@"Wikipedia"]) {
+			[dictionaryList removeObject:dic];
+			[removedDictionaries addObject:dic];
+			index--;
+		}
+		index++;
+	}
+	
+	// -----------------------------------------------------------------------------------
+	// do the actual searching 
+	//
+	NSString* txt = @"Rival";
+	[dictionaryBrowserWindowController _searchText:txt inDictionaryContoller:[[mainApplication mainWindow] windowController] withSelection:txt];
+	[dictionaryBrowserWindowController _setSearchTextSilently:txt];
+
+	
+	// -----------------------------------------------------------------------------------	
+	// and here, we put wikipedia dictionaries back
+	// TODO: (KNOWN BUG) inserts wikipedia dics at the end, but really should put them back
+	//       at their original index.
+	//
+	for (id doc in removedDictionaries) {
+		[dictionaryList addObject:doc];
+	}
+	// -----------------------------------------------------------------------------------
+
 }
 
 - (void)removeWord:(NSString*)wordToRemove
@@ -227,6 +301,16 @@
 - (void)removeAllSavedWords
 {
 	NSLog(@"REMOVE ALL SAVED WORDS");		
+}
+
+- (float)viewWidth
+{
+	return [[dictionaryBrowserWindow contentView] frame].size.width;
+}
+
+- (float)viewHeight
+{
+	return [dictionaryWebView frame].size.height;
 }
 
 
@@ -255,3 +339,29 @@
 }
 
 @end
+
+
+
+//
+// Makes an NSArray work as an NSTableDataSource.
+@implementation NSArray (NSTableDataSource)
+
+// just returns the item for the right row
+- (id)tableView:(NSTableView *) aTableView
+objectValueForTableColumn:(NSTableColumn *) aTableColumn row:(int) rowIndex
+{  
+	return [self objectAtIndex:rowIndex];  
+}
+
+// just returns the number of items we have.
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	return [self count];  
+}
+@end
+
+
+
+
+
+

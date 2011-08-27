@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SidebarController.h"
 #import "objc/runtime.h"
 
 
@@ -18,23 +19,27 @@
     NSToolbar* dictionaryBrowserToolbar;
 	
 	NSWindow* dictionaryBrowserWindow;
+	NSWindowController* dictionaryBrowserWindowController;
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;
 	
 	NSButton* showAllToolbarButton;
 	NSButton* saveWordToolbarButton;
 	
-	NSView* dictionarySidebar;
+	SidebarController* sidebarController;
+	float sidebarWidth;
+	BOOL sidebarIsVisible;
+	
+	NSTableView* dictionarySidebar;
+	NSTableView* dictionarySidebarScrollView;
 	NSImage* sidebarShowAllImageDarkImage;
 	NSImage* sidebarShowAllImageLightImage;
 	NSImage* saveWordImage;
 	NSImage* removeWordImage;
 	
-	float viewWidth;
-	float viewHeight;
-	float sidebarWidth;
 	
-	BOOL sidebarIsVisible;
+	
+	NSArray* myArr;
 }
 
 + (void)load;
@@ -53,6 +58,9 @@
 
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
+
+- (float)viewWidth;
+- (float)viewHeight;
 
 
 @end
