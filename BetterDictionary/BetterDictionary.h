@@ -29,6 +29,7 @@
 
 - (void)_searchText:(id)arg1 inDictionaryContoller:(id)arg2 withSelection:(id)arg3;
 - (void)searchText:(id)arg1;
+- (float)toolbarHeightForWindow:(NSWindow*)window;
 
 
 
