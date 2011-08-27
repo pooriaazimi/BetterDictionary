@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0503521408D92F00F586E6 /* BetterDictionary.m */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
-		9FED759214048038008195D4 /* BetterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary.m */; };
+		9FED759214048038008195D4 /* BetterDictionary_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary_old.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F0503511408D92F00F586E6 /* BetterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterDictionary.h; sourceTree = "<group>"; };
+		9F0503521408D92F00F586E6 /* BetterDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetterDictionary.m; sourceTree = "<group>"; };
 		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FED757714047E8B008195D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9FED757A14047E8B008195D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -21,8 +24,8 @@
 		9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BetterDictionary-Info.plist"; sourceTree = "<group>"; };
 		9FED758114047E8B008195D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterDictionary-Prefix.pch"; sourceTree = "<group>"; };
-		9FED759014048038008195D4 /* BetterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterDictionary.h; sourceTree = "<group>"; };
-		9FED759114048038008195D4 /* BetterDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetterDictionary.m; sourceTree = "<group>"; };
+		9FED759014048038008195D4 /* BetterDictionary_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterDictionary_old.h; sourceTree = "<group>"; };
+		9FED759114048038008195D4 /* BetterDictionary_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetterDictionary_old.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				9FED757E14047E8B008195D4 /* Supporting Files */,
-				9FED759014048038008195D4 /* BetterDictionary.h */,
-				9FED759114048038008195D4 /* BetterDictionary.m */,
+				9FED759014048038008195D4 /* BetterDictionary_old.h */,
+				9FED759114048038008195D4 /* BetterDictionary_old.m */,
+				9F0503511408D92F00F586E6 /* BetterDictionary.h */,
+				9F0503521408D92F00F586E6 /* BetterDictionary.m */,
 			);
 			path = BetterDictionary;
 			sourceTree = "<group>";
@@ -171,7 +176,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FED759214048038008195D4 /* BetterDictionary.m in Sources */,
+				9FED759214048038008195D4 /* BetterDictionary_old.m in Sources */,
+				9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
