@@ -140,10 +140,6 @@
 	NSWindow* win;
 	object_getInstanceVariable(self, "_window", (void**)&win);
 	
-	
-	NSLog(@"DOING IT");
-	
-	
 	NSArray* subviews = [[win contentView] subviews];
 	NSView* sidebar = nil;
 	NSView* vv = nil;
@@ -159,8 +155,6 @@
 		}
 	}
 	
-	if (sidebar != nil)
-		return YES;
 	
 	id dd = [self _dictionaryController];
 	id dictionaryBook;
@@ -169,15 +163,41 @@
 	id dictionaryList;
 	object_getInstanceVariable(dictionaryBook, "_dictionaryList", (void**)&dictionaryList);
 	
-	//	[dictionaryList removeObjectAtIndex:3];
+	// -----------------------------------------------------------------------------------
+	// here we keep removed dictionaries (those from Wikipedia) safe
+	//
+	NSMutableArray *removedDictionaries = [[NSMutableArray alloc] initWithCapacity:2];
+	
+	int index = 0;
+	while (index < [dictionaryList count]) {
+		id dic = [dictionaryList objectAtIndex:index];
+		NSString* dicName = [dic dictionaryName];
+		if ([dicName hasPrefix:@"Wikipedia"]) {
+			[dictionaryList removeObject:dic];
+			[removedDictionaries addObject:dic];
+			index--;
+		}
+		index++;
+	}
+	// -----------------------------------------------------------------------------------
+	
+	// -----------------------------------------------------------------------------------
+	// do the actual searching 
+	//
 	NSString* txt = @"Rival";
 	[self _setSearchTextSilently:txt];
 	[self _searchText:txt inDictionaryContoller:dd withSelection:txt];
+	// -----------------------------------------------------------------------------------
 	
 	
-	NSLog(@"----");
-	NSLog(@"DL: %@", dictionaryList);
-	NSLog(@"----");
+	// -----------------------------------------------------------------------------------	
+	// and here, we put wikipedia dictionaries back
+	// TODO: (KNOWN BUG) inserts wikipedia dics at the end.
+	//
+	for (id doc in removedDictionaries) {
+		[dictionaryList addObject:doc];
+	}
+	// -----------------------------------------------------------------------------------
 	
 	return (sidebar!=nil);
 }
