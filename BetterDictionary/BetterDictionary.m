@@ -33,7 +33,6 @@
 	NSWindow* win;
 	object_getInstanceVariable(self, "_window", (void**)&win);
 	
-//	[win toolbar] se
 	
 	NSButton* ccc = [[NSButton alloc] init];		
 	[ccc setBordered:YES];	
@@ -304,6 +303,8 @@ void saveWordIMP(id self, SEL _cmd)
 	NSApplication* myApplication = [NSApplication sharedApplication];
 	NSLog(@"---------->:::::: %@", myApplication);
 	[myApplication searchText:@"fdfdfdfd"];
+	NSLog(@"++++++:   %@", [[myApplication mainWindow] windowController]);
+	[[[myApplication mainWindow] windowController] addSidebar];
 	
 	NSMenuItem* editMenuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
 	NSMenu* editMenu = [editMenuItem submenu];
