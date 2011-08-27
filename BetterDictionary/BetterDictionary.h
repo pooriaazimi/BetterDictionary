@@ -12,6 +12,8 @@
 
 @interface BetterDictionary : NSObject {
 @private
+	NSBundle* betterDictionaryBundle;
+	
 	NSApplication* mainApplication;
     NSToolbar* dictionaryBrowserToolbar;
 	
@@ -19,14 +21,20 @@
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;
 	
+	NSButton* showAllToolbarButton;
+	NSButton* saveWordToolbarButton;
+	
 	NSView* dictionarySidebar;
+	NSImage* sidebarShowAllImageDarkImage;
+	NSImage* sidebarShowAllImageLightImage;
+	NSImage* saveWordImage;
+	NSImage* removeWordImage;
 	
 	float viewWidth;
 	float viewHeight;
 	float sidebarWidth;
 	
-	
-	id betterDictionary;
+	BOOL sidebarIsVisible;
 }
 
 + (void)load;
@@ -34,9 +42,10 @@
 - (void)instantiateToolbarItems;
 - (void)createMenuItems;
 
-- (void)addSidebar:(id)sender;
-- (void)showSidebar;
-- (void)hideSidebar:(id)sender;
+- (void)addSidebar;
+- (void)showHideSidebar:(id)sender;
+- (void)_showSidebar;
+- (void)_hideSidebar;
 
 - (void)saveWord:(NSString*)wordToSave;
 - (void)removeWord:(NSString*)wordToRemove;

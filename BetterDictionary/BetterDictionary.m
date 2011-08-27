@@ -23,20 +23,22 @@
 		
 		//TODO: insert code for checking OS version here
 		
+		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
+		
 		sidebarWidth = 170;
-		betterDictionary = self;
+		sidebarIsVisible = NO;
 		
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindow = [[[mainApplication mainWindow] windowController] window];
 		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
 
 		[self instantiateToolbarItems];
-		[self addSidebar:self];
+		[self addSidebar];
 		[self createMenuItems];
 		
 //		[self addMethod:@selector(saveWord:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(hideSidebar:) toClass:[[dictionaryBrowserWindow windowController] class]];
-//		[self addMethod:@selector(showSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
+//		[self addMethod:@selector(showHideSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
 		
     }
     
@@ -53,38 +55,56 @@
 	NSString* sampleItemIentifier = [[[dictionaryBrowserToolbar items] objectAtIndex:0] itemIdentifier];
 	
 	// -----------------------------------------------------------------------------------------
+	// Add 'Show all saved words' button to the toolbar
+	//
+	
+	sidebarShowAllImageDarkImage = [[NSImage alloc] initWithContentsOfFile:[betterDictionaryBundle pathForResource:@"sidebar-dark" ofType:@"png"]];
+	sidebarShowAllImageLightImage = [[NSImage alloc] initWithContentsOfFile:[betterDictionaryBundle pathForResource:@"sidebar-light" ofType:@"png"]];
+	
+	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:0];
+	NSToolbarItem* showAllToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:0];
+	
+	showAllToolbarButton = [[NSButton alloc] init];		
+	[showAllToolbarButton setBordered:YES];	
+	[showAllToolbarButton setBezelStyle:NSTexturedSquareBezelStyle];
+	[showAllToolbarButton setButtonType:NSPushOnPushOffButton];
+	[showAllToolbarButton setTarget:self];	
+	[showAllToolbarButton setImage:sidebarShowAllImageDarkImage];
+	[showAllToolbarButton setAction:@selector(showHideSidebar:)];
+	
+	[showAllToolbarItem setView: showAllToolbarButton];
+	[showAllToolbarItem setMaxSize:NSMakeSize(25, 25)];
+	[showAllToolbarItem setMinSize:NSMakeSize(25, 25)];
+	
+	
+	// -----------------------------------------------------------------------------------------
 	// Add 'Save word' button to the toolbar
 	//
-	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-	NSToolbarItem* saveWordToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
 	
-	NSButton* saveWordToolbarButton = [[NSButton alloc] init];		
+	saveWordImage = [[NSImage alloc] initWithContentsOfFile:[betterDictionaryBundle pathForResource:@"add" ofType:@"png"]];
+	removeWordImage = [[NSImage alloc] initWithContentsOfFile:[betterDictionaryBundle pathForResource:@"remove" ofType:@"png"]];
+	
+	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:1];
+	NSToolbarItem* saveWordToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:1];
+	
+	saveWordToolbarButton = [[NSButton alloc] init];		
 	[saveWordToolbarButton setBordered:YES];	
 	[saveWordToolbarButton setBezelStyle:NSTexturedSquareBezelStyle];
 	[saveWordToolbarButton setTarget:self];
 	[saveWordToolbarButton setTitle:@"Save Word"];
+	[saveWordToolbarButton setImage:saveWordImage];
 	[saveWordToolbarButton setAction:@selector(saveWord:)];
 	
 	[saveWordToolbarItem setView: saveWordToolbarButton];
-	[saveWordToolbarItem setMaxSize:NSMakeSize(75, 25)];
-	[saveWordToolbarItem setMinSize:NSMakeSize(75, 25)];
+	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
+	[saveWordToolbarItem setMinSize:NSMakeSize(25, 25)];
+	
 	
 	// -----------------------------------------------------------------------------------------
-	// Add 'Show all saved words' button to the toolbar
+	// Add a seperator between our items and dectionary's default items
 	//
-	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:3];
-	NSToolbarItem* showAllToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:3];
+	[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];
 	
-	NSButton* showAllToolbarButton = [[NSButton alloc] init];		
-	[showAllToolbarButton setBordered:YES];	
-	[showAllToolbarButton setBezelStyle:NSTexturedSquareBezelStyle];
-	[showAllToolbarButton setTarget:self];
-	[showAllToolbarButton setTitle:@"Show All"];
-	[showAllToolbarButton setAction:@selector(showSidebar)];
-	
-	[showAllToolbarItem setView: showAllToolbarButton];
-	[showAllToolbarItem setMaxSize:NSMakeSize(67, 25)];
-	[showAllToolbarItem setMinSize:NSMakeSize(67, 25)];
 }
 
 - (void)createMenuItems
@@ -105,18 +125,18 @@
 	
 	[editMenu insertItem:[NSMenuItem separatorItem] atIndex:startIndex];
 	
-	NSMenuItem* saveWord = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(saveWord:) keyEquivalent:@"s"];
-	[editMenu insertItem:saveWord atIndex:startIndex+1];
-	[saveWord setTarget:self];
+	NSMenuItem* saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(saveWord:) keyEquivalent:@"s"];
+	[editMenu insertItem:saveWordMenuItem atIndex:startIndex+1];
+	[saveWordMenuItem setTarget:self];
 	
-	NSMenuItem* showAllSavedWords = [[NSMenuItem alloc] initWithTitle:@"Show All Saved Words" action:@selector(showSidebar) keyEquivalent:@"d"];
-	[showAllSavedWords setKeyEquivalentModifierMask:(NSShiftKeyMask| NSCommandKeyMask)];
-	[showAllSavedWords setTarget:self];
-	[editMenu insertItem:showAllSavedWords atIndex:startIndex+2];
+	NSMenuItem* showSidebarMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show All Saved Words" action:@selector(showHideSidebar:) keyEquivalent:@"d"];
+	[showSidebarMenuItem setKeyEquivalentModifierMask:(NSShiftKeyMask| NSCommandKeyMask)];
+	[showSidebarMenuItem setTarget:self];
+	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+2];
 
 }
 
-- (void)addSidebar:(id)sender
+- (void)addSidebar
 {
 	NSLog(@"ADD SIDEBAR");
 	
@@ -139,28 +159,62 @@
 
 }
 
-- (void)showSidebar
+- (void)showHideSidebar:(id)sender
+{
+	if ([sender isMemberOfClass:[NSMenuItem class]]) {
+		// if invoked from the menu, just pass it to the button
+		[showAllToolbarButton performClick:self];
+	} else {
+		if (sidebarIsVisible)
+			[self _hideSidebar];
+		else
+			[self _showSidebar];
+	}
+}
+
+- (void)_showSidebar
 {
 	NSLog(@"SHOW SIDEBAR");
 	
+//	[showAllToolbarButton highlight:YES];
+	
 	[NSAnimationContext beginGrouping];
-	[[NSAnimationContext currentContext] setDuration:0.1f]; 
+	[[NSAnimationContext currentContext] setDuration:0.08f]; 
 	
 	[[dictionarySidebar animator] setFrame:CGRectMake(0, 0, sidebarWidth, viewHeight)];
 	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, viewWidth-sidebarWidth, viewHeight)];
 	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, viewWidth-sidebarWidth, viewHeight)];
-	
+
 	[NSAnimationContext endGrouping];
+	
+	[showAllToolbarButton setImage:sidebarShowAllImageLightImage];
+	
+	sidebarIsVisible = YES;
 }
 
-- (void)hideSidebar:(id)sender
+- (void)_hideSidebar
 {
-	NSLog(@"HIDE SIDEBAR");	
+	NSLog(@"HIDE SIDEBAR");
+	
+//	[showAllToolbarButton highlight:NO];
+	
+	[NSAnimationContext beginGrouping];
+	[[NSAnimationContext currentContext] setDuration:0.08f]; 
+	
+	[[dictionarySidebar animator] setFrame:CGRectMake(-5, 0, 5, viewHeight)];
+	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+	
+	[NSAnimationContext endGrouping];
+	
+	[showAllToolbarButton setImage:sidebarShowAllImageDarkImage];
+	
+	sidebarIsVisible = NO;
 }
 
 - (void)saveWord:(NSString*)wordToSave
 {
-	NSLog(@"SAVE WORD: %@, %f, %@, %@", wordToSave, viewWidth, self, betterDictionary);
+	NSLog(@"SAVE WORD: %@, %f, %@", wordToSave, viewWidth, self);
 	
 	//FIXME: saveWord needs a wrapper (to hide sender)
 }
