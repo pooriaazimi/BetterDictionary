@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-		numberOfRows = 20;
+		numberOfRows = 30;
     }
     
     return self;

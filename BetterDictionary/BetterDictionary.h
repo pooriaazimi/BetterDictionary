@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SidebarController.h"
+#import "NSObjectAdditions.h"
 #import "objc/runtime.h"
 
 
@@ -31,7 +32,7 @@
 	BOOL sidebarIsVisible;
 	
 	NSTableView* dictionarySidebar;
-	NSTableView* dictionarySidebarScrollView;
+	NSScrollView* dictionarySidebarScrollView;
 	NSImage* sidebarShowAllImageDarkImage;
 	NSImage* sidebarShowAllImageLightImage;
 	NSImage* saveWordImage;

@@ -149,14 +149,6 @@
 	dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
 	dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
 
-	//XXX 
-	
-	
-	
-	
-	
-	
-	
 	
 	NSRect scrollFrame = NSMakeRect( -5, 0, 5, self.viewHeight );
     dictionarySidebarScrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
@@ -165,7 +157,7 @@
     [dictionarySidebarScrollView setHasVerticalScroller:YES];
     [dictionarySidebarScrollView setAutohidesScrollers:YES];
 	
-    NSRect clipViewBounds = [[dictionarySidebar contentView] bounds];
+    NSRect clipViewBounds = [[dictionarySidebarScrollView contentView] bounds];
     dictionarySidebar = [[[NSTableView alloc] initWithFrame:clipViewBounds] autorelease];
 	
     [dictionarySidebar  addTableColumn:[[[NSTableColumn alloc] initWithIdentifier:@"listOfWords"] autorelease]];
@@ -227,6 +219,9 @@
 	[showAllToolbarButton setImage:sidebarShowAllImageLightImage];
 	
 	sidebarIsVisible = YES;
+	
+	// XXX: Not working
+	NSLog(@"????????? %d", [dictionarySidebarScrollView becomeFirstResponder]);
 }
 
 - (void)_hideSidebar
@@ -255,16 +250,16 @@
 	// -----------------------------------------------------------------------------------
 	// here we keep removed dictionaries (those from Wikipedia) safe
 	//
-	id _dictionaryController = [dictionaryBrowserWindowController _dictionaryController];
-	id _dictionaryBook = [_dictionaryController dictionaryBook];
-	NSArray* dictionaryList = [_dictionaryBook dictionaryList];
+	id _dictionaryController = [dictionaryBrowserWindowController performSelector:@selector(_dictionaryController)];
+	id _dictionaryBook = [_dictionaryController performSelector:@selector(dictionaryBook)];
+	NSMutableArray* dictionaryList = [_dictionaryBook performSelector:@selector(dictionaryList)];
 	
 	NSMutableArray *removedDictionaries = [[NSMutableArray alloc] initWithCapacity:2];
 	
 	int index = 0;
 	while (index < [dictionaryList count]) {
 		id dic = [dictionaryList objectAtIndex:index];
-		NSString* dicName = [dic dictionaryName];
+		NSString* dicName = [dic performSelector:@selector(dictionaryName)];
 		if ([dicName hasPrefix:@"Wikipedia"]) {
 			[dictionaryList removeObject:dic];
 			[removedDictionaries addObject:dic];
@@ -277,8 +272,11 @@
 	// do the actual searching 
 	//
 	NSString* txt = @"Rival";
-	[dictionaryBrowserWindowController _searchText:txt inDictionaryContoller:[[mainApplication mainWindow] windowController] withSelection:txt];
-	[dictionaryBrowserWindowController _setSearchTextSilently:txt];
+//	[dictionaryBrowserWindowController _searchText:txt inDictionaryContoller:[[mainApplication mainWindow] windowController] withSelection:txt];
+	
+	NSArray* arguments = [[NSArray alloc] initWithObjects:txt, [[mainApplication mainWindow] windowController] , txt, nil];
+	[dictionaryBrowserWindowController performSelector:@selector(_searchText:inDictionaryContoller:withSelection:) withObjects:arguments];
+	[dictionaryBrowserWindowController performSelector:@selector(_setSearchTextSilently:) withObject:txt];
 
 	
 	// -----------------------------------------------------------------------------------	
@@ -339,29 +337,6 @@
 }
 
 @end
-
-
-
-//
-// Makes an NSArray work as an NSTableDataSource.
-@implementation NSArray (NSTableDataSource)
-
-// just returns the item for the right row
-- (id)tableView:(NSTableView *) aTableView
-objectValueForTableColumn:(NSTableColumn *) aTableColumn row:(int) rowIndex
-{  
-	return [self objectAtIndex:rowIndex];  
-}
-
-// just returns the number of items we have.
-- (int)numberOfRowsInTableView:(NSTableView *)aTableView
-{
-	return [self count];  
-}
-@end
-
-
-
 
 
 
