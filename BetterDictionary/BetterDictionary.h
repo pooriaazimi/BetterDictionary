@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SidebarController.h"
+#import "DebugLog.h"
 #import "NSObjectAdditions.h"
 #import "objc/runtime.h"
 
 
-@interface BetterDictionary : NSObject {
+@interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
 @private
 	NSBundle* betterDictionaryBundle;
 	
@@ -27,7 +27,7 @@
 	NSButton* showAllToolbarButton;
 	NSButton* saveWordToolbarButton;
 	
-	SidebarController* sidebarController;
+//	SidebarController* sidebarController;
 	float sidebarWidth;
 	BOOL sidebarIsVisible;
 	
@@ -38,30 +38,45 @@
 	NSImage* saveWordImage;
 	NSImage* removeWordImage;
 	
-	
-	
-	NSArray* myArr;
+	NSString* searchedText;
+	NSMutableArray* savedWordsArray;
+
 }
 
 + (void)load;
 
-- (void)instantiateToolbarItems;
+- (void)initToolbarItems;
 - (void)createMenuItems;
+
+- (float)viewWidth;
+- (float)viewHeight;
 
 - (void)addSidebar;
 - (void)showHideSidebar:(id)sender;
 - (void)_showSidebar;
 - (void)_hideSidebar;
 
-- (void)saveWord:(NSString*)wordToSave;
-- (void)removeWord:(NSString*)wordToRemove;
-- (void)removeAllSavedWords;
-
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
 
-- (float)viewWidth;
-- (float)viewHeight;
+- (void)_saveWord:(id)sender;
+- (void)saveWord:(NSString*)wordToSave;
+- (void)_removeWord:(id)sender;
+- (void)removeWord:(NSString*)wordToRemove;
+- (void)_removeAllSavedWords:(id)sender;
+- (void)removeAllSavedWords;
 
+- (BOOL)hasSavedWord:(NSString*)word;
+
+- (NSString*)searchedWord;
+-(void) searchWord:(NSString*)wordToSearch;
+
+- (void)initSavedWordsArray;
+- (void)writeSavedWordsArrayToDisk;
+
+
+
+
+@property (assign) NSMutableArray* savedWordsArray;
 
 @end

@@ -11,6 +11,8 @@
 
 @implementation BetterDictionary
 
+@synthesize savedWordsArray;
+
 + (void)load
 {
 	[[self alloc] init];
@@ -20,13 +22,14 @@
 {
     self = [super init];
     if (self) {
+		DebugLog(@"INIT");
 		
 		//TODO: insert code for checking OS version here
 		
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
-		sidebarController = [[SidebarController alloc] init];
-		sidebarWidth = 170;
+//		sidebarController = [[SidebarController alloc] init];
+		sidebarWidth = 130;
 		sidebarIsVisible = NO;
 		
 		mainApplication = [NSApplication sharedApplication];
@@ -34,7 +37,7 @@
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
 		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
 
-		[self instantiateToolbarItems];
+		[self initToolbarItems];
 		[self addSidebar];
 		[self createMenuItems];
 		
@@ -42,9 +45,16 @@
 //		[self addMethod:@selector(hideSidebar:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(showHideSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
 		
-//		NSLog(@"CHILDREN: %@", [[[dictionarySearchView subviews] objectAtIndex:0] subviews]);
+//		DebugLog(@"CHILDREN: %@", [[[dictionarySearchView subviews] objectAtIndex:0] subviews]);
 		
-		myArr = [NSArray arrayWithObjects:@"hello", @"there", @"how", nil];
+		
+//		savedWordsArray = [[NSMutableArray alloc] initWithObjects:@"hello", @"there", @"how", @"are", @"you", @"?", nil];
+//		DebugLog(@"----::::: %ld", [savedWordsArray count]);
+//		[dictionarySidebar reloadData];
+		[self initSavedWordsArray];
+	
+		
+		
 		
     }
     
@@ -54,10 +64,10 @@
 
 
 
-- (void)instantiateToolbarItems
+- (void)initToolbarItems
 {
-	NSLog(@"INSTANTIATE TOOLBAR ITEMS");	
-	
+	DebugLog(@"INIT TOOLBAR ITEMS");
+
 	NSString* sampleItemIentifier = [[[dictionaryBrowserToolbar items] objectAtIndex:0] itemIdentifier];
 	
 	// -----------------------------------------------------------------------------------------
@@ -99,7 +109,7 @@
 	[saveWordToolbarButton setTarget:self];
 	[saveWordToolbarButton setTitle:@"Save Word"];
 	[saveWordToolbarButton setImage:saveWordImage];
-	[saveWordToolbarButton setAction:@selector(saveWord:)];
+	[saveWordToolbarButton setAction:@selector(_saveWord:)];
 	
 	[saveWordToolbarItem setView: saveWordToolbarButton];
 	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
@@ -115,7 +125,7 @@
 
 - (void)createMenuItems
 {
-	NSLog(@"CREATE MENU ITEMS");
+	DebugLog(@"CREATE MENU ITEMS");
 	
 	NSMenuItem* editMenuItem = [[mainApplication mainMenu] itemWithTitle:@"Edit"];
 	NSMenu* editMenu = [editMenuItem submenu];
@@ -131,20 +141,29 @@
 	
 	[editMenu insertItem:[NSMenuItem separatorItem] atIndex:startIndex];
 	
-	NSMenuItem* saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(saveWord:) keyEquivalent:@"s"];
+	NSMenuItem* saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(_saveWord:) keyEquivalent:@"s"];
 	[editMenu insertItem:saveWordMenuItem atIndex:startIndex+1];
 	[saveWordMenuItem setTarget:self];
+	
+	NSMenuItem* removeWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
+	[removeWordMenuItem setTarget:self];
+	[editMenu insertItem:removeWordMenuItem atIndex:startIndex+2];
+	
+	NSMenuItem* removeAllWordsMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove All Saved Words" action:@selector(_removeAllSavedWords:) keyEquivalent:@"r"];
+	[removeAllWordsMenuItem setKeyEquivalentModifierMask:(NSShiftKeyMask| NSCommandKeyMask)];
+	[removeAllWordsMenuItem setTarget:self];
+	[editMenu insertItem:removeAllWordsMenuItem atIndex:startIndex+3];
 	
 	NSMenuItem* showSidebarMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show All Saved Words" action:@selector(showHideSidebar:) keyEquivalent:@"d"];
 	[showSidebarMenuItem setKeyEquivalentModifierMask:(NSShiftKeyMask| NSCommandKeyMask)];
 	[showSidebarMenuItem setTarget:self];
-	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+2];
+	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+4];
 
 }
 
 - (void)addSidebar
 {
-	NSLog(@"ADD SIDEBAR");
+	DebugLog(@"ADD SIDEBAR");
 	
 	dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
 	dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
@@ -153,47 +172,42 @@
 	NSRect scrollFrame = NSMakeRect( -5, 0, 5, self.viewHeight );
     dictionarySidebarScrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
 	
-    [dictionarySidebarScrollView setBorderType:0];
+    [dictionarySidebarScrollView setBorderType:2];
     [dictionarySidebarScrollView setHasVerticalScroller:YES];
     [dictionarySidebarScrollView setAutohidesScrollers:YES];
 	
     NSRect clipViewBounds = [[dictionarySidebarScrollView contentView] bounds];
     dictionarySidebar = [[[NSTableView alloc] initWithFrame:clipViewBounds] autorelease];
-	
     [dictionarySidebar  addTableColumn:[[[NSTableColumn alloc] initWithIdentifier:@"listOfWords"] autorelease]];
 	
 	[dictionarySidebar setHeaderView:nil];
-    [dictionarySidebar setDataSource:sidebarController];
-    [dictionarySidebar setDelegate:sidebarController];
+    [dictionarySidebar setDataSource:self];
+    [dictionarySidebar setDelegate:self];
 	
     [dictionarySidebarScrollView setDocumentView:dictionarySidebar];
-	
+	[dictionarySidebarScrollView setAutoresizesSubviews:YES];
+	[dictionarySidebarScrollView setAutoresizingMask:NSViewHeightSizable];
 	
 	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebarScrollView];
 	
 	
+	// create sidebar's context menu
+	NSMenuItem* sidebarRemoveMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
+	[sidebarRemoveMenuItem setTarget:self];
 	
+	NSMenu* sidebarItemMenu = [[[NSMenu alloc] init] autorelease];
+	[sidebarItemMenu addItem:sidebarRemoveMenuItem];
+	[sidebarItemMenu setTitle:@"SIDEBAR_CONTEXT_MENU"];
 	
-	
-	
-//	dictionarySidebar = [[NSTableView alloc] init]; 
-//	[dictionarySidebar setDataSource:[[Sidebar alloc] init]];
-//	
-//	[dictionarySidebar setFrame:CGRectMake(-5, 0, 150, self.viewHeight)];
-//	[dictionarySidebar setAutoresizesSubviews:YES];
-//	[dictionarySidebar setAutoresizingMask:NSViewHeightSizable];
-	
-//	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebar];
-	
-	
-	
+	[dictionarySidebar setMenu:sidebarItemMenu];
 
 }
 
 - (void)showHideSidebar:(id)sender
 {
 	if ([sender isMemberOfClass:[NSMenuItem class]]) {
-		// if invoked from the menu, just pass it to the button
+		// if invoked from the menu, just pass it to the button.
+		// that'll call this method again (with a different sender though).
 		[showAllToolbarButton performClick:self];
 	} else {
 		if (sidebarIsVisible)
@@ -205,7 +219,7 @@
 
 - (void)_showSidebar
 {
-	NSLog(@"SHOW SIDEBAR");
+	DebugLog(@"SHOW SIDEBAR");
 	
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
@@ -221,12 +235,12 @@
 	sidebarIsVisible = YES;
 	
 	// XXX: Not working
-	NSLog(@"????????? %d", [dictionarySidebarScrollView becomeFirstResponder]);
+	[dictionarySidebarScrollView becomeFirstResponder];
 }
 
 - (void)_hideSidebar
 {
-	NSLog(@"HIDE SIDEBAR");
+	DebugLog(@"HIDE SIDEBAR");
 		
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
@@ -242,10 +256,94 @@
 	sidebarIsVisible = NO;
 }
 
-//FIXME: saveWord needs a wrapper (to hide sender)
+- (NSString*)searchedWord
+{
+	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedText);
+	return searchedText;
+}
+
+
+- (BOOL)hasSavedWord:(NSString*)word
+{
+	// TODO: use an stemmer (preferably Porter's) 
+	return [savedWordsArray containsObject:word];
+}
+
+
+- (void)_saveWord:(id)sender
+{
+	[self saveWord:[self searchedWord]];
+}
+
 - (void)saveWord:(NSString*)wordToSave
 {
-	NSLog(@"SAVE WORD: %@, %f, %@", wordToSave, self.viewWidth, self);
+	wordToSave = [[wordToSave capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
+	if ([self hasSavedWord:wordToSave])
+		return;
+	
+	[savedWordsArray addObject:wordToSave];
+	[dictionarySidebar reloadData];
+	[self writeSavedWordsArrayToDisk];
+	
+	DebugLog(@"SAVED WORD: %@", wordToSave);
+}
+
+
+- (void)_removeWord:(id)sender
+{
+	if (![sender isKindOfClass:[NSMenuItem class]])
+		return;
+	
+	if ([[[(NSMenuItem*)sender menu] title] isEqualToString:@"SIDEBAR_CONTEXT_MENU"]) {
+		// it's from the sidebar context menu bar
+		NSInteger clickedRow = [dictionarySidebar clickedRow];
+		if (clickedRow != -1)
+			[self removeWord:[savedWordsArray objectAtIndex:clickedRow]];
+	} else {
+		// it's from the application menu bar
+		[self removeWord:[self searchedWord]];
+	}
+}
+
+- (void)removeWord:(NSString*)wordToRemove
+{
+	wordToRemove = [wordToRemove capitalizedString];
+	
+	if (![self hasSavedWord:wordToRemove])
+		return;
+	
+	DebugLog(@"CLICKED ROW: %ld, SELECTED ROW: %ld",[dictionarySidebar selectedRow],[dictionarySidebar clickedRow]);
+	
+	[savedWordsArray removeObject:wordToRemove];
+	[dictionarySidebar reloadData];
+	[self writeSavedWordsArrayToDisk];
+	
+	DebugLog(@"REMOVED WORD: %@", wordToRemove);
+}
+
+
+- (void)_removeAllSavedWords:(id)sender
+{
+	[self removeAllSavedWords];
+}
+
+- (void)removeAllSavedWords
+{
+	savedWordsArray = [[NSMutableArray alloc] init];
+	[dictionarySidebar reloadData];
+	[self writeSavedWordsArrayToDisk];
+	
+	DebugLog(@"REMOVED ALL SAVED WORDS");		
+}
+
+
+-(void) searchWord:(NSString*)wordToSearch
+{
+	DebugLog(@"SEARCH WORD: %@", wordToSearch);
+	
+	if ([wordToSearch isEqualToString:[self searchedWord]])
+		return;
 	
 	// -----------------------------------------------------------------------------------
 	// here we keep removed dictionaries (those from Wikipedia) safe
@@ -271,13 +369,10 @@
 	// -----------------------------------------------------------------------------------
 	// do the actual searching 
 	//
-	NSString* txt = @"Rival";
-//	[dictionaryBrowserWindowController _searchText:txt inDictionaryContoller:[[mainApplication mainWindow] windowController] withSelection:txt];
-	
-	NSArray* arguments = [[NSArray alloc] initWithObjects:txt, [[mainApplication mainWindow] windowController] , txt, nil];
+	NSArray* arguments = [[NSArray alloc] initWithObjects:wordToSearch, [[mainApplication mainWindow] windowController] , wordToSearch, nil];
 	[dictionaryBrowserWindowController performSelector:@selector(_searchText:inDictionaryContoller:withSelection:) withObjects:arguments];
-	[dictionaryBrowserWindowController performSelector:@selector(_setSearchTextSilently:) withObject:txt];
-
+	[dictionaryBrowserWindowController performSelector:@selector(_setSearchTextSilently:) withObject:wordToSearch];
+	
 	
 	// -----------------------------------------------------------------------------------	
 	// and here, we put wikipedia dictionaries back
@@ -288,18 +383,9 @@
 		[dictionaryList addObject:doc];
 	}
 	// -----------------------------------------------------------------------------------
-
+	
 }
 
-- (void)removeWord:(NSString*)wordToRemove
-{
-	NSLog(@"REMOVE WORD: %@", wordToRemove);	
-}
-
-- (void)removeAllSavedWords
-{
-	NSLog(@"REMOVE ALL SAVED WORDS");		
-}
 
 - (float)viewWidth
 {
@@ -335,6 +421,148 @@
 {
     [super dealloc];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)initSavedWordsArray
+{
+	savedWordsArray = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"savedWordsArray"];
+	
+	if (savedWordsArray == nil)
+		savedWordsArray = [[NSMutableArray alloc] init];
+
+	[dictionarySidebar reloadData];
+	DebugLog(@"???????????????????????????11 %@", savedWordsArray);
+}
+
+
+- (void)writeSavedWordsArrayToDisk
+{
+	DebugLog(@"???????????????????????????22 %@", savedWordsArray);
+	[[NSUserDefaults standardUserDefaults] setObject:savedWordsArray forKey:@"savedWordsArray"];
+}
+
+
+
+
+
+
+
+
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
+{
+	return [savedWordsArray count];
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	return [savedWordsArray objectAtIndex:row];
+}
+
+
+
+
+
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	return NO;
+}
+
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)tableView
+{
+	return YES;
+}
+
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
+	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+}
+
+- (void)tableViewSelectionIsChanging:(NSNotification *)notification
+{
+	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
+	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+//	[(NSTableView*)[notification object] reloadData];
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+	return 22;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (void) keyDown:(NSEvent *) event
+{
+//    unsigned newRow = row, newCol = column;
+//    switch ([event keyCode])
+//    {
+//        case 126: // Up
+//            if (row)
+//				newRow = row - 1;
+//            break;
+//			
+//			
+//		case 125: // Down
+//			if (row &lt; [theTable numberOfRows] - 1)
+//				newRow = row + 1;
+//			break;
+//			
+//			
+//		case 123: // Left
+//			if (column &gt; 1)
+//				newCol = column - 1;
+//			break;
+//			
+//			
+//		case 124: // Right
+//			if (column &lt; [theTable numberOfColumns] - 1)
+//				newCol = column + 1;
+//			break;
+//			
+//			
+//		default:
+			[super keyDown:event];
+//			return;
+//	}
+	
+	NSLog(@"_______: %@", event);
+	
+	
+//	[theTable selectRow:newRow byExtendingSelection:NO];
+//	[theTable editColumn:newCol row:newRow withEvent:nil select:YES];
+//	row = newRow;
+//	column = newCol;
+	
+	
+}
+
+
+
+
 
 @end
 
