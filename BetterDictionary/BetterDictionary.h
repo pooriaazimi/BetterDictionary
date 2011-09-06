@@ -13,7 +13,6 @@
 
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
-@private
 	NSBundle* betterDictionaryBundle;
 	
 	NSApplication* mainApplication;
@@ -32,7 +31,6 @@
 	BOOL sidebarIsVisible;
 	
 	NSTableView* dictionarySidebar;
-	NSScrollView* dictionarySidebarScrollView;
 	NSImage* sidebarShowAllImageDarkImage;
 	NSImage* sidebarShowAllImageLightImage;
 	NSImage* saveWordImage;

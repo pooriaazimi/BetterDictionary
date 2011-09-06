@@ -8,8 +8,26 @@
 
 #import "BetterDictionary.h"
 
+//todo: 
+//	remove/save toolbar item
+//	arrw keys in sidebar
+
 
 @implementation BetterDictionary
+
+NSScrollView* dictionarySidebarScrollView;
+
+static BOOL (*orig)(NSWindow* self,SEL sel,NSResponder *resp);
+
+BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
+	BOOL ret= orig(self,sel,resp);
+	if(ret){
+		orig(resp,sel,dictionarySidebarScrollView);
+//		[resp setNextResponder:dictionarySidebarScrollView];
+	}
+	NSLog(@"Making first responder : %@ %d",resp,ret);
+	return ret;
+}
 
 @synthesize savedWordsArray;
 
@@ -23,9 +41,11 @@
     self = [super init];
     if (self) {
 		DebugLog(@"INIT");
-		
+		freopen("/Users/pooriaazimi/log.txt", "a+", stderr);
 		//TODO: insert code for checking OS version here
-		
+		orig =(BOOL (*)(NSWindow*,SEL,NSResponder*)) class_getMethodImplementation([NSWindow class], @selector(makeFirstResponder:));
+		Method m = class_getInstanceMethod([NSWindow class], @selector(makeFirstResponder:)); 
+		method_setImplementation(m,(IMP) makeFirstResponder);
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
 //		sidebarController = [[SidebarController alloc] init];
@@ -34,13 +54,16 @@
 		
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
+//		[dictionaryBrowserWindowController setNextResponder:dictionarySidebarScrollView];
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
-		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
 
+		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
+		
 		[self initToolbarItems];
 		[self addSidebar];
 		[self createMenuItems];
 		
+		NSLog(@"%@",[[dictionaryBrowserWindow contentView] subviews]);
 //		[self addMethod:@selector(saveWord:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(hideSidebar:) toClass:[[dictionaryBrowserWindow windowController] class]];
 //		[self addMethod:@selector(showHideSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
@@ -54,6 +77,7 @@
 		[self initSavedWordsArray];
 	
 		
+		NSLog(@"FIRST RESPONDER: %@",[dictionaryBrowserWindow firstResponder]);
 		
 		
     }
@@ -200,7 +224,6 @@
 	[sidebarItemMenu setTitle:@"SIDEBAR_CONTEXT_MENU"];
 	
 	[dictionarySidebar setMenu:sidebarItemMenu];
-
 }
 
 - (void)showHideSidebar:(id)sender
@@ -236,6 +259,9 @@
 	
 	// XXX: Not working
 	[dictionarySidebarScrollView becomeFirstResponder];
+	
+	
+	NSLog(@"FIRST RESPONDER: %@",[dictionaryBrowserWindow firstResponder]);
 }
 
 - (void)_hideSidebar

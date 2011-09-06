@@ -26,6 +26,7 @@
 		9F05038E1409067700F586E6 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		9F05038F1409067700F586E6 /* sidebar-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-light.png"; sourceTree = "<group>"; };
 		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		9F62C7F11414B08400C727E8 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		9FD7F52E141033970009935F /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
@@ -54,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F62C7EF1414B06100C727E8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				9F62C7F11414B08400C727E8 /* ApplicationController.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		9FED756914047E8B008195D4 = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +102,7 @@
 		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				9F62C7EF1414B06100C727E8 /* Headers */,
 				9FD7F52E141033970009935F /* DebugLog.h */,
 				9FD7F52F141033970009935F /* DebugLog.m */,
 				9FED757E14047E8B008195D4 /* Supporting Files */,
