@@ -2,7 +2,7 @@
 //  NSObjectAdditions.h
 //  BetterDictionary
 //
-//  Created by Pooria Azimi on 28/8/11.
+//  Created by Pooria Azimi on 28/8/2011.
 //  Copyright 2011 Tehran Polytechnic. All rights reserved.
 //
 

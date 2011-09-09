@@ -17,6 +17,7 @@
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
 		9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary_old.m_old */; };
+		9FFF9AC3141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF9AC2141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterDictionary-Prefix.pch"; sourceTree = "<group>"; };
 		9FED759014048038008195D4 /* BetterDictionary_old.h_old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BetterDictionary_old.h_old; sourceTree = "<group>"; };
 		9FED759114048038008195D4 /* BetterDictionary_old.m_old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BetterDictionary_old.m_old; sourceTree = "<group>"; };
+		9FFF9AC1141AA5C700F1A8DA /* NSAttributedString-Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSAttributedString-Hyperlink.h"; sourceTree = "<group>"; };
+		9FFF9AC2141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString-Hyperlink.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				9F0503521408D92F00F586E6 /* BetterDictionary.m */,
 				9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */,
 				9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */,
+				9FFF9AC1141AA5C700F1A8DA /* NSAttributedString-Hyperlink.h */,
+				9FFF9AC2141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m */,
 			);
 			path = BetterDictionary;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */,
 				9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */,
 				9FD7F530141033970009935F /* DebugLog.m in Sources */,
+				9FFF9AC3141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,14 +2,15 @@
 //  BetterDictionary.h
 //  BetterDictionary
 //
-//  Created by Pooria Azimi on 27/8/11.
+//  Created by Pooria Azimi on 27/8/2011.
 //  Copyright 2011 IRMUG. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "objc/runtime.h"
 #import "DebugLog.h"
 #import "NSObjectAdditions.h"
-#import "objc/runtime.h"
+#import "NSAttributedString-Hyperlink.h"
 
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
@@ -44,7 +45,9 @@
 + (void)load;
 
 - (void)initToolbarItems;
+
 - (void)createMenuItems;
+- (void)showAboutBetterDictionaryWindow:(id)sender;
 
 - (float)viewWidth;
 - (float)viewHeight;

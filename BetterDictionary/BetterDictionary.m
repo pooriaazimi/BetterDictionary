@@ -15,7 +15,7 @@
 
 #pragma mark -
 /*
- SIMBL calls this method when the bundle is loaded into memory.
+ SIMBL calls this method when the bundle is first loaded.
  */
 + (void)load
 {
@@ -166,7 +166,34 @@
 	
 	// Add items to application ('Dictionary') menu.
 	// TODO add 'About BetterDictionary'
+	
+	NSMenuItem* defaultApplicationMenuItem = [[mainApplication mainMenu] itemWithTitle:@"Dictionary"];
+	NSMenu* aboutMenu = [defaultApplicationMenuItem submenu];
+	
+	NSMenuItem* aboutBetterDictionaryItem = [[NSMenuItem alloc] initWithTitle:@"About BetterDictionary" action:@selector(showAboutBetterDictionaryWindow:) keyEquivalent:@""];
+	[aboutMenu insertItem:aboutBetterDictionaryItem atIndex:1];
+	[aboutBetterDictionaryItem setTarget:self];
+}
 
+/*
+ Show About window.
+ */
+- (void)showAboutBetterDictionaryWindow:(id)sender
+{
+	NSMutableAttributedString *credits = [[NSMutableAttributedString alloc] initWithString:@"\nFor more information, please visit "];
+	NSURL* url = [NSURL URLWithString:@"http://www.irmug.org"];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"irmug.org" withURL:url]];
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
+	
+	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+							 @"0.8", @"Version",
+							 @"BetterDictionary", @"ApplicationName",
+							 credits, @"Credits",
+							 @"Copyright © 2011 Pooria Azimi.\nAll rights reserved.", @"Copyright",
+							 @"BetterDictionary v0.8", @"ApplicationVersion",
+							 nil];
+	
+	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
 }
 
 
