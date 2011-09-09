@@ -2,59 +2,43 @@
 //  BetterDictionary.m
 //  BetterDictionary
 //
-//  Created by Pooria Azimi on 27/8/11.
+//  Created by Pooria Azimi on 27/8/2011.
 //  Copyright 2011 IRMUG. All rights reserved.
 //
 
 #import "BetterDictionary.h"
 
-//todo: 
-//	remove/save toolbar item
-//	arrw keys in sidebar
-
 
 @implementation BetterDictionary
 
-NSScrollView* dictionarySidebarScrollView;
-
-static BOOL (*orig)(NSWindow* self,SEL sel,NSResponder *resp);
-
-BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
-	BOOL ret= orig(self,sel,resp);
-	if(ret){
-		orig(resp,sel,dictionarySidebarScrollView);
-//		[resp setNextResponder:dictionarySidebarScrollView];
-	}
-	NSLog(@"Making first responder : %@ %d",resp,ret);
-	return ret;
-}
-
 @synthesize savedWordsArray;
 
+#pragma mark -
+/*
+ SIMBL calls this method when the bundle is loaded into memory.
+ */
 + (void)load
 {
 	[[self alloc] init];
 }
 
+/*
+ Init
+ */
 - (id)init
 {
     self = [super init];
     if (self) {
 		DebugLog(@"INIT");
-		freopen("/Users/pooriaazimi/log.txt", "a+", stderr);
 		//TODO: insert code for checking OS version here
-		orig =(BOOL (*)(NSWindow*,SEL,NSResponder*)) class_getMethodImplementation([NSWindow class], @selector(makeFirstResponder:));
-		Method m = class_getInstanceMethod([NSWindow class], @selector(makeFirstResponder:)); 
-		method_setImplementation(m,(IMP) makeFirstResponder);
+	
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
-//		sidebarController = [[SidebarController alloc] init];
 		sidebarWidth = 130;
 		sidebarIsVisible = NO;
 		
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
-//		[dictionaryBrowserWindowController setNextResponder:dictionarySidebarScrollView];
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
 
 		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
@@ -62,23 +46,7 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 		[self initToolbarItems];
 		[self addSidebar];
 		[self createMenuItems];
-		
-		NSLog(@"%@",[[dictionaryBrowserWindow contentView] subviews]);
-//		[self addMethod:@selector(saveWord:) toClass:[[dictionaryBrowserWindow windowController] class]];
-//		[self addMethod:@selector(hideSidebar:) toClass:[[dictionaryBrowserWindow windowController] class]];
-//		[self addMethod:@selector(showHideSidebar) toClass:[[dictionaryBrowserWindow windowController] class]];
-		
-//		DebugLog(@"CHILDREN: %@", [[[dictionarySearchView subviews] objectAtIndex:0] subviews]);
-		
-		
-//		savedWordsArray = [[NSMutableArray alloc] initWithObjects:@"hello", @"there", @"how", @"are", @"you", @"?", nil];
-//		DebugLog(@"----::::: %ld", [savedWordsArray count]);
-//		[dictionarySidebar reloadData];
-		[self initSavedWordsArray];
-	
-		
-		NSLog(@"FIRST RESPONDER: %@",[dictionaryBrowserWindow firstResponder]);
-		
+		[self initSavedWordsArray];	
 		
     }
     
@@ -87,7 +55,12 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 
 
 
+#pragma mark -
+#pragma mark Toolbar
 
+/*
+ Adds the toolbar items, loads graphics, assigns actions, ...
+ */
 - (void)initToolbarItems
 {
 	DebugLog(@"INIT TOOLBAR ITEMS");
@@ -110,7 +83,7 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	[showAllToolbarButton setButtonType:NSPushOnPushOffButton];
 	[showAllToolbarButton setTarget:self];	
 	[showAllToolbarButton setImage:sidebarShowAllImageDarkImage];
-	[showAllToolbarButton setAction:@selector(showHideSidebar:)];
+	[showAllToolbarButton setAction:@selector(_showHideSidebar:)];
 	
 	[showAllToolbarItem setView: showAllToolbarButton];
 	[showAllToolbarItem setMaxSize:NSMakeSize(25, 25)];
@@ -147,6 +120,13 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	
 }
 
+
+#pragma mark -
+#pragma mark Menubar
+
+/*
+ Creates menu items, assigns shortcut keys, ...
+ */
 - (void)createMenuItems
 {
 	DebugLog(@"CREATE MENU ITEMS");
@@ -163,6 +143,7 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 			break;
 	}
 	
+	// Add items to edit menu
 	[editMenu insertItem:[NSMenuItem separatorItem] atIndex:startIndex];
 	
 	NSMenuItem* saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(_saveWord:) keyEquivalent:@"s"];
@@ -178,13 +159,24 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	[removeAllWordsMenuItem setTarget:self];
 	[editMenu insertItem:removeAllWordsMenuItem atIndex:startIndex+3];
 	
-	NSMenuItem* showSidebarMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show All Saved Words" action:@selector(showHideSidebar:) keyEquivalent:@"d"];
+	NSMenuItem* showSidebarMenuItem = [[NSMenuItem alloc] initWithTitle:@"Show All Saved Words" action:@selector(_showHideSidebar:) keyEquivalent:@"d"];
 	[showSidebarMenuItem setKeyEquivalentModifierMask:(NSShiftKeyMask| NSCommandKeyMask)];
 	[showSidebarMenuItem setTarget:self];
 	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+4];
+	
+	// Add items to application ('Dictionary') menu.
+	// TODO add 'About BetterDictionary'
 
 }
 
+
+#pragma mark -
+#pragma mark Sidebar
+
+/* 
+ Adds the sidebar to window. It does not show the sidebar, just creates the objects. 
+ This method calls only once.
+ */
 - (void)addSidebar
 {
 	DebugLog(@"ADD SIDEBAR");
@@ -226,7 +218,10 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	[dictionarySidebar setMenu:sidebarItemMenu];
 }
 
-- (void)showHideSidebar:(id)sender
+/*
+ Wrapper. Works for all cases - menu item, shortcut key and toolbar item.
+ */
+- (void)_showHideSidebar:(id)sender
 {
 	if ([sender isMemberOfClass:[NSMenuItem class]]) {
 		// if invoked from the menu, just pass it to the button.
@@ -234,13 +229,16 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 		[showAllToolbarButton performClick:self];
 	} else {
 		if (sidebarIsVisible)
-			[self _hideSidebar];
+			[self hideSidebar];
 		else
-			[self _showSidebar];
+			[self showSidebar];
 	}
 }
 
-- (void)_showSidebar
+/*
+ Shows the sidebar in a beautiful animation.
+ */
+- (void)showSidebar
 {
 	DebugLog(@"SHOW SIDEBAR");
 	
@@ -258,13 +256,15 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	sidebarIsVisible = YES;
 	
 	// XXX: Not working
+	NSLog(@"FIRST RESPONDER - before: %@",[dictionaryBrowserWindow firstResponder]);
 	[dictionarySidebarScrollView becomeFirstResponder];
-	
-	
-	NSLog(@"FIRST RESPONDER: %@",[dictionaryBrowserWindow firstResponder]);
+	NSLog(@"FIRST RESPONDER - after: %@",[dictionaryBrowserWindow firstResponder]);
 }
 
-- (void)_hideSidebar
+/*
+ Hides the sidebar in a beautiful animation.
+ */
+- (void)hideSidebar
 {
 	DebugLog(@"HIDE SIDEBAR");
 		
@@ -282,30 +282,46 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	sidebarIsVisible = NO;
 }
 
+
+#pragma mark -
+
+/*
+ Returns the searched word (what user has typed in the search bar).
+ */
 - (NSString*)searchedWord
 {
 	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedText);
 	return searchedText;
 }
 
-
-- (BOOL)hasSavedWord:(NSString*)word
+/*
+ Returns whether or not we've already saved the given word.
+ */
+- (BOOL)hasAlreadySavedWord:(NSString*)word
 {
 	// TODO: use an stemmer (preferably Porter's) 
 	return [savedWordsArray containsObject:word];
 }
 
 
+#pragma mark saveWord
+
+/*
+ Wrapper. Feeds search bar's text to saveWord:.
+ */
 - (void)_saveWord:(id)sender
 {
 	[self saveWord:[self searchedWord]];
 }
 
+/*
+ Saves the given word to savedWordsArray, reloades sidebar's data and wrtites changes to disk.
+ */
 - (void)saveWord:(NSString*)wordToSave
 {
 	wordToSave = [[wordToSave capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
-	if ([self hasSavedWord:wordToSave])
+	if ([self hasAlreadySavedWord:wordToSave])
 		return;
 	
 	[savedWordsArray addObject:wordToSave];
@@ -316,6 +332,12 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 }
 
 
+#pragma mark removeWord
+
+/*
+ Wrapper. Checks the sender; If it's from the menubar or shortcut key equivalent, it removes search bar's text. If it's from the
+ context menu, it removes 
+ */
 - (void)_removeWord:(id)sender
 {
 	if (![sender isKindOfClass:[NSMenuItem class]])
@@ -332,11 +354,14 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 	}
 }
 
+/*
+ Removes the given word from savedWordsArray, reloades sidebar's data and writes changes to disk.
+ */
 - (void)removeWord:(NSString*)wordToRemove
 {
 	wordToRemove = [wordToRemove capitalizedString];
 	
-	if (![self hasSavedWord:wordToRemove])
+	if (![self hasAlreadySavedWord:wordToRemove])
 		return;
 	
 	DebugLog(@"CLICKED ROW: %ld, SELECTED ROW: %ld",[dictionarySidebar selectedRow],[dictionarySidebar clickedRow]);
@@ -349,11 +374,19 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 }
 
 
+#pragma mark removeAllSavedWords
+
+/*
+ Wrapper
+ */
 - (void)_removeAllSavedWords:(id)sender
 {
 	[self removeAllSavedWords];
 }
 
+/* 
+ Removes all saved words, reloades sidebar's data and writes changes to disk.
+ */
 - (void)removeAllSavedWords
 {
 	savedWordsArray = [[NSMutableArray alloc] init];
@@ -364,6 +397,11 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 }
 
 
+#pragma mark searchWord
+/*
+ This method is used whenever we want to show a word's definitions (when the user clicks on an item in the sidebar for example).
+ Because wikipedia is extremely slow, we need to remove all instances of wikipedia before searching, and restore them afterwards.
+ */
 -(void) searchWord:(NSString*)wordToSearch
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
@@ -413,77 +451,83 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 }
 
 
+#pragma mark -
+#pragma mark View constants
+
+/*
+ Returns windows's current width.
+ */
 - (float)viewWidth
 {
 	return [[dictionaryBrowserWindow contentView] frame].size.width;
 }
 
+/*
+ Returns windows's current height.
+ */
 - (float)viewHeight
 {
 	return [dictionaryWebView frame].size.height;
 }
 
 
-/*
- * Adds a method to a class, for the specified selector with given implementation.
- */
-- (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class
-{
-    const char *types = method_getTypeEncoding(class_getInstanceMethod(class, oldMethodSelector));
-    class_addMethod(class, oldMethodSelector, newMethodIMP, types);
-}
+#pragma mark savedWordsArray
 
 /*
- *
+ Populates savedWordsArray from disk (from a UserDefault plist file).
  */
-- (void)addMethod:(SEL)newMethodSelector toClass:(Class)class
-{
-	Method newMethod = class_getInstanceMethod([self class], newMethodSelector); 
-	[self addMethod:(IMP)method_getImplementation(newMethod) forSelector:newMethodSelector toClass:class];	
-}
-
-
-- (void)dealloc
-{
-    [super dealloc];
-}
-
-
-
-
-
-
-
-
-
-
-
-
 - (void)initSavedWordsArray
 {
+	DebugLog(@"READ SAVED WORDS ARRAY FROM DISK");
 	savedWordsArray = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"savedWordsArray"];
 	
 	if (savedWordsArray == nil)
 		savedWordsArray = [[NSMutableArray alloc] init];
 
 	[dictionarySidebar reloadData];
-	DebugLog(@"???????????????????????????11 %@", savedWordsArray);
 }
 
-
+/*
+ Writes savedWordsArray to disk. Currently does ot check for errors or exceptions.
+ */
 - (void)writeSavedWordsArrayToDisk
 {
-	DebugLog(@"???????????????????????????22 %@", savedWordsArray);
+	DebugLog(@"WRITE SAVED WORDS ARRAY TO DISK");
 	[[NSUserDefaults standardUserDefaults] setObject:savedWordsArray forKey:@"savedWordsArray"];
 }
 
 
+#pragma mark -
+#pragma mark NSTableViewDelegate
 
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	return NO;
+}
 
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)tableView
+{
+	return YES;
+}
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
+	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+}
 
+- (void)tableViewSelectionIsChanging:(NSNotification *)notification
+{
+	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
+	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+}
 
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+	return 22;
+}
 
+#pragma mark NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
@@ -496,99 +540,34 @@ BOOL makeFirstResponder(NSWindow* self,SEL sel,NSResponder * resp){
 }
 
 
+#pragma mark -
+#pragma mark Runtime hacks
 
-
-
-- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+/*
+ * Adds a method to a class, for the specified selector with given implementation.
+ */
+- (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class
 {
-	return NO;
+    const char *types = method_getTypeEncoding(class_getInstanceMethod(class, oldMethodSelector));
+    class_addMethod(class, oldMethodSelector, newMethodIMP, types);
 }
 
-- (BOOL)selectionShouldChangeInTableView:(NSTableView *)tableView
+/*
+ * Adds a method's implementation (from this class, 'BetterDictionary') to a class, with the same signature.
+ */
+- (void)addMethod:(SEL)newMethodSelector toClass:(Class)class
 {
-	return YES;
-}
-
-
-- (void)tableViewSelectionDidChange:(NSNotification *)notification
-{
-	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
-	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
-}
-
-- (void)tableViewSelectionIsChanging:(NSNotification *)notification
-{
-	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
-	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
-//	[(NSTableView*)[notification object] reloadData];
-}
-
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-	return 22;
+	Method newMethod = class_getInstanceMethod([self class], newMethodSelector); 
+	[self addMethod:(IMP)method_getImplementation(newMethod) forSelector:newMethodSelector toClass:class];	
 }
 
 
+#pragma mark -
 
-
-
-
-
-
-
-
-
-
-
-
-- (void) keyDown:(NSEvent *) event
+- (void)dealloc
 {
-//    unsigned newRow = row, newCol = column;
-//    switch ([event keyCode])
-//    {
-//        case 126: // Up
-//            if (row)
-//				newRow = row - 1;
-//            break;
-//			
-//			
-//		case 125: // Down
-//			if (row &lt; [theTable numberOfRows] - 1)
-//				newRow = row + 1;
-//			break;
-//			
-//			
-//		case 123: // Left
-//			if (column &gt; 1)
-//				newCol = column - 1;
-//			break;
-//			
-//			
-//		case 124: // Right
-//			if (column &lt; [theTable numberOfColumns] - 1)
-//				newCol = column + 1;
-//			break;
-//			
-//			
-//		default:
-			[super keyDown:event];
-//			return;
-//	}
-	
-	NSLog(@"_______: %@", event);
-	
-	
-//	[theTable selectRow:newRow byExtendingSelection:NO];
-//	[theTable editColumn:newCol row:newRow withEvent:nil select:YES];
-//	row = newRow;
-//	column = newCol;
-	
-	
+    [super dealloc];
 }
-
-
-
-
 
 @end
 

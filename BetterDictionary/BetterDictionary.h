@@ -26,11 +26,11 @@
 	NSButton* showAllToolbarButton;
 	NSButton* saveWordToolbarButton;
 	
-//	SidebarController* sidebarController;
 	float sidebarWidth;
 	BOOL sidebarIsVisible;
 	
 	NSTableView* dictionarySidebar;
+	NSScrollView* dictionarySidebarScrollView;
 	NSImage* sidebarShowAllImageDarkImage;
 	NSImage* sidebarShowAllImageLightImage;
 	NSImage* saveWordImage;
@@ -50,12 +50,9 @@
 - (float)viewHeight;
 
 - (void)addSidebar;
-- (void)showHideSidebar:(id)sender;
-- (void)_showSidebar;
-- (void)_hideSidebar;
-
-- (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
-- (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
+- (void)_showHideSidebar:(id)sender;
+- (void)showSidebar;
+- (void)hideSidebar;
 
 - (void)_saveWord:(id)sender;
 - (void)saveWord:(NSString*)wordToSave;
@@ -64,7 +61,7 @@
 - (void)_removeAllSavedWords:(id)sender;
 - (void)removeAllSavedWords;
 
-- (BOOL)hasSavedWord:(NSString*)word;
+- (BOOL)hasAlreadySavedWord:(NSString*)word;
 
 - (NSString*)searchedWord;
 -(void) searchWord:(NSString*)wordToSearch;
@@ -72,7 +69,8 @@
 - (void)initSavedWordsArray;
 - (void)writeSavedWordsArrayToDisk;
 
-
+- (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
+- (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
 
 
 @property (assign) NSMutableArray* savedWordsArray;
