@@ -329,9 +329,7 @@ static IMP originalSetSearchText;
 	sidebarIsVisible = YES;
 	
 	// XXX: Not working
-	NSLog(@"FIRST RESPONDER - before: %@",[dictionaryBrowserWindow firstResponder]);
 	[dictionarySidebarScrollView becomeFirstResponder];
-	NSLog(@"FIRST RESPONDER - after: %@",[dictionaryBrowserWindow firstResponder]);
 }
 
 /*
@@ -423,7 +421,7 @@ static IMP originalSetSearchText;
 
 /*
  Wrapper. Checks the sender; If it's from the menubar or shortcut key equivalent, it removes search bar's text. If it's from the
- context menu, it removes 
+ context menu, it removes the selected word.
  */
 - (void)_removeWord:(id)sender
 {
