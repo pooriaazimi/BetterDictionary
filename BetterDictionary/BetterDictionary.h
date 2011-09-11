@@ -25,7 +25,10 @@
 	NSView* dictionarySearchView;
 	
 	NSButton* showAllToolbarButton;
-	NSButton* saveWordToolbarButton;
+	NSButton* saveOrRemoveWordToolbarButton;
+	
+	NSMenuItem* removeWordMenuItem;
+	NSMenuItem* saveWordMenuItem;
 	
 	float sidebarWidth;
 	BOOL sidebarIsVisible;
@@ -37,14 +40,16 @@
 	NSImage* saveWordImage;
 	NSImage* removeWordImage;
 	
-	NSString* searchedText;
+	NSString* searchedWord;
 	NSMutableArray* savedWordsArray;
 
 }
 
+
 + (void)load;
 
 - (void)initToolbarItems;
+- (void)setSaveOrRemoveToolbarButtonAccordingly;
 
 - (void)createMenuItems;
 - (void)showAboutBetterDictionaryWindow:(id)sender;
@@ -67,13 +72,19 @@
 - (BOOL)hasAlreadySavedWord:(NSString*)word;
 
 - (NSString*)searchedWord;
+- (NSString*)searchedWordCapitalized;
 -(void) searchWord:(NSString*)wordToSearch;
 
 - (void)initSavedWordsArray;
 - (void)writeSavedWordsArrayToDisk;
 
+- (void)startInterceptingSearchTextMethod;
+static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...);
+
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
+- (void)swizzleMethodWithSelector:(SEL)origSelector fromClass:(Class)origClass WithMwthodWithSelector:(SEL)replSelector fromClass:(Class)replClass;
+
 
 
 @property (assign) NSMutableArray* savedWordsArray;

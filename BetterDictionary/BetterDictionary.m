@@ -11,6 +11,12 @@
 
 @implementation BetterDictionary
 
+/*
+ Original implementation of setSearchText method
+ */
+static IMP originalSetSearchText;
+
+
 @synthesize savedWordsArray;
 
 #pragma mark -
@@ -32,10 +38,11 @@
 		DebugLog(@"INIT");
 		//TODO: insert code for checking OS version here
 	
-		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
 		sidebarWidth = 130;
 		sidebarIsVisible = NO;
+		
+		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
@@ -47,13 +54,20 @@
 		[self addSidebar];
 		[self createMenuItems];
 		[self initSavedWordsArray];	
+		[self startInterceptingSearchTextMethod];
+		[self setSaveOrRemoveToolbarButtonAccordingly];
 		
-    }
-    
-    return self;
+			
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		// TODO: acknowlegments: alireza, ali, simbl, class-dump,additions, debuglog, attributed, ...
+		
+	}
+	return self;
 }
-
-
 
 #pragma mark -
 #pragma mark Toolbar
@@ -100,15 +114,14 @@
 	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:1];
 	NSToolbarItem* saveWordToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:1];
 	
-	saveWordToolbarButton = [[NSButton alloc] init];		
-	[saveWordToolbarButton setBordered:YES];	
-	[saveWordToolbarButton setBezelStyle:NSTexturedSquareBezelStyle];
-	[saveWordToolbarButton setTarget:self];
-	[saveWordToolbarButton setTitle:@"Save Word"];
-	[saveWordToolbarButton setImage:saveWordImage];
-	[saveWordToolbarButton setAction:@selector(_saveWord:)];
+	saveOrRemoveWordToolbarButton = [[NSButton alloc] init];		
+	[saveOrRemoveWordToolbarButton setBordered:YES];	
+	[saveOrRemoveWordToolbarButton setBezelStyle:NSTexturedSquareBezelStyle];
+	[saveOrRemoveWordToolbarButton setTarget:self];
 	
-	[saveWordToolbarItem setView: saveWordToolbarButton];
+	[self setSaveOrRemoveToolbarButtonAccordingly];
+	
+	[saveWordToolbarItem setView: saveOrRemoveWordToolbarButton];
 	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
 	[saveWordToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
@@ -116,8 +129,41 @@
 	// -----------------------------------------------------------------------------------------
 	// Add a seperator between our items and dectionary's default items
 	//
-	[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];
+	[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
+}
+
+/*
+ Shows save or remove button in the toolbar, and enebles/disables menu bar items depending on searched text;
+ */
+- (void)setSaveOrRemoveToolbarButtonAccordingly
+{
+	if ([[self searchedWordCapitalized] isEqualToString:@""]) {
+		[saveOrRemoveWordToolbarButton setImage:saveWordImage];
+		[saveOrRemoveWordToolbarButton setEnabled:NO];
+		
+		[removeWordMenuItem setHidden:YES];
+		[saveWordMenuItem setHidden:YES];
+		
+		return;
+	} else {
+		[saveOrRemoveWordToolbarButton setEnabled:YES];
+	}
 	
+	if ([savedWordsArray containsObject:[self searchedWordCapitalized]]) {
+		[saveOrRemoveWordToolbarButton setImage:removeWordImage];
+		[saveOrRemoveWordToolbarButton setAction:@selector(_removeWord:)];
+		
+		[removeWordMenuItem setHidden:NO];
+		[saveWordMenuItem setHidden:YES];
+		
+	} else {
+		[saveOrRemoveWordToolbarButton setImage:saveWordImage];
+		[saveOrRemoveWordToolbarButton setAction:@selector(_saveWord:)];
+		
+		[removeWordMenuItem setHidden:YES];
+		[saveWordMenuItem setHidden:NO];
+
+	}
 }
 
 
@@ -146,11 +192,11 @@
 	// Add items to edit menu
 	[editMenu insertItem:[NSMenuItem separatorItem] atIndex:startIndex];
 	
-	NSMenuItem* saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(_saveWord:) keyEquivalent:@"s"];
+	saveWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Save This Word" action:@selector(_saveWord:) keyEquivalent:@"s"];
 	[editMenu insertItem:saveWordMenuItem atIndex:startIndex+1];
 	[saveWordMenuItem setTarget:self];
 	
-	NSMenuItem* removeWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
+	removeWordMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
 	[removeWordMenuItem setTarget:self];
 	[editMenu insertItem:removeWordMenuItem atIndex:startIndex+2];
 	
@@ -186,11 +232,11 @@
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.8", @"Version",
+							 @"0.9", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
 							 @"Copyright © 2011 Pooria Azimi.\nAll rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.8", @"ApplicationVersion",
+							 @"BetterDictionary v0.9", @"ApplicationVersion",
 							 nil];
 	
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
@@ -317,8 +363,21 @@
  */
 - (NSString*)searchedWord
 {
-	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedText);
-	return searchedText;
+	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
+	if (searchedWord == nil)
+		searchedWord = @"";
+	return searchedWord;
+}
+
+/*
+ Returns the searched word (what user has typed in the search bar), capitalized.
+ */
+- (NSString*)searchedWordCapitalized
+{
+	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
+	if (searchedWord == nil)
+		searchedWord = @"";
+	return [[searchedWord capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
 }
 
 /*
@@ -326,7 +385,6 @@
  */
 - (BOOL)hasAlreadySavedWord:(NSString*)word
 {
-	// TODO: use an stemmer (preferably Porter's) 
 	return [savedWordsArray containsObject:word];
 }
 
@@ -354,6 +412,8 @@
 	[savedWordsArray addObject:wordToSave];
 	[dictionarySidebar reloadData];
 	[self writeSavedWordsArrayToDisk];
+	
+	[self setSaveOrRemoveToolbarButtonAccordingly];
 	
 	DebugLog(@"SAVED WORD: %@", wordToSave);
 }
@@ -397,6 +457,7 @@
 	[dictionarySidebar reloadData];
 	[self writeSavedWordsArrayToDisk];
 	
+	[self setSaveOrRemoveToolbarButtonAccordingly];
 	DebugLog(@"REMOVED WORD: %@", wordToRemove);
 }
 
@@ -420,7 +481,9 @@
 	[dictionarySidebar reloadData];
 	[self writeSavedWordsArrayToDisk];
 	
-	DebugLog(@"REMOVED ALL SAVED WORDS");		
+	[self setSaveOrRemoveToolbarButtonAccordingly];
+	
+	DebugLog(@"REMOVED ALL SAVED WORDS");
 }
 
 
@@ -474,6 +537,8 @@
 		[dictionaryList addObject:doc];
 	}
 	// -----------------------------------------------------------------------------------
+	
+	[self setSaveOrRemoveToolbarButtonAccordingly];
 	
 }
 
@@ -571,7 +636,47 @@
 #pragma mark Runtime hacks
 
 /*
- * Adds a method to a class, for the specified selector with given implementation.
+ Swaps implementaion of 'setSearchText:' with our 'interceptSetSearchText:' method IMP. And registers BetterDictionary
+ for notifications (with name='searchTextChanged').
+ */
+- (void)startInterceptingSearchTextMethod
+{
+	DebugLog(@"STARTED INTERCEPTING CALLS TO 'setSearchText:'");
+	const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:)));
+	originalSetSearchText = class_replaceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:), (IMP)interceptSetSearchText, types);
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"searchTextChanged" object:nil];
+}
+
+/*
+ When either of Dictionary.app or BetterDictionary.bundle send a message to 'DictionaryBrowserWindowController',
+ This method is called instead. It informs BetterDictionary (via application-wide notification center) that the
+ text in the search bar has changed. We use this information to show swap between add/remove buttons in the toolbar
+ and menu bar.
+ */
+static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...)
+{
+	originalSetSearchText(self, oldSelector, arg1);
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"searchTextChanged" object:self];
+}
+
+/*
+ This method handles notifications. We are only interested in notifications with name=searchTextChanged.
+ */
+- (void)handleNotification:(NSNotification*)note {
+	if (![[note name] isEqualToString:@"searchTextChanged"])
+		return;
+	DebugLog(@"SEARCH TEXT CHANGED");
+	
+	[self setSaveOrRemoveToolbarButtonAccordingly];
+	DebugLog(@".......:   %@", [self searchedWord]);
+}
+
+
+#pragma mark Runtime helper methods
+
+/*
+ Adds a method to a class, for the specified selector with given implementation.
  */
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class
 {
@@ -580,7 +685,7 @@
 }
 
 /*
- * Adds a method's implementation (from this class, 'BetterDictionary') to a class, with the same signature.
+ Adds a method's implementation (from this class, 'BetterDictionary') to a class, with the same signature.
  */
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class
 {
@@ -588,13 +693,26 @@
 	[self addMethod:(IMP)method_getImplementation(newMethod) forSelector:newMethodSelector toClass:class];	
 }
 
+/*
+ Exchanges two methods implementations.
+ */
+- (void)swizzleMethodWithSelector:(SEL)origSelector fromClass:(Class)origClass WithMwthodWithSelector:(SEL)replSelector fromClass:(Class)replClass
+{
+	Method orig = class_getInstanceMethod(origClass, @selector(origSelector)); 
+	Method repl = class_getInstanceMethod(replClass, @selector(replSelector)); 
+	method_exchangeImplementations(orig, repl);
+}
+
 
 #pragma mark -
-
+/*
+ Don't ever call it!
+ */
 - (void)dealloc
 {
     [super dealloc];
 }
+
 
 @end
 

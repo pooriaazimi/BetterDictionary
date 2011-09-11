@@ -12,11 +12,11 @@
 		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
+		9F13EA2D141AF2A0000DF502 /* Install BetterDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
-		9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */ = {isa = PBXBuildFile; fileRef = 9FED759114048038008195D4 /* BetterDictionary_old.m_old */; };
 		9FFF9AC3141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF9AC2141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +27,7 @@
 		9F05038E1409067700F586E6 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		9F05038F1409067700F586E6 /* sidebar-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-light.png"; sourceTree = "<group>"; };
 		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
-		9F62C7F11414B08400C727E8 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
+		9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Install BetterDictionary"; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		9FD7F52E141033970009935F /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
@@ -40,9 +40,7 @@
 		9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BetterDictionary-Info.plist"; sourceTree = "<group>"; };
 		9FED758114047E8B008195D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterDictionary-Prefix.pch"; sourceTree = "<group>"; };
-		9FED759014048038008195D4 /* BetterDictionary_old.h_old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BetterDictionary_old.h_old; sourceTree = "<group>"; };
-		9FED759114048038008195D4 /* BetterDictionary_old.m_old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BetterDictionary_old.m_old; sourceTree = "<group>"; };
-		9FFF9AC1141AA5C700F1A8DA /* NSAttributedString-Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSAttributedString-Hyperlink.h"; sourceTree = "<group>"; };
+		9FFF9AC1141AA5C700F1A8DA /* NSAttributedString-Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString-Hyperlink.h"; sourceTree = "<group>"; };
 		9FFF9AC2141AA5C700F1A8DA /* NSAttributedString-Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString-Hyperlink.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,20 +56,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F62C7EF1414B06100C727E8 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				9F62C7F11414B08400C727E8 /* ApplicationController.h */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
 		9FED756914047E8B008195D4 = {
 			isa = PBXGroup;
 			children = (
 				9FED757D14047E8B008195D4 /* BetterDictionary */,
 				9FED757614047E8B008195D4 /* Frameworks */,
 				9FED757514047E8B008195D4 /* Products */,
+				9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,12 +96,9 @@
 		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				9F62C7EF1414B06100C727E8 /* Headers */,
 				9FD7F52E141033970009935F /* DebugLog.h */,
 				9FD7F52F141033970009935F /* DebugLog.m */,
 				9FED757E14047E8B008195D4 /* Supporting Files */,
-				9FED759014048038008195D4 /* BetterDictionary_old.h_old */,
-				9FED759114048038008195D4 /* BetterDictionary_old.m_old */,
 				9F0503511408D92F00F586E6 /* BetterDictionary.h */,
 				9F0503521408D92F00F586E6 /* BetterDictionary.m */,
 				9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */,
@@ -191,6 +179,7 @@
 				9F0503921409067700F586E6 /* remove.png in Resources */,
 				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
 				9F0503941409067700F586E6 /* add.png in Resources */,
+				9F13EA2D141AF2A0000DF502 /* Install BetterDictionary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FED759214048038008195D4 /* BetterDictionary_old.m_old in Sources */,
 				9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */,
 				9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */,
 				9FD7F530141033970009935F /* DebugLog.m in Sources */,
