@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FBEFE2F141CD01E006420D6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBEFE2E141CD01E006420D6 /* Cocoa.framework */; };
+		9FBEFE31141CD01E006420D6 /* InstallerPlugins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FBEFE30141CD01E006420D6 /* InstallerPlugins.framework */; };
+		9FBEFE3B141CD01E006420D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEFE39141CD01E006420D6 /* InfoPlist.strings */; };
+		9FBEFE3F141CD01E006420D6 /* InstallerPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FBEFE3E141CD01E006420D6 /* InstallerPane.m */; };
+		9FBEFE42141CD01E006420D6 /* Installer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEFE40141CD01E006420D6 /* Installer.xib */; };
+		9FBEFE45141CD01E006420D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEFE43141CD01E006420D6 /* Localizable.strings */; };
+		9FBEFE47141CD01E006420D6 /* InstallerSections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FBEFE46141CD01E006420D6 /* InstallerSections.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9FBEFE2B141CD01E006420D6 /* Installer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Installer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FBEFE2E141CD01E006420D6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9FBEFE30141CD01E006420D6 /* InstallerPlugins.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstallerPlugins.framework; path = System/Library/Frameworks/InstallerPlugins.framework; sourceTree = SDKROOT; };
+		9FBEFE33141CD01E006420D6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9FBEFE34141CD01E006420D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9FBEFE35141CD01E006420D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FBEFE38141CD01E006420D6 /* Installer-Info.plist */ = {isa = PBXFileReference; path = "Installer-Info.plist"; sourceTree = "<group>"; };
+		9FBEFE3A141CD01E006420D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FBEFE3C141CD01E006420D6 /* Installer-Prefix.pch */ = {isa = PBXFileReference; path = "Installer-Prefix.pch"; sourceTree = "<group>"; };
+		9FBEFE3D141CD01E006420D6 /* InstallerPane.h */ = {isa = PBXFileReference; path = InstallerPane.h; sourceTree = "<group>"; };
+		9FBEFE3E141CD01E006420D6 /* InstallerPane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallerPane.m; sourceTree = "<group>"; };
+		9FBEFE41141CD01E006420D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Installer.xib; sourceTree = "<group>"; };
+		9FBEFE44141CD01E006420D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9FBEFE46141CD01E006420D6 /* InstallerSections.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InstallerSections.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FBEFE28141CD01E006420D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FBEFE2F141CD01E006420D6 /* Cocoa.framework in Frameworks */,
+				9FBEFE31141CD01E006420D6 /* InstallerPlugins.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9FBEFE20141CD01E006420D6 = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE36141CD01E006420D6 /* Installer */,
+				9FBEFE2D141CD01E006420D6 /* Frameworks */,
+				9FBEFE2C141CD01E006420D6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FBEFE2C141CD01E006420D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE2B141CD01E006420D6 /* Installer.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FBEFE2D141CD01E006420D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE2E141CD01E006420D6 /* Cocoa.framework */,
+				9FBEFE30141CD01E006420D6 /* InstallerPlugins.framework */,
+				9FBEFE32141CD01E006420D6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FBEFE32141CD01E006420D6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE33141CD01E006420D6 /* AppKit.framework */,
+				9FBEFE34141CD01E006420D6 /* CoreData.framework */,
+				9FBEFE35141CD01E006420D6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9FBEFE36141CD01E006420D6 /* Installer */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE3D141CD01E006420D6 /* InstallerPane.h */,
+				9FBEFE3E141CD01E006420D6 /* InstallerPane.m */,
+				9FBEFE40141CD01E006420D6 /* Installer.xib */,
+				9FBEFE43141CD01E006420D6 /* Localizable.strings */,
+				9FBEFE46141CD01E006420D6 /* InstallerSections.plist */,
+				9FBEFE37141CD01E006420D6 /* Supporting Files */,
+			);
+			path = Installer;
+			sourceTree = "<group>";
+		};
+		9FBEFE37141CD01E006420D6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FBEFE38141CD01E006420D6 /* Installer-Info.plist */,
+				9FBEFE39141CD01E006420D6 /* InfoPlist.strings */,
+				9FBEFE3C141CD01E006420D6 /* Installer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FBEFE2A141CD01E006420D6 /* Installer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FBEFE4A141CD01E006420D6 /* Build configuration list for PBXNativeTarget "Installer" */;
+			buildPhases = (
+				9FBEFE27141CD01E006420D6 /* Sources */,
+				9FBEFE28141CD01E006420D6 /* Frameworks */,
+				9FBEFE29141CD01E006420D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Installer;
+			productName = Installer;
+			productReference = 9FBEFE2B141CD01E006420D6 /* Installer.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FBEFE22141CD01E006420D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Tehran Polytechnic";
+			};
+			buildConfigurationList = 9FBEFE25141CD01E006420D6 /* Build configuration list for PBXProject "Installer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9FBEFE20141CD01E006420D6;
+			productRefGroup = 9FBEFE2C141CD01E006420D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FBEFE2A141CD01E006420D6 /* Installer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FBEFE29141CD01E006420D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FBEFE3B141CD01E006420D6 /* InfoPlist.strings in Resources */,
+				9FBEFE42141CD01E006420D6 /* Installer.xib in Resources */,
+				9FBEFE45141CD01E006420D6 /* Localizable.strings in Resources */,
+				9FBEFE47141CD01E006420D6 /* InstallerSections.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FBEFE27141CD01E006420D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FBEFE3F141CD01E006420D6 /* InstallerPane.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9FBEFE39141CD01E006420D6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FBEFE3A141CD01E006420D6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FBEFE40141CD01E006420D6 /* Installer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FBEFE41141CD01E006420D6 /* en */,
+			);
+			name = Installer.xib;
+			sourceTree = "<group>";
+		};
+		9FBEFE43141CD01E006420D6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FBEFE44141CD01E006420D6 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FBEFE48141CD01E006420D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9FBEFE49141CD01E006420D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9FBEFE4B141CD01E006420D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Installer/Installer-Prefix.pch";
+				INFOPLIST_FILE = "Installer/Installer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9FBEFE4C141CD01E006420D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Installer/Installer-Prefix.pch";
+				INFOPLIST_FILE = "Installer/Installer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FBEFE25141CD01E006420D6 /* Build configuration list for PBXProject "Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FBEFE48141CD01E006420D6 /* Debug */,
+				9FBEFE49141CD01E006420D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FBEFE4A141CD01E006420D6 /* Build configuration list for PBXNativeTarget "Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FBEFE4B141CD01E006420D6 /* Debug */,
+				9FBEFE4C141CD01E006420D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FBEFE22141CD01E006420D6 /* Project object */;
+}

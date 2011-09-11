@@ -12,8 +12,14 @@
 		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
-		9F13EA2D141AF2A0000DF502 /* Install BetterDictionary in Resources */ = {isa = PBXBuildFile; fileRef = 9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
+		9FB2B040141CCE6B006CF03B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
+		9FB2B041141CCE6B006CF03B /* InstallerPlugins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB2B024141CCC83006CF03B /* InstallerPlugins.framework */; };
+		9FB2B047141CCE6B006CF03B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB2B045141CCE6B006CF03B /* InfoPlist.strings */; };
+		9FB2B04B141CCE6B006CF03B /* InstallerPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB2B04A141CCE6B006CF03B /* InstallerPane.m */; };
+		9FB2B04E141CCE6B006CF03B /* Installer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FB2B04C141CCE6B006CF03B /* Installer.xib */; };
+		9FB2B051141CCE6B006CF03B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FB2B04F141CCE6B006CF03B /* Localizable.strings */; };
+		9FB2B053141CCE6B006CF03B /* InstallerSections.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB2B052141CCE6B006CF03B /* InstallerSections.plist */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
@@ -27,9 +33,18 @@
 		9F05038E1409067700F586E6 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		9F05038F1409067700F586E6 /* sidebar-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-light.png"; sourceTree = "<group>"; };
 		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
-		9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Install BetterDictionary"; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
+		9FB2B024141CCC83006CF03B /* InstallerPlugins.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstallerPlugins.framework; path = System/Library/Frameworks/InstallerPlugins.framework; sourceTree = SDKROOT; };
+		9FB2B03F141CCE6B006CF03B /* Installer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Installer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB2B044141CCE6B006CF03B /* Installer-Info.plist */ = {isa = PBXFileReference; path = "Installer-Info.plist"; sourceTree = "<group>"; };
+		9FB2B046141CCE6B006CF03B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FB2B048141CCE6B006CF03B /* Installer-Prefix.pch */ = {isa = PBXFileReference; path = "Installer-Prefix.pch"; sourceTree = "<group>"; };
+		9FB2B049141CCE6B006CF03B /* InstallerPane.h */ = {isa = PBXFileReference; path = InstallerPane.h; sourceTree = "<group>"; };
+		9FB2B04A141CCE6B006CF03B /* InstallerPane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallerPane.m; sourceTree = "<group>"; };
+		9FB2B04D141CCE6B006CF03B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Installer.xib; sourceTree = "<group>"; };
+		9FB2B050141CCE6B006CF03B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9FB2B052141CCE6B006CF03B /* InstallerSections.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InstallerSections.plist; sourceTree = "<group>"; };
 		9FD7F52E141033970009935F /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
 		9FD7F52F141033970009935F /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
 		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +60,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9FB2B03C141CCE6B006CF03B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB2B040141CCE6B006CF03B /* Cocoa.framework in Frameworks */,
+				9FB2B041141CCE6B006CF03B /* InstallerPlugins.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FED757114047E8B008195D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,13 +80,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FB2B042141CCE6B006CF03B /* Installer */ = {
+			isa = PBXGroup;
+			children = (
+				9FB2B049141CCE6B006CF03B /* InstallerPane.h */,
+				9FB2B04A141CCE6B006CF03B /* InstallerPane.m */,
+				9FB2B04C141CCE6B006CF03B /* Installer.xib */,
+				9FB2B04F141CCE6B006CF03B /* Localizable.strings */,
+				9FB2B052141CCE6B006CF03B /* InstallerSections.plist */,
+				9FB2B043141CCE6B006CF03B /* Supporting Files */,
+			);
+			path = Installer;
+			sourceTree = "<group>";
+		};
+		9FB2B043141CCE6B006CF03B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FB2B044141CCE6B006CF03B /* Installer-Info.plist */,
+				9FB2B045141CCE6B006CF03B /* InfoPlist.strings */,
+				9FB2B048141CCE6B006CF03B /* Installer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9FED756914047E8B008195D4 = {
 			isa = PBXGroup;
 			children = (
 				9FED757D14047E8B008195D4 /* BetterDictionary */,
+				9FB2B042141CCE6B006CF03B /* Installer */,
 				9FED757614047E8B008195D4 /* Frameworks */,
 				9FED757514047E8B008195D4 /* Products */,
-				9F13EA2C141AF2A0000DF502 /* Install BetterDictionary */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9FED757414047E8B008195D4 /* BetterDictionary.bundle */,
+				9FB2B03F141CCE6B006CF03B /* Installer.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				9FED757714047E8B008195D4 /* Cocoa.framework */,
+				9FB2B024141CCC83006CF03B /* InstallerPlugins.framework */,
 				9FED757914047E8B008195D4 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -126,6 +175,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9FB2B03E141CCE6B006CF03B /* Installer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FB2B054141CCE6B006CF03B /* Build configuration list for PBXNativeTarget "Installer" */;
+			buildPhases = (
+				9FB2B03B141CCE6B006CF03B /* Sources */,
+				9FB2B03C141CCE6B006CF03B /* Frameworks */,
+				9FB2B03D141CCE6B006CF03B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Installer;
+			productName = Installer;
+			productReference = 9FB2B03F141CCE6B006CF03B /* Installer.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		9FED757314047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9FED758614047E8B008195D4 /* Build configuration list for PBXNativeTarget "BetterDictionary" */;
@@ -165,11 +231,23 @@
 			projectRoot = "";
 			targets = (
 				9FED757314047E8B008195D4 /* BetterDictionary */,
+				9FB2B03E141CCE6B006CF03B /* Installer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9FB2B03D141CCE6B006CF03B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB2B047141CCE6B006CF03B /* InfoPlist.strings in Resources */,
+				9FB2B04E141CCE6B006CF03B /* Installer.xib in Resources */,
+				9FB2B051141CCE6B006CF03B /* Localizable.strings in Resources */,
+				9FB2B053141CCE6B006CF03B /* InstallerSections.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FED757214047E8B008195D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,7 +257,6 @@
 				9F0503921409067700F586E6 /* remove.png in Resources */,
 				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
 				9F0503941409067700F586E6 /* add.png in Resources */,
-				9F13EA2D141AF2A0000DF502 /* Install BetterDictionary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,11 +274,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Close all instances of Dictionary.app\nkillall Dictionary\n\n# Remove the existing bundle from SIMBL plugins folder\nrm -rf ~/Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\n\n# Copy the bundle to SIMBL plugins folder\ncp -r ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle ~/Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\n\n# Run Dictionary.app\nopen /Applications/Dictionary.app/";
+			shellScript = "# Close all instances of Dictionary.app\nkillall Dictionary\n\n# Remove the existing bundle from SIMBL plugins folder\nrm -rf ~/Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\n\n# Copy the bundle to SIMBL plugins folder, and to bundle source folder\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle ~/Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle ${SRCROOT}/${PRODUCT_NAME}.bundle\n\n# Run Dictionary.app\nopen /Applications/Dictionary.app/\n\n# Zip bundle and installer\nrm -f BetterDictionary.zip\nzip BetterDictionary.zip Install_BetterDictionary ${PRODUCT_NAME}.bundle/*";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9FB2B03B141CCE6B006CF03B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FB2B04B141CCE6B006CF03B /* InstallerPane.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9FED757014047E8B008195D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,6 +301,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9FB2B045141CCE6B006CF03B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB2B046141CCE6B006CF03B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9FB2B04C141CCE6B006CF03B /* Installer.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB2B04D141CCE6B006CF03B /* en */,
+			);
+			name = Installer.xib;
+			sourceTree = "<group>";
+		};
+		9FB2B04F141CCE6B006CF03B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FB2B050141CCE6B006CF03B /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9FED758014047E8B008195D4 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,6 +336,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9FB2B055141CCE6B006CF03B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Installer/Installer-Prefix.pch";
+				INFOPLIST_FILE = "Installer/Installer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9FB2B056141CCE6B006CF03B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Installer/Installer-Prefix.pch";
+				INFOPLIST_FILE = "Installer/Installer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		9FED758414047E8B008195D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -295,6 +436,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9FB2B054141CCE6B006CF03B /* Build configuration list for PBXNativeTarget "Installer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FB2B055141CCE6B006CF03B /* Debug */,
+				9FB2B056141CCE6B006CF03B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9FED756E14047E8B008195D4 /* Build configuration list for PBXProject "BetterDictionary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
