@@ -7,8 +7,6 @@
  *
  */
 
-#define DEBUG_MODE 1 // Only for bundles
-
 #ifdef DEBUG
 	#define DebugLog(args...) _DebugLog(__FILE__,__LINE__,args);
 #else

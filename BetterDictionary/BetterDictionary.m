@@ -138,6 +138,7 @@ static IMP originalSetSearchText;
 - (void)setSaveOrRemoveToolbarButtonAccordingly
 {
 	if ([[self searchedWordCapitalized] isEqualToString:@""]) {
+		// Blank input. Must disable menu items & toolbar item.
 		[saveOrRemoveWordToolbarButton setImage:saveWordImage];
 		[saveOrRemoveWordToolbarButton setEnabled:NO];
 		
@@ -150,6 +151,7 @@ static IMP originalSetSearchText;
 	}
 	
 	if ([savedWordsArray containsObject:[self searchedWordCapitalized]]) {
+		// The input is already saved.
 		[saveOrRemoveWordToolbarButton setImage:removeWordImage];
 		[saveOrRemoveWordToolbarButton setAction:@selector(_removeWord:)];
 		
@@ -157,6 +159,7 @@ static IMP originalSetSearchText;
 		[saveWordMenuItem setHidden:YES];
 		
 	} else {
+		// The input was not saved.
 		[saveOrRemoveWordToolbarButton setImage:saveWordImage];
 		[saveOrRemoveWordToolbarButton setAction:@selector(_saveWord:)];
 		
@@ -434,8 +437,6 @@ static IMP originalSetSearchText;
  */
 - (void)_removeWord:(id)sender
 {
-	if (![sender isKindOfClass:[NSMenuItem class]])
-		return;
 	
 	if ([[[(NSMenuItem*)sender menu] title] isEqualToString:@"SIDEBAR_CONTEXT_MENU"]) {
 		// it's from the sidebar context menu bar
@@ -446,6 +447,7 @@ static IMP originalSetSearchText;
 		// it's from the application menu bar
 		[self removeWord:[self searchedWord]];
 	}
+	
 }
 
 /*
@@ -676,7 +678,6 @@ static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...)
 	DebugLog(@"SEARCH TEXT CHANGED");
 	
 	[self setSaveOrRemoveToolbarButtonAccordingly];
-	DebugLog(@".......:   %@", [self searchedWord]);
 }
 
 

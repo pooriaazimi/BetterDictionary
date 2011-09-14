@@ -10,10 +10,6 @@
 #include "DebugLog.h"
 
 void _DebugLog(const char *file, int lineNumber, NSString *format,...) {
-
-#if !DEBUG_MODE
-	return;
-#else
   va_list ap;
 	
   va_start (ap, format);
@@ -25,6 +21,5 @@ void _DebugLog(const char *file, int lineNumber, NSString *format,...) {
 	NSString *fileName=[[NSString stringWithUTF8String:file] lastPathComponent];
 	fprintf(stderr,"%s:%d %s",[fileName UTF8String],lineNumber,[body UTF8String]);
 	[body release];	
-#endif
 }
 
