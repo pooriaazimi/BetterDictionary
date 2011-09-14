@@ -321,6 +321,10 @@ static IMP originalSetSearchText;
 	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(0, 0, sidebarWidth, self.viewHeight)];
 	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
 	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
+	
+//	[[dictionarySidebarScrollView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, sidebarWidth, self.viewHeight))];
+//	[[dictionaryWebView animator] setFrame:NSRectFromCGRect(CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight))];
+//	[[dictionarySearchView animator] setFrame:NSRectFromCGRect(CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight))];
 
 	[NSAnimationContext endGrouping];
 	
@@ -345,6 +349,11 @@ static IMP originalSetSearchText;
 	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(-5, 0, 5, self.viewHeight)];
 	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
 	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
+	
+	
+//	[[dictionarySidebarScrollView animator] setFrame:NSRectFromCGRect(CGRectMake(-5, 0, 5, self.viewHeight))];
+//	[[dictionaryWebView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, self.viewWidth, self.viewHeight))];
+//	[[dictionarySearchView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, self.viewWidth, self.viewHeight))];
 	
 	[NSAnimationContext endGrouping];
 	
