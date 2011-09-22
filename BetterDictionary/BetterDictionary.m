@@ -229,10 +229,28 @@ static IMP originalSetSearchText;
  */
 - (void)showAboutBetterDictionaryWindow:(id)sender
 {
-	NSMutableAttributedString *credits = [[NSMutableAttributedString alloc] initWithString:@"\nFor more information, please visit "];
-	NSURL* url = [NSURL URLWithString:@"http://www.irmug.org"];
-	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"irmug.org" withURL:url]];
-	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
+	NSMutableAttributedString *credits = [[NSMutableAttributedString alloc] init];
+
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"Acknowledgements:"]];
+	[credits applyFontTraits:NSBoldFontMask range:NSMakeRange(0, [credits length])];	
+	
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nAli Rastegar\nIlia Faghfouri\nAlireza Shafaei\nJavad Khorasani"]];
+	
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nSteve Nygard ("]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"class-dump" withURL:[NSURL URLWithString:@"http://www.codethecode.com/projects/class-dump/"]]];
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@")\nKarl Kraft ("]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"DebugLog" withURL:[NSURL URLWithString:@"http://www.karlkraft.com/index.php/2009/03/23/114/"]]];
+	
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@")\n"]];
+//	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"NSAttributedString(Hyperlink)" withURL:[NSURL URLWithString:@"https://github.com/ChristianS/CloudPost/blob/master/NSAttributedString-Hyperlink.h"]]];
+
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nFor more information, please visit "]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"irmug.org" withURL:[NSURL URLWithString:@"http://www.irmug.org"]]];
+	
+	NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
+	[mutParaStyle setAlignment:NSCenterTextAlignment];
+	[credits addAttributes:[NSDictionary dictionaryWithObject:mutParaStyle forKey:NSParagraphStyleAttributeName] range:NSMakeRange(0,[credits length])];
+	
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
 							 @"0.9", @"Version",
@@ -324,10 +342,6 @@ static IMP originalSetSearchText;
 	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(0, 0, sidebarWidth, self.viewHeight)];
 	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
 	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
-	
-//	[[dictionarySidebarScrollView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, sidebarWidth, self.viewHeight))];
-//	[[dictionaryWebView animator] setFrame:NSRectFromCGRect(CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight))];
-//	[[dictionarySearchView animator] setFrame:NSRectFromCGRect(CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight))];
 
 	[NSAnimationContext endGrouping];
 	
@@ -352,12 +366,7 @@ static IMP originalSetSearchText;
 	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(-5, 0, 5, self.viewHeight)];
 	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
 	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
-	
-	
-//	[[dictionarySidebarScrollView animator] setFrame:NSRectFromCGRect(CGRectMake(-5, 0, 5, self.viewHeight))];
-//	[[dictionaryWebView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, self.viewWidth, self.viewHeight))];
-//	[[dictionarySearchView animator] setFrame:NSRectFromCGRect(CGRectMake(0, 0, self.viewWidth, self.viewHeight))];
-	
+
 	[NSAnimationContext endGrouping];
 	
 	[showAllToolbarButton setImage:sidebarShowAllImageDarkImage];
@@ -422,6 +431,7 @@ static IMP originalSetSearchText;
 	[savedWordsArray addObject:wordToSave];
 	[dictionarySidebar reloadData];
 	[self writeSavedWordsArrayToDisk];
+//	[dictionarySidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:[savedWordsArray count]-1] byExtendingSelection:NO];
 	
 	[self setSaveOrRemoveToolbarButtonAccordingly];
 	
@@ -505,8 +515,8 @@ static IMP originalSetSearchText;
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
 	
-	if ([wordToSearch isEqualToString:[self searchedWord]])
-		return;
+//	if ([wordToSearch isEqualToString:[self searchedWord]])
+//		return;
 	
 	// -----------------------------------------------------------------------------------
 	// here we keep removed dictionaries (those from Wikipedia) safe

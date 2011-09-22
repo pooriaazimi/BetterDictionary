@@ -46,7 +46,7 @@
 			<key>MaxBundleVersion</key>
 			<string>80.4</string>
 			<key>MinBundleVersion</key>
-			<string>0</string>
+			<string>80.4</string>
 		</dict>
 	</array>
 </dict>

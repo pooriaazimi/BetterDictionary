@@ -4,6 +4,7 @@
  *
  *  Created by Karl Kraft on 3/22/09.
  *  Copyright 2009 Karl Kraft. All rights reserved.
+ *  http://www.karlkraft.com/index.php/2009/03/23/114/
  *
  */
 
