@@ -1,0 +1,34 @@
+##
+## from http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects/349129#349129
+##
+
+# Mac OS X
+.DS_Store
+
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+# Generated files
+*.[oa]
+*.pyc
+*.6
+6.out
+
+# Python modules
+MANIFEST
+dist/
+build/
+
+# Backup files
+*~.nib
+
+# Etc.
+*.swp
+build/
