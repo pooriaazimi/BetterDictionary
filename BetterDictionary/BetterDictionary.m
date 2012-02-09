@@ -58,7 +58,14 @@ static IMP originalSetSearchText;
 		[self setSaveOrRemoveToolbarButtonAccordingly];
 		
 	}
+	
 	return self;
+}
+
+- (void)test:(id)sender
+{	
+	[[dictionaryBrowserWindow contentView] exploreView];
+	
 }
 
 #pragma mark -
@@ -116,6 +123,23 @@ static IMP originalSetSearchText;
 	[saveWordToolbarItem setView: saveOrRemoveWordToolbarButton];
 	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
 	[saveWordToolbarItem setMinSize:NSMakeSize(25, 25)];
+	
+	// -----------------------------------------------------------------------------------------
+	// TEST
+	//
+	
+	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
+	NSToolbarItem* testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
+	
+	NSButton* testButton = [[NSButton alloc] init];		
+	[testButton setBordered:YES];	
+	[testButton setBezelStyle:NSTexturedSquareBezelStyle];
+	[testButton setTarget:self];	
+	[testButton setAction:@selector(test:)];
+	
+	[testToolbarItem setView: testButton];
+	[testToolbarItem setMaxSize:NSMakeSize(25, 25)];
+	[testToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
 	// -----------------------------------------------------------------------------------------
@@ -205,9 +229,7 @@ static IMP originalSetSearchText;
 	[showSidebarMenuItem setTarget:self];
 	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+4];
 	
-	// Add items to application ('Dictionary') menu.
-	// TODO add 'About BetterDictionary'
-	
+	// Add items to application ('Dictionary') menu.	
 	NSMenuItem* defaultApplicationMenuItem = [[mainApplication mainMenu] itemWithTitle:@"Dictionary"];
 	NSMenu* aboutMenu = [defaultApplicationMenuItem submenu];
 	

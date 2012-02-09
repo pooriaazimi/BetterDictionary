@@ -10,7 +10,8 @@
 #import "objc/runtime.h"
 #import "DebugLog.h"
 #import "NSObjectAdditions.h"
-#import "NSAttributedString-Hyperlink.h"
+#import "NSAttributedString+Hyperlink.h"
+#import "NSView+ExploreViews.h"
 
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
@@ -86,6 +87,7 @@ static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...);
 - (void)swizzleMethodWithSelector:(SEL)origSelector fromClass:(Class)origClass WithMwthodWithSelector:(SEL)replSelector fromClass:(Class)replClass;
 
 
+- (void)test:(id)sender; //TEST!!!
 
 @property (assign) NSMutableArray* savedWordsArray;
 

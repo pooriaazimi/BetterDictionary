@@ -1,5 +1,5 @@
 //
-//  NSAttributedString-Hyperlink.h
+//  NSAttributedString+Hyperlink.h
 //  CloudPost
 //
 //  Created by Christian Stropp on 01.09.09.

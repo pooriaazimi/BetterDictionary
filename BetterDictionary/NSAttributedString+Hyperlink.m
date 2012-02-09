@@ -1,5 +1,5 @@
 //
-//  NSAttributedString-Hyperlink.h
+//  NSAttributedString+Hyperlink.h
 //  CloudPost
 //
 //  Created by Christian Stropp on 01.09.09.
@@ -7,7 +7,7 @@
 //  https://github.com/ChristianS/CloudPost/blob/master/NSAttributedString-Hyperlink.m
 //
 
-#import "NSAttributedString-Hyperlink.h"
+#import "NSAttributedString+Hyperlink.h"
 
 @implementation NSAttributedString (Hyperlink)
 
