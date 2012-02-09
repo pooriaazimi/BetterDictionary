@@ -4,7 +4,6 @@
  *     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2011 by Steve Nygard.
  */
 
-#import "NSObject.h"
 
 @class DSShadowOverlay, DictionaryRecordRepository, DictionaryWebView, NSArray, NSArrayController, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSScrollView, NSString, NSTextField;
 
@@ -183,8 +182,8 @@
 - (void)_removeProperty:(id)arg1 forDictionary:(id)arg2;
 @property(readonly) BOOL indexListIsVisible; // @synthesize indexListIsVisible=_indexListIsVisible;
 @property long long findMethod; // @synthesize findMethod=_findMethod;
-@property id delegate; // @synthesize delegate=_delegate;
-@property(retain) NSArray *dictionaryList; // @synthesize dictionaryList=_dictionaryList;
+@property (assign) id delegate; // @synthesize delegate=_delegate;
+@property (retain) NSArray *dictionaryList; // @synthesize dictionaryList=_dictionaryList;
 
 @end
 

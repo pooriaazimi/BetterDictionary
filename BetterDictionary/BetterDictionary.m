@@ -3,11 +3,10 @@
 //  BetterDictionary
 //
 //  Created by Pooria Azimi on 27/8/2011.
-//  Copyright 2011 Pooria Azimi. All rights reserved.
+//  Copyright 2011-2012 Pooria Azimi. All rights reserved.
 //
 
 #import "BetterDictionary.h"
-
 
 @implementation BetterDictionary
 
@@ -36,8 +35,6 @@ static IMP originalSetSearchText;
     self = [super init];
     if (self) {
 		DebugLog(@"INIT");
-		//TODO: insert code for checking OS version here
-	
 		
 		sidebarWidth = 130;
 		sidebarIsVisible = NO;
@@ -47,8 +44,10 @@ static IMP originalSetSearchText;
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
-
+		dictionaryController = [dictionaryBrowserWindowController _dictionaryController];
 		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
+		
+		[self determineApplicationVersion];
 		
 		[self initToolbarItems];
 		[self addSidebar];
@@ -62,9 +61,33 @@ static IMP originalSetSearchText;
 	return self;
 }
 
+/*
+ Checks the application version (Leopard, Snow Leopard or Lion), by checking whether DictionaryController responds to certain selectors or not.
+ */
+- (void)determineApplicationVersion
+{
+	if ([dictionaryController respondsToSelector:@selector(_cleanupBindings)]) { // Leopard
+		appVersion = LEOPARD;
+	} else if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
+		appVersion = SNOW_LEOPARD;
+	} else if ([dictionaryController respondsToSelector:@selector(_loadMainFramePage)]) { // Lion
+		appVersion = LION;
+	}
+	
+	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":(appVersion==SNOW_LEOPARD?@"SNOW LEOPARD":@"LEOPARD")));
+}
+
 - (void)test:(id)sender
-{	
-	[[dictionaryBrowserWindow contentView] exploreView];
+{
+//	DICTIONARY_WEB_VIEW
+//	NSSplitView* splitView = [dictionaryBrowserWindowController performSelector:@selector(_indexSplitView)];
+//	DictionaryWebView* dicWebView = [[splitView subviews] objectAtIndex:1];
+//	[dicWebView exploreView];
+	
+//	[dictionaryBrowserWindowController _clearSearchResult];
+//	DictionaryController* dicC = [dictionaryBrowserWindowController _dictionaryController];
+//	return NSLog(@"SEARCHED WORD: %@", [self searchedWord]);
+//	[dictionaryBrowserWindowController setSearchStringValue:@"aaa" displayString:@"asdads" triggerSearch:YES];
 	
 }
 
@@ -267,11 +290,11 @@ static IMP originalSetSearchText;
 	
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.9", @"Version",
+							 @"0.99", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
-							 @"Copyright © 2011 Pooria Azimi.\nAll rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.9", @"ApplicationVersion",
+							 @"Copyright © 2012 Pooria Azimi.\nAll rights reserved.", @"Copyright",
+							 @"BetterDictionary v0.99", @"ApplicationVersion",
 							 nil];
 	
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
@@ -282,8 +305,7 @@ static IMP originalSetSearchText;
 #pragma mark Sidebar
 
 /* 
- Adds the sidebar to window. It does not show the sidebar, just creates the objects. 
- This method calls only once.
+ Adds the sidebar to window. It does not show the sidebar, just creates the objects. This method gets called only once.
  */
 - (void)addSidebar
 {
@@ -396,7 +418,21 @@ static IMP originalSetSearchText;
  */
 - (NSString*)searchedWord
 {
-	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
+	if (appVersion == LION) {
+		object_getInstanceVariable(dictionaryController, "_lastSelectedIndexText", (void**)&searchedWord);
+		if (!searchedWord) {
+			NSString* lastSearchText;
+			object_getInstanceVariable(dictionaryController, "_lastSearchText", (void**)&lastSearchText);
+			searchedWord = lastSearchText;
+		}
+	} else if (appVersion == SNOW_LEOPARD) {
+		object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
+	} else if (appVersion == LEOPARD) {
+		
+	} else {
+		// should not happen!
+	}
+	
 	if (searchedWord == nil)
 		searchedWord = @"";
 	return searchedWord;
@@ -407,10 +443,7 @@ static IMP originalSetSearchText;
  */
 - (NSString*)searchedWordCapitalized
 {
-	object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
-	if (searchedWord == nil)
-		searchedWord = @"";
-	return [[searchedWord capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+	return [[[self searchedWord] capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
 }
 
 /*
@@ -456,8 +489,7 @@ static IMP originalSetSearchText;
 #pragma mark removeWord
 
 /*
- Wrapper. Checks the sender; If it's from the menubar or shortcut key equivalent, it removes search bar's text. If it's from the
- context menu, it removes the selected word.
+ Wrapper. Checks the sender; If it's from the menubar or shortcut key equivalent, it removes search bar's text. If it's from the context menu, it removes the selected word.
  */
 - (void)_removeWord:(id)sender
 {
@@ -529,47 +561,55 @@ static IMP originalSetSearchText;
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
 	
-//	if ([wordToSearch isEqualToString:[self searchedWord]])
-//		return;
-	
-	// -----------------------------------------------------------------------------------
-	// here we keep removed dictionaries (those from Wikipedia) safe
-	//
-	id _dictionaryController = [dictionaryBrowserWindowController performSelector:@selector(_dictionaryController)];
-	id _dictionaryBook = [_dictionaryController performSelector:@selector(dictionaryBook)];
-	NSMutableArray* dictionaryList = [_dictionaryBook performSelector:@selector(dictionaryList)];
-	
-	NSMutableArray *removedDictionaries = [[NSMutableArray alloc] initWithCapacity:2];
-	
-	int index = 0;
-	while (index < [dictionaryList count]) {
-		id dic = [dictionaryList objectAtIndex:index];
-		NSString* dicName = [dic performSelector:@selector(dictionaryName)];
-		if ([dicName hasPrefix:@"Wikipedia"]) {
-			[dictionaryList removeObject:dic];
-			[removedDictionaries addObject:dic];
-			index--;
+	if (appVersion == LION) {
+		
+		[dictionaryBrowserWindowController setSearchStringValue:wordToSearch displayString:wordToSearch triggerSearch:YES];
+		
+	} else if (appVersion == SNOW_LEOPARD) {
+
+		// -----------------------------------------------------------------------------------
+		// here we put removed dictionaries (those from Wikipedia) in an array
+		//
+		
+		id _dictionaryBook = [dictionaryController performSelector:@selector(dictionaryBook)];
+		NSMutableArray* dictionaryList = [_dictionaryBook performSelector:@selector(dictionaryList)];
+		
+		NSMutableArray *removedDictionaries = [[NSMutableArray alloc] initWithCapacity:2];
+		
+		int index = 0;
+		while (index < [dictionaryList count]) {
+			id dic = [dictionaryList objectAtIndex:index];
+			NSString* dicName = [dic performSelector:@selector(dictionaryName)];
+			if ([dicName hasPrefix:@"Wikipedia"]) {
+				[dictionaryList removeObject:dic];
+				[removedDictionaries addObject:dic];
+				index--;
+			}
+			index++;
 		}
-		index++;
+		
+		// -----------------------------------------------------------------------------------
+		// do the actual searching 
+		//
+		NSArray* arguments = [[NSArray alloc] initWithObjects:wordToSearch, [[mainApplication mainWindow] windowController] , wordToSearch, nil];
+		[dictionaryBrowserWindowController performSelector:@selector(_searchText:inDictionaryContoller:withSelection:) withObjects:arguments];
+		[dictionaryBrowserWindowController performSelector:@selector(_setSearchTextSilently:) withObject:wordToSearch];
+		
+		
+		// -----------------------------------------------------------------------------------	
+		// and here, we put wikipedia dictionaries back
+		// TODO: (KNOWN BUG) inserts wikipedia dics at the end, but really should put them back
+		//       at their original index.
+		//
+		for (id doc in removedDictionaries) {
+			[dictionaryList addObject:doc];
+		}
+		// -----------------------------------------------------------------------------------
+	} else if (appVersion == LEOPARD) {
+		
+	} else {
+		// should not happen!
 	}
-	
-	// -----------------------------------------------------------------------------------
-	// do the actual searching 
-	//
-	NSArray* arguments = [[NSArray alloc] initWithObjects:wordToSearch, [[mainApplication mainWindow] windowController] , wordToSearch, nil];
-	[dictionaryBrowserWindowController performSelector:@selector(_searchText:inDictionaryContoller:withSelection:) withObjects:arguments];
-	[dictionaryBrowserWindowController performSelector:@selector(_setSearchTextSilently:) withObject:wordToSearch];
-	
-	
-	// -----------------------------------------------------------------------------------	
-	// and here, we put wikipedia dictionaries back
-	// TODO: (KNOWN BUG) inserts wikipedia dics at the end, but really should put them back
-	//       at their original index.
-	//
-	for (id doc in removedDictionaries) {
-		[dictionaryList addObject:doc];
-	}
-	// -----------------------------------------------------------------------------------
 	
 	[self setSaveOrRemoveToolbarButtonAccordingly];
 	
@@ -669,23 +709,30 @@ static IMP originalSetSearchText;
 #pragma mark Runtime hacks
 
 /*
- Swaps implementaion of 'setSearchText:' with our 'interceptSetSearchText:' method IMP. And registers BetterDictionary
- for notifications (with name='searchTextChanged').
+ Swaps implementaion of 'setSearchText:' with our 'interceptSetSearchText:' method IMP. And registers BetterDictionary for notifications (with name='searchTextChanged').
  */
 - (void)startInterceptingSearchTextMethod
 {
-	DebugLog(@"STARTED INTERCEPTING CALLS TO 'setSearchText:'");
-	const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:)));
-	originalSetSearchText = class_replaceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:), (IMP)interceptSetSearchText, types);
+	if (appVersion == LION) {
+		DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFound:'");
+		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:)));
+		originalSetSearchText = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:), (IMP)interceptSetSearchText, types);
+		
+	} else if (appVersion == SNOW_LEOPARD) {
+		DebugLog(@"STARTED INTERCEPTING CALLS TO 'setSearchText:'");
+		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:)));
+		originalSetSearchText = class_replaceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:), (IMP)interceptSetSearchText, types);
+	} else if (appVersion == LEOPARD) {
+		
+	} else {
+		// should not happen!
+	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"searchTextChanged" object:nil];
 }
 
 /*
- When either of Dictionary.app or BetterDictionary.bundle send a message to 'DictionaryBrowserWindowController',
- This method is called instead. It informs BetterDictionary (via application-wide notification center) that the
- text in the search bar has changed. We use this information to show swap between add/remove buttons in the toolbar
- and menu bar.
+ Whenever Dictionary.app or BetterDictionary.bundle search for a new word, this method gets called. It informs BetterDictionary (via application-wide notification center) that the queried text has changed. We use this information to swap between add/remove buttons in the toolbar and menu bar.
  */
 static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...)
 {
@@ -699,9 +746,12 @@ static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...)
 - (void)handleNotification:(NSNotification*)note {
 	if (![[note name] isEqualToString:@"searchTextChanged"])
 		return;
-	DebugLog(@"SEARCH TEXT CHANGED");
 	
-	[self setSaveOrRemoveToolbarButtonAccordingly];
+	searchedWord = [self searchedWord];
+	if (lastSearchedWord != searchedWord) { // not a duplicate notification
+		lastSearchedWord = searchedWord;
+		[self setSaveOrRemoveToolbarButtonAccordingly];
+	}
 }
 
 

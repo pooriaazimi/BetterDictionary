@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9</string>
+	<string>0.99</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>BDPA</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>DTCompiler</key>
@@ -37,16 +37,14 @@
 	<key>DTXcodeBuild</key>
 	<string>4D1002</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2011 Pooria Azimi. All rights reserved.</string>
+	<string>Copyright © 2011-2012 Pooria Azimi. All rights reserved.</string>
 	<key>SIMBLTargetApplications</key>
 	<array>
 		<dict>
 			<key>BundleIdentifier</key>
 			<string>com.apple.Dictionary</string>
-			<key>MaxBundleVersion</key>
-			<string>118</string>
 			<key>MinBundleVersion</key>
-			<string>80.4</string>
+			<string>51.1</string>
 		</dict>
 	</array>
 </dict>

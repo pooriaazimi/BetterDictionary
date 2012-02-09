@@ -4,7 +4,7 @@
  *     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2011 by Steve Nygard.
  */
 
-#import "NSObject.h"
+//#import "NSObject.h"
 
 @class DictionaryBook, DictionaryFoundRecords, NSArray, NSArrayController, NSColor, NSMutableArray, NSMutableDictionary, NSScrollView, NSSplitView, NSString, NSTabViewItem, NSView, PopupDictWindow, WebView, WebWrapScrollView;
 

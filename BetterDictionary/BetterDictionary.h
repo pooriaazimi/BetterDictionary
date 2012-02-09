@@ -3,7 +3,7 @@
 //  BetterDictionary
 //
 //  Created by Pooria Azimi on 27/8/2011.
-//  Copyright 2011 Pooria Azimi. All rights reserved.
+//  Copyright 2011-2012 Pooria Azimi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,6 +13,12 @@
 #import "NSAttributedString+Hyperlink.h"
 #import "NSView+ExploreViews.h"
 
+#import "../Headers/Lion/DictionaryController.h"
+#import "../Headers/Lion/BrowserWindowController.h"
+
+typedef enum {
+	LEOPARD, SNOW_LEOPARD, LION
+} DictionaryVersion;
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
 	NSBundle* betterDictionaryBundle;
@@ -21,7 +27,8 @@
     NSToolbar* dictionaryBrowserToolbar;
 	
 	NSWindow* dictionaryBrowserWindow;
-	NSWindowController* dictionaryBrowserWindowController;
+	BrowserWindowController* dictionaryBrowserWindowController;
+	DictionaryController* dictionaryController;
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;
 	
@@ -42,12 +49,15 @@
 	NSImage* removeWordImage;
 	
 	NSString* searchedWord;
+	NSString* lastSearchedWord;
 	NSMutableArray* savedWordsArray;
-
+	DictionaryVersion appVersion;
 }
 
 
 + (void)load;
+
+- (void)determineApplicationVersion;
 
 - (void)initToolbarItems;
 - (void)setSaveOrRemoveToolbarButtonAccordingly;

@@ -14,6 +14,7 @@
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F9149B614E3592600075D91 /* NSView+ExploreViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9149B514E3592500075D91 /* NSView+ExploreViews.m */; };
+		9FC79F8A14E363700064CF06 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC79F8814E363440064CF06 /* WebKit.framework */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
 		9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FED757714047E8B008195D4 /* Cocoa.framework */; };
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
@@ -32,6 +33,145 @@
 		9F9149B414E3592500075D91 /* NSView+ExploreViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ExploreViews.h"; sourceTree = "<group>"; };
 		9F9149B514E3592500075D91 /* NSView+ExploreViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ExploreViews.m"; sourceTree = "<group>"; };
 		9FB2B024141CCC83006CF03B /* InstallerPlugins.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstallerPlugins.framework; path = System/Library/Frameworks/InstallerPlugins.framework; sourceTree = SDKROOT; };
+		9FC79F8814E363440064CF06 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		9FC7A01E14E36C760064CF06 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
+		9FC7A01F14E36C760064CF06 /* BrowserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserWindowController.h; sourceTree = "<group>"; };
+		9FC7A02014E36C760064CF06 /* BrowserWindowTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserWindowTabView.h; sourceTree = "<group>"; };
+		9FC7A02114E36C760064CF06 /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
+		9FC7A02214E36C760064CF06 /* DelayedMenuSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayedMenuSegmentedCell.h; sourceTree = "<group>"; };
+		9FC7A02314E36C760064CF06 /* DelayedMenuSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayedMenuSegmentedControl.h; sourceTree = "<group>"; };
+		9FC7A02414E36C760064CF06 /* DictionaryBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBook.h; sourceTree = "<group>"; };
+		9FC7A02514E36C760064CF06 /* DictionaryBrowserApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowserApp.h; sourceTree = "<group>"; };
+		9FC7A02614E36C760064CF06 /* DictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryController.h; sourceTree = "<group>"; };
+		9FC7A02714E36C760064CF06 /* DictionaryConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryConverter.h; sourceTree = "<group>"; };
+		9FC7A02814E36C760064CF06 /* DictionaryFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFilterButton.h; sourceTree = "<group>"; };
+		9FC7A02914E36C760064CF06 /* DictionaryFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFilterView.h; sourceTree = "<group>"; };
+		9FC7A02A14E36C760064CF06 /* DictionaryFoundIndexItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFoundIndexItem.h; sourceTree = "<group>"; };
+		9FC7A02B14E36C760064CF06 /* DictionaryFoundRecords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFoundRecords.h; sourceTree = "<group>"; };
+		9FC7A02C14E36C760064CF06 /* DictionaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecord.h; sourceTree = "<group>"; };
+		9FC7A02D14E36C760064CF06 /* DictionarySearchFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchFieldEditor.h; sourceTree = "<group>"; };
+		9FC7A02E14E36C760064CF06 /* DictionaryWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryWebView.h; sourceTree = "<group>"; };
+		9FC7A02F14E36C760064CF06 /* DragDropArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropArrayController.h; sourceTree = "<group>"; };
+		9FC7A03014E36C760064CF06 /* DSAXIgnoredSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSAXIgnoredSplitView.h; sourceTree = "<group>"; };
+		9FC7A03114E36C760064CF06 /* DSDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A03214E36C760064CF06 /* DSDictionaryProtocol-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DSDictionaryProtocol-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A03314E36C760064CF06 /* DSFindPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSFindPanelController.h; sourceTree = "<group>"; };
+		9FC7A03414E36C760064CF06 /* DSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSImageView.h; sourceTree = "<group>"; };
+		9FC7A03514E36C760064CF06 /* DSIndexTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableCell.h; sourceTree = "<group>"; };
+		9FC7A03614E36C760064CF06 /* DSIndexTableColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableColumn.h; sourceTree = "<group>"; };
+		9FC7A03714E36C760064CF06 /* DSIndexTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableView.h; sourceTree = "<group>"; };
+		9FC7A03814E36C760064CF06 /* EmbossedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbossedTextField.h; sourceTree = "<group>"; };
+		9FC7A03914E36C760064CF06 /* EmbossedTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbossedTextFieldCell.h; sourceTree = "<group>"; };
+		9FC7A03A14E36C760064CF06 /* GetURLScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetURLScriptCommand.h; sourceTree = "<group>"; };
+		9FC7A03B14E36C760064CF06 /* IDXDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDXDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A03C14E36C760064CF06 /* ImageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageWindowController.h; sourceTree = "<group>"; };
+		9FC7A03D14E36C760064CF06 /* MetalTabHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalTabHeaderView.h; sourceTree = "<group>"; };
+		9FC7A03E14E36C760064CF06 /* MetalTabLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalTabLabelView.h; sourceTree = "<group>"; };
+		9FC7A03F14E36C760064CF06 /* NSAppleEventDescriptor-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAppleEventDescriptor-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04014E36C760064CF06 /* NSArray-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04114E36C760064CF06 /* NSNumber-_SlidingExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-_SlidingExtras.h"; sourceTree = "<group>"; };
+		9FC7A04214E36C760064CF06 /* NSNumber-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04314E36C760064CF06 /* NSSearchField-DictionaryServiceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSearchField-DictionaryServiceExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04414E36C760064CF06 /* NSString-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04514E36C760064CF06 /* NSView-_SlidingExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView-_SlidingExtras.h"; sourceTree = "<group>"; };
+		9FC7A04614E36C760064CF06 /* NSWorkspace-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWorkspace-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04714E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLDocument-DictionaryServiceExtensions.h"; sourceTree = "<group>"; };
+		9FC7A04814E36C760064CF06 /* OnlineDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A04914E36C760064CF06 /* OnlineDictionaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineDictionaryRecord.h; sourceTree = "<group>"; };
+		9FC7A04A14E36C760064CF06 /* PrefDictionaryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefDictionaryTableView.h; sourceTree = "<group>"; };
+		9FC7A04B14E36C760064CF06 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
+		9FC7A04C14E36C760064CF06 /* SlidingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingAnimation.h; sourceTree = "<group>"; };
+		9FC7A04D14E36C760064CF06 /* SlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingView.h; sourceTree = "<group>"; };
+		9FC7A04E14E36C760064CF06 /* TextAccessibilityObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextAccessibilityObj.h; sourceTree = "<group>"; };
+		9FC7A04F14E36C760064CF06 /* WebAccessibilityObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebAccessibilityObj.h; sourceTree = "<group>"; };
+		9FC7A05014E36C760064CF06 /* WebView-DictionaryExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebView-DictionaryExtensions.h"; sourceTree = "<group>"; };
+		9FC7A05114E36C760064CF06 /* WebWrapScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebWrapScrollView.h; sourceTree = "<group>"; };
+		9FC7A05214E36C760064CF06 /* WikipediaDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A05314E36C760064CF06 /* WikipediaDictionaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaDictionaryRecord.h; sourceTree = "<group>"; };
+		9FC7A05414E36C760064CF06 /* WikipediaIndexLookupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaIndexLookupController.h; sourceTree = "<group>"; };
+		9FC7A05514E36C760064CF06 /* WikipediaIndexLookupURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaIndexLookupURLConnection.h; sourceTree = "<group>"; };
+		9FC7A05614E36C760064CF06 /* WikipediaLanguageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaLanguageHandler.h; sourceTree = "<group>"; };
+		9FC7A05814E36C760064CF06 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
+		9FC7A05914E36C760064CF06 /* BrowserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserWindowController.h; sourceTree = "<group>"; };
+		9FC7A05A14E36C760064CF06 /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
+		9FC7A05B14E36C760064CF06 /* DictionaryBrowserApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowserApp.h; sourceTree = "<group>"; };
+		9FC7A05C14E36C760064CF06 /* DictionaryBrowserWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowserWindow.h; sourceTree = "<group>"; };
+		9FC7A05D14E36C760064CF06 /* DictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryController.h; sourceTree = "<group>"; };
+		9FC7A05E14E36C760064CF06 /* DictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A05F14E36C760064CF06 /* DictionaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecord.h; sourceTree = "<group>"; };
+		9FC7A06014E36C760064CF06 /* DictionaryRecordArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecordArray.h; sourceTree = "<group>"; };
+		9FC7A06114E36C760064CF06 /* DictionaryRecordRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecordRepository.h; sourceTree = "<group>"; };
+		9FC7A06214E36C760064CF06 /* DictionaryScopeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryScopeBar.h; sourceTree = "<group>"; };
+		9FC7A06314E36C760064CF06 /* DictionaryScopeBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryScopeBarButton.h; sourceTree = "<group>"; };
+		9FC7A06414E36C760064CF06 /* DictionarySearchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchField.h; sourceTree = "<group>"; };
+		9FC7A06514E36C760064CF06 /* DictionarySearchFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchFieldCell.h; sourceTree = "<group>"; };
+		9FC7A06614E36C760064CF06 /* DictionarySearchFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchFieldEditor.h; sourceTree = "<group>"; };
+		9FC7A06714E36C760064CF06 /* DictionarySearchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchOperation.h; sourceTree = "<group>"; };
+		9FC7A06814E36C760064CF06 /* DictionaryWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryWebView.h; sourceTree = "<group>"; };
+		9FC7A06914E36C760064CF06 /* DictionaryWindowTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryWindowTitleCell.h; sourceTree = "<group>"; };
+		9FC7A06A14E36C760064CF06 /* DragDropArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropArrayController.h; sourceTree = "<group>"; };
+		9FC7A06B14E36C760064CF06 /* DSFindPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSFindPanelController.h; sourceTree = "<group>"; };
+		9FC7A06C14E36C760064CF06 /* DSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSImageView.h; sourceTree = "<group>"; };
+		9FC7A06D14E36C760064CF06 /* DSIndexHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexHeaderCell.h; sourceTree = "<group>"; };
+		9FC7A06E14E36C760064CF06 /* DSIndexSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexSplitView.h; sourceTree = "<group>"; };
+		9FC7A06F14E36C760064CF06 /* DSIndexTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableCell.h; sourceTree = "<group>"; };
+		9FC7A07014E36C760064CF06 /* DSIndexTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableView.h; sourceTree = "<group>"; };
+		9FC7A07114E36C760064CF06 /* DSShadowOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSShadowOverlay.h; sourceTree = "<group>"; };
+		9FC7A07214E36C760064CF06 /* FakeRecordForResume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeRecordForResume.h; sourceTree = "<group>"; };
+		9FC7A07314E36C760064CF06 /* GetURLScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetURLScriptCommand.h; sourceTree = "<group>"; };
+		9FC7A07414E36C760064CF06 /* ImageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageWindowController.h; sourceTree = "<group>"; };
+		9FC7A07514E36C760064CF06 /* NSArray-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A07614E36C760064CF06 /* NSNumber-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A07714E36C760064CF06 /* NSObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A07814E36C760064CF06 /* NSSpellChecker-MyExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSpellChecker-MyExtensions.h"; sourceTree = "<group>"; };
+		9FC7A07914E36C760064CF06 /* NSString-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A07A14E36C760064CF06 /* NSTableViewDataSource-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTableViewDataSource-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A07B14E36C760064CF06 /* NSURLConnectionDelegate-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnectionDelegate-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A07C14E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLDocument-DictionaryServiceExtensions.h"; sourceTree = "<group>"; };
+		9FC7A07D14E36C760064CF06 /* PrefDictionaryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefDictionaryTableView.h; sourceTree = "<group>"; };
+		9FC7A07E14E36C760064CF06 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
+		9FC7A07F14E36C760064CF06 /* WebDocumentSelection-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebDocumentSelection-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A08014E36C760064CF06 /* WebDocumentText-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebDocumentText-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A08114E36C760064CF06 /* WebView-DictionaryExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebView-DictionaryExtensions.h"; sourceTree = "<group>"; };
+		9FC7A08214E36C760064CF06 /* WikipediaAPIRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaAPIRequester.h; sourceTree = "<group>"; };
+		9FC7A08314E36C760064CF06 /* WikipediaDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A08514E36C760064CF06 /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
+		9FC7A08614E36C760064CF06 /* BrowserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserWindowController.h; sourceTree = "<group>"; };
+		9FC7A08714E36C760064CF06 /* BrowserWindowTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserWindowTabView.h; sourceTree = "<group>"; };
+		9FC7A08814E36C760064CF06 /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
+		9FC7A08914E36C760064CF06 /* DictionaryBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBook.h; sourceTree = "<group>"; };
+		9FC7A08A14E36C760064CF06 /* DictionaryBrowserApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowserApp.h; sourceTree = "<group>"; };
+		9FC7A08B14E36C760064CF06 /* DictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryController.h; sourceTree = "<group>"; };
+		9FC7A08C14E36C760064CF06 /* DictionaryFilterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFilterButton.h; sourceTree = "<group>"; };
+		9FC7A08D14E36C760064CF06 /* DictionaryFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryFilterView.h; sourceTree = "<group>"; };
+		9FC7A08E14E36C760064CF06 /* DictionaryRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecord.h; sourceTree = "<group>"; };
+		9FC7A08F14E36C760064CF06 /* DictionaryRecordArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecordArray.h; sourceTree = "<group>"; };
+		9FC7A09014E36C760064CF06 /* DictionaryRecordRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryRecordRepository.h; sourceTree = "<group>"; };
+		9FC7A09114E36C760064CF06 /* DictionarySearchFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySearchFieldEditor.h; sourceTree = "<group>"; };
+		9FC7A09214E36C760064CF06 /* DictionaryWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryWebView.h; sourceTree = "<group>"; };
+		9FC7A09314E36C760064CF06 /* DragDropArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragDropArrayController.h; sourceTree = "<group>"; };
+		9FC7A09414E36C760064CF06 /* DSAXIgnoredSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSAXIgnoredSplitView.h; sourceTree = "<group>"; };
+		9FC7A09514E36C760064CF06 /* DSDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDictionaryObj.h; sourceTree = "<group>"; };
+		9FC7A09614E36C760064CF06 /* DSFindPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSFindPanelController.h; sourceTree = "<group>"; };
+		9FC7A09714E36C760064CF06 /* DSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSImageView.h; sourceTree = "<group>"; };
+		9FC7A09814E36C760064CF06 /* DSIndexTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableCell.h; sourceTree = "<group>"; };
+		9FC7A09914E36C760064CF06 /* DSIndexTableColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableColumn.h; sourceTree = "<group>"; };
+		9FC7A09A14E36C760064CF06 /* DSIndexTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSIndexTableView.h; sourceTree = "<group>"; };
+		9FC7A09B14E36C760064CF06 /* FakeRecordForResume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeRecordForResume.h; sourceTree = "<group>"; };
+		9FC7A09C14E36C760064CF06 /* GetURLScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetURLScriptCommand.h; sourceTree = "<group>"; };
+		9FC7A09D14E36C760064CF06 /* ImageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageWindowController.h; sourceTree = "<group>"; };
+		9FC7A09E14E36C760064CF06 /* NSArray-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A09F14E36C760064CF06 /* NSNumber-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A0A014E36C760064CF06 /* NSObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A0A114E36C760064CF06 /* NSSearchField-DictionaryServiceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSearchField-DictionaryServiceExtensions.h"; sourceTree = "<group>"; };
+		9FC7A0A214E36C760064CF06 /* NSString-CocoaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-CocoaExtensions.h"; sourceTree = "<group>"; };
+		9FC7A0A314E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLDocument-DictionaryServiceExtensions.h"; sourceTree = "<group>"; };
+		9FC7A0A414E36C760064CF06 /* PrefDictionaryTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefDictionaryTableView.h; sourceTree = "<group>"; };
+		9FC7A0A514E36C760064CF06 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
+		9FC7A0A614E36C760064CF06 /* WebDocumentSelection-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebDocumentSelection-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A0A714E36C760064CF06 /* WebDocumentText-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebDocumentText-Protocol.h"; sourceTree = "<group>"; };
+		9FC7A0A814E36C760064CF06 /* WebView-DictionaryExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebView-DictionaryExtensions.h"; sourceTree = "<group>"; };
+		9FC7A0A914E36C760064CF06 /* WikipediaDictionaryObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikipediaDictionaryObj.h; sourceTree = "<group>"; };
 		9FD7F52E141033970009935F /* DebugLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugLog.h; sourceTree = "<group>"; };
 		9FD7F52F141033970009935F /* DebugLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugLog.m; sourceTree = "<group>"; };
 		9FED757414047E8B008195D4 /* BetterDictionary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterDictionary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +182,7 @@
 		9FED757F14047E8B008195D4 /* BetterDictionary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BetterDictionary-Info.plist"; sourceTree = "<group>"; };
 		9FED758114047E8B008195D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FED758314047E8B008195D4 /* BetterDictionary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterDictionary-Prefix.pch"; sourceTree = "<group>"; };
-		9FFF9AC1141AA5C700F1A8DA /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
+		9FFF9AC1141AA5C700F1A8DA /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
 		9FFF9AC2141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC79F8A14E363700064CF06 /* WebKit.framework in Frameworks */,
 				9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,9 +199,194 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FC7A01C14E36C760064CF06 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				9FC7A01D14E36C760064CF06 /* Leopard */,
+				9FC7A05714E36C760064CF06 /* Lion */,
+				9FC7A08414E36C760064CF06 /* Snow Leopard */,
+			);
+			path = Headers;
+			sourceTree = SOURCE_ROOT;
+		};
+		9FC7A01D14E36C760064CF06 /* Leopard */ = {
+			isa = PBXGroup;
+			children = (
+				9FC7A01E14E36C760064CF06 /* ApplicationController.h */,
+				9FC7A01F14E36C760064CF06 /* BrowserWindowController.h */,
+				9FC7A02014E36C760064CF06 /* BrowserWindowTabView.h */,
+				9FC7A02114E36C760064CF06 /* CDStructures.h */,
+				9FC7A02214E36C760064CF06 /* DelayedMenuSegmentedCell.h */,
+				9FC7A02314E36C760064CF06 /* DelayedMenuSegmentedControl.h */,
+				9FC7A02414E36C760064CF06 /* DictionaryBook.h */,
+				9FC7A02514E36C760064CF06 /* DictionaryBrowserApp.h */,
+				9FC7A02614E36C760064CF06 /* DictionaryController.h */,
+				9FC7A02714E36C760064CF06 /* DictionaryConverter.h */,
+				9FC7A02814E36C760064CF06 /* DictionaryFilterButton.h */,
+				9FC7A02914E36C760064CF06 /* DictionaryFilterView.h */,
+				9FC7A02A14E36C760064CF06 /* DictionaryFoundIndexItem.h */,
+				9FC7A02B14E36C760064CF06 /* DictionaryFoundRecords.h */,
+				9FC7A02C14E36C760064CF06 /* DictionaryRecord.h */,
+				9FC7A02D14E36C760064CF06 /* DictionarySearchFieldEditor.h */,
+				9FC7A02E14E36C760064CF06 /* DictionaryWebView.h */,
+				9FC7A02F14E36C760064CF06 /* DragDropArrayController.h */,
+				9FC7A03014E36C760064CF06 /* DSAXIgnoredSplitView.h */,
+				9FC7A03114E36C760064CF06 /* DSDictionaryObj.h */,
+				9FC7A03214E36C760064CF06 /* DSDictionaryProtocol-Protocol.h */,
+				9FC7A03314E36C760064CF06 /* DSFindPanelController.h */,
+				9FC7A03414E36C760064CF06 /* DSImageView.h */,
+				9FC7A03514E36C760064CF06 /* DSIndexTableCell.h */,
+				9FC7A03614E36C760064CF06 /* DSIndexTableColumn.h */,
+				9FC7A03714E36C760064CF06 /* DSIndexTableView.h */,
+				9FC7A03814E36C760064CF06 /* EmbossedTextField.h */,
+				9FC7A03914E36C760064CF06 /* EmbossedTextFieldCell.h */,
+				9FC7A03A14E36C760064CF06 /* GetURLScriptCommand.h */,
+				9FC7A03B14E36C760064CF06 /* IDXDictionaryObj.h */,
+				9FC7A03C14E36C760064CF06 /* ImageWindowController.h */,
+				9FC7A03D14E36C760064CF06 /* MetalTabHeaderView.h */,
+				9FC7A03E14E36C760064CF06 /* MetalTabLabelView.h */,
+				9FC7A03F14E36C760064CF06 /* NSAppleEventDescriptor-CocoaExtensions.h */,
+				9FC7A04014E36C760064CF06 /* NSArray-CocoaExtensions.h */,
+				9FC7A04114E36C760064CF06 /* NSNumber-_SlidingExtras.h */,
+				9FC7A04214E36C760064CF06 /* NSNumber-CocoaExtensions.h */,
+				9FC7A04314E36C760064CF06 /* NSSearchField-DictionaryServiceExtensions.h */,
+				9FC7A04414E36C760064CF06 /* NSString-CocoaExtensions.h */,
+				9FC7A04514E36C760064CF06 /* NSView-_SlidingExtras.h */,
+				9FC7A04614E36C760064CF06 /* NSWorkspace-CocoaExtensions.h */,
+				9FC7A04714E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */,
+				9FC7A04814E36C760064CF06 /* OnlineDictionaryObj.h */,
+				9FC7A04914E36C760064CF06 /* OnlineDictionaryRecord.h */,
+				9FC7A04A14E36C760064CF06 /* PrefDictionaryTableView.h */,
+				9FC7A04B14E36C760064CF06 /* PreferenceController.h */,
+				9FC7A04C14E36C760064CF06 /* SlidingAnimation.h */,
+				9FC7A04D14E36C760064CF06 /* SlidingView.h */,
+				9FC7A04E14E36C760064CF06 /* TextAccessibilityObj.h */,
+				9FC7A04F14E36C760064CF06 /* WebAccessibilityObj.h */,
+				9FC7A05014E36C760064CF06 /* WebView-DictionaryExtensions.h */,
+				9FC7A05114E36C760064CF06 /* WebWrapScrollView.h */,
+				9FC7A05214E36C760064CF06 /* WikipediaDictionaryObj.h */,
+				9FC7A05314E36C760064CF06 /* WikipediaDictionaryRecord.h */,
+				9FC7A05414E36C760064CF06 /* WikipediaIndexLookupController.h */,
+				9FC7A05514E36C760064CF06 /* WikipediaIndexLookupURLConnection.h */,
+				9FC7A05614E36C760064CF06 /* WikipediaLanguageHandler.h */,
+			);
+			path = Leopard;
+			sourceTree = "<group>";
+		};
+		9FC7A05714E36C760064CF06 /* Lion */ = {
+			isa = PBXGroup;
+			children = (
+				9FC7A05814E36C760064CF06 /* ApplicationController.h */,
+				9FC7A05914E36C760064CF06 /* BrowserWindowController.h */,
+				9FC7A05A14E36C760064CF06 /* CDStructures.h */,
+				9FC7A05B14E36C760064CF06 /* DictionaryBrowserApp.h */,
+				9FC7A05C14E36C760064CF06 /* DictionaryBrowserWindow.h */,
+				9FC7A05D14E36C760064CF06 /* DictionaryController.h */,
+				9FC7A05E14E36C760064CF06 /* DictionaryObj.h */,
+				9FC7A05F14E36C760064CF06 /* DictionaryRecord.h */,
+				9FC7A06014E36C760064CF06 /* DictionaryRecordArray.h */,
+				9FC7A06114E36C760064CF06 /* DictionaryRecordRepository.h */,
+				9FC7A06214E36C760064CF06 /* DictionaryScopeBar.h */,
+				9FC7A06314E36C760064CF06 /* DictionaryScopeBarButton.h */,
+				9FC7A06414E36C760064CF06 /* DictionarySearchField.h */,
+				9FC7A06514E36C760064CF06 /* DictionarySearchFieldCell.h */,
+				9FC7A06614E36C760064CF06 /* DictionarySearchFieldEditor.h */,
+				9FC7A06714E36C760064CF06 /* DictionarySearchOperation.h */,
+				9FC7A06814E36C760064CF06 /* DictionaryWebView.h */,
+				9FC7A06914E36C760064CF06 /* DictionaryWindowTitleCell.h */,
+				9FC7A06A14E36C760064CF06 /* DragDropArrayController.h */,
+				9FC7A06B14E36C760064CF06 /* DSFindPanelController.h */,
+				9FC7A06C14E36C760064CF06 /* DSImageView.h */,
+				9FC7A06D14E36C760064CF06 /* DSIndexHeaderCell.h */,
+				9FC7A06E14E36C760064CF06 /* DSIndexSplitView.h */,
+				9FC7A06F14E36C760064CF06 /* DSIndexTableCell.h */,
+				9FC7A07014E36C760064CF06 /* DSIndexTableView.h */,
+				9FC7A07114E36C760064CF06 /* DSShadowOverlay.h */,
+				9FC7A07214E36C760064CF06 /* FakeRecordForResume.h */,
+				9FC7A07314E36C760064CF06 /* GetURLScriptCommand.h */,
+				9FC7A07414E36C760064CF06 /* ImageWindowController.h */,
+				9FC7A07514E36C760064CF06 /* NSArray-CocoaExtensions.h */,
+				9FC7A07614E36C760064CF06 /* NSNumber-CocoaExtensions.h */,
+				9FC7A07714E36C760064CF06 /* NSObject-Protocol.h */,
+				9FC7A07814E36C760064CF06 /* NSSpellChecker-MyExtensions.h */,
+				9FC7A07914E36C760064CF06 /* NSString-CocoaExtensions.h */,
+				9FC7A07A14E36C760064CF06 /* NSTableViewDataSource-Protocol.h */,
+				9FC7A07B14E36C760064CF06 /* NSURLConnectionDelegate-Protocol.h */,
+				9FC7A07C14E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */,
+				9FC7A07D14E36C760064CF06 /* PrefDictionaryTableView.h */,
+				9FC7A07E14E36C760064CF06 /* PreferenceController.h */,
+				9FC7A07F14E36C760064CF06 /* WebDocumentSelection-Protocol.h */,
+				9FC7A08014E36C760064CF06 /* WebDocumentText-Protocol.h */,
+				9FC7A08114E36C760064CF06 /* WebView-DictionaryExtensions.h */,
+				9FC7A08214E36C760064CF06 /* WikipediaAPIRequester.h */,
+				9FC7A08314E36C760064CF06 /* WikipediaDictionaryObj.h */,
+			);
+			path = Lion;
+			sourceTree = "<group>";
+		};
+		9FC7A08414E36C760064CF06 /* Snow Leopard */ = {
+			isa = PBXGroup;
+			children = (
+				9FC7A08514E36C760064CF06 /* ApplicationController.h */,
+				9FC7A08614E36C760064CF06 /* BrowserWindowController.h */,
+				9FC7A08714E36C760064CF06 /* BrowserWindowTabView.h */,
+				9FC7A08814E36C760064CF06 /* CDStructures.h */,
+				9FC7A08914E36C760064CF06 /* DictionaryBook.h */,
+				9FC7A08A14E36C760064CF06 /* DictionaryBrowserApp.h */,
+				9FC7A08B14E36C760064CF06 /* DictionaryController.h */,
+				9FC7A08C14E36C760064CF06 /* DictionaryFilterButton.h */,
+				9FC7A08D14E36C760064CF06 /* DictionaryFilterView.h */,
+				9FC7A08E14E36C760064CF06 /* DictionaryRecord.h */,
+				9FC7A08F14E36C760064CF06 /* DictionaryRecordArray.h */,
+				9FC7A09014E36C760064CF06 /* DictionaryRecordRepository.h */,
+				9FC7A09114E36C760064CF06 /* DictionarySearchFieldEditor.h */,
+				9FC7A09214E36C760064CF06 /* DictionaryWebView.h */,
+				9FC7A09314E36C760064CF06 /* DragDropArrayController.h */,
+				9FC7A09414E36C760064CF06 /* DSAXIgnoredSplitView.h */,
+				9FC7A09514E36C760064CF06 /* DSDictionaryObj.h */,
+				9FC7A09614E36C760064CF06 /* DSFindPanelController.h */,
+				9FC7A09714E36C760064CF06 /* DSImageView.h */,
+				9FC7A09814E36C760064CF06 /* DSIndexTableCell.h */,
+				9FC7A09914E36C760064CF06 /* DSIndexTableColumn.h */,
+				9FC7A09A14E36C760064CF06 /* DSIndexTableView.h */,
+				9FC7A09B14E36C760064CF06 /* FakeRecordForResume.h */,
+				9FC7A09C14E36C760064CF06 /* GetURLScriptCommand.h */,
+				9FC7A09D14E36C760064CF06 /* ImageWindowController.h */,
+				9FC7A09E14E36C760064CF06 /* NSArray-CocoaExtensions.h */,
+				9FC7A09F14E36C760064CF06 /* NSNumber-CocoaExtensions.h */,
+				9FC7A0A014E36C760064CF06 /* NSObject-Protocol.h */,
+				9FC7A0A114E36C760064CF06 /* NSSearchField-DictionaryServiceExtensions.h */,
+				9FC7A0A214E36C760064CF06 /* NSString-CocoaExtensions.h */,
+				9FC7A0A314E36C760064CF06 /* NSXMLDocument-DictionaryServiceExtensions.h */,
+				9FC7A0A414E36C760064CF06 /* PrefDictionaryTableView.h */,
+				9FC7A0A514E36C760064CF06 /* PreferenceController.h */,
+				9FC7A0A614E36C760064CF06 /* WebDocumentSelection-Protocol.h */,
+				9FC7A0A714E36C760064CF06 /* WebDocumentText-Protocol.h */,
+				9FC7A0A814E36C760064CF06 /* WebView-DictionaryExtensions.h */,
+				9FC7A0A914E36C760064CF06 /* WikipediaDictionaryObj.h */,
+			);
+			path = "Snow Leopard";
+			sourceTree = "<group>";
+		};
+		9FC7A0AA14E38F010064CF06 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9FD7F52E141033970009935F /* DebugLog.h */,
+				9FD7F52F141033970009935F /* DebugLog.m */,
+				9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */,
+				9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */,
+				9FFF9AC1141AA5C700F1A8DA /* NSAttributedString+Hyperlink.h */,
+				9FFF9AC2141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m */,
+				9F9149B414E3592500075D91 /* NSView+ExploreViews.h */,
+				9F9149B514E3592500075D91 /* NSView+ExploreViews.m */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		9FED756914047E8B008195D4 = {
 			isa = PBXGroup;
 			children = (
+				9FC79F8814E363440064CF06 /* WebKit.framework */,
 				9FED757D14047E8B008195D4 /* BetterDictionary */,
 				9FED757614047E8B008195D4 /* Frameworks */,
 				9FED757514047E8B008195D4 /* Products */,
@@ -98,17 +424,11 @@
 		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				9FD7F52E141033970009935F /* DebugLog.h */,
-				9FD7F52F141033970009935F /* DebugLog.m */,
+				9FC7A0AA14E38F010064CF06 /* Helper Classes */,
+				9FC7A01C14E36C760064CF06 /* Headers */,
 				9FED757E14047E8B008195D4 /* Supporting Files */,
 				9F0503511408D92F00F586E6 /* BetterDictionary.h */,
 				9F0503521408D92F00F586E6 /* BetterDictionary.m */,
-				9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */,
-				9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */,
-				9FFF9AC1141AA5C700F1A8DA /* NSAttributedString+Hyperlink.h */,
-				9FFF9AC2141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m */,
-				9F9149B414E3592500075D91 /* NSView+ExploreViews.h */,
-				9F9149B514E3592500075D91 /* NSView+ExploreViews.m */,
 			);
 			path = BetterDictionary;
 			sourceTree = "<group>";
