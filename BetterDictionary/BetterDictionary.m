@@ -11,7 +11,7 @@
 @implementation BetterDictionary
 
 /*
- Original implementation of setSearchText method
+ Original implementation of setSearchText:/asyncDictionarySearchDidFound: methods
  */
 static IMP originalSetSearchText;
 
