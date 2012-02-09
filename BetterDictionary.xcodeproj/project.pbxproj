@@ -149,6 +149,7 @@
 		9FED756B14047E8B008195D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Tehran Polytechnic";
 			};
 			buildConfigurationList = 9FED756E14047E8B008195D4 /* Build configuration list for PBXProject "BetterDictionary" */;
