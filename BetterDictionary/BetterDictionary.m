@@ -77,18 +77,15 @@ static IMP originalSetSearchText;
 	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":(appVersion==SNOW_LEOPARD?@"SNOW LEOPARD":@"LEOPARD")));
 }
 
-- (void)test:(id)sender
+- (IBAction)test:(id)sender
 {
-//	DICTIONARY_WEB_VIEW
-//	NSSplitView* splitView = [dictionaryBrowserWindowController performSelector:@selector(_indexSplitView)];
-//	DictionaryWebView* dicWebView = [[splitView subviews] objectAtIndex:1];
-//	[dicWebView exploreView];
-	
-//	[dictionaryBrowserWindowController _clearSearchResult];
-//	DictionaryController* dicC = [dictionaryBrowserWindowController _dictionaryController];
-//	return NSLog(@"SEARCHED WORD: %@", [self searchedWord]);
-//	[dictionaryBrowserWindowController setSearchStringValue:@"aaa" displayString:@"asdads" triggerSearch:YES];
-	
+	NSButton *button = (NSButton *)[testToolbarItem view];
+	NSLog(@"LLLLL: %@", button);
+    
+    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"OptionPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
+    //NSView *buttonView = [optionsButton view];
+    //NSRect buttonFrame = [optionsButton view]->_frame;
+    [optionPopover showPopup:button];
 }
 
 #pragma mark -
@@ -152,7 +149,7 @@ static IMP originalSetSearchText;
 	//
 	
 	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-	NSToolbarItem* testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
+	testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
 	
 	NSButton* testButton = [[NSButton alloc] init];		
 	[testButton setBordered:YES];	
@@ -165,10 +162,12 @@ static IMP originalSetSearchText;
 	[testToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
-	// -----------------------------------------------------------------------------------------
-	// Add a seperator between our items and dectionary's default items
-	//
-	[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
+	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
+		// -----------------------------------------------------------------------------------------
+		// Add a seperator between our items and dectionary's default items
+		//
+		[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
+	}
 }
 
 /*

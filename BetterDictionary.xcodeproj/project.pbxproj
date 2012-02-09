@@ -13,6 +13,8 @@
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
+		9F8E198F14E3D6440091E865 /* OptionPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E198D14E3D6440091E865 /* OptionPopover.m */; };
+		9F8E199014E3D6440091E865 /* OptionPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E198E14E3D6440091E865 /* OptionPopover.xib */; };
 		9F9149B614E3592600075D91 /* NSView+ExploreViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9149B514E3592500075D91 /* NSView+ExploreViews.m */; };
 		9FC79F8A14E363700064CF06 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC79F8814E363440064CF06 /* WebKit.framework */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
@@ -30,6 +32,9 @@
 		9F0503901409067700F586E6 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
+		9F8E198C14E3D6440091E865 /* OptionPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionPopover.h; sourceTree = "<group>"; };
+		9F8E198D14E3D6440091E865 /* OptionPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionPopover.m; sourceTree = "<group>"; };
+		9F8E198E14E3D6440091E865 /* OptionPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionPopover.xib; sourceTree = "<group>"; };
 		9F9149B414E3592500075D91 /* NSView+ExploreViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ExploreViews.h"; sourceTree = "<group>"; };
 		9F9149B514E3592500075D91 /* NSView+ExploreViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ExploreViews.m"; sourceTree = "<group>"; };
 		9FB2B024141CCC83006CF03B /* InstallerPlugins.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstallerPlugins.framework; path = System/Library/Frameworks/InstallerPlugins.framework; sourceTree = SDKROOT; };
@@ -424,6 +429,9 @@
 		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				9F8E198C14E3D6440091E865 /* OptionPopover.h */,
+				9F8E198D14E3D6440091E865 /* OptionPopover.m */,
+				9F8E198E14E3D6440091E865 /* OptionPopover.xib */,
 				9FC7A0AA14E38F010064CF06 /* Helper Classes */,
 				9FC7A01C14E36C760064CF06 /* Headers */,
 				9FED757E14047E8B008195D4 /* Supporting Files */,
@@ -504,6 +512,7 @@
 				9F0503921409067700F586E6 /* remove.png in Resources */,
 				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
 				9F0503941409067700F586E6 /* add.png in Resources */,
+				9F8E199014E3D6440091E865 /* OptionPopover.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +544,7 @@
 				9FD7F530141033970009935F /* DebugLog.m in Sources */,
 				9FFF9AC3141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m in Sources */,
 				9F9149B614E3592600075D91 /* NSView+ExploreViews.m in Sources */,
+				9F8E198F14E3D6440091E865 /* OptionPopover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

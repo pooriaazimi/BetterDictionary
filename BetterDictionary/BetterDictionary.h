@@ -16,6 +16,15 @@
 #import "../Headers/Lion/DictionaryController.h"
 #import "../Headers/Lion/BrowserWindowController.h"
 
+
+
+
+#import "OptionPopover.h"
+
+
+
+
+
 typedef enum {
 	LEOPARD, SNOW_LEOPARD, LION
 } DictionaryVersion;
@@ -52,6 +61,8 @@ typedef enum {
 	NSString* lastSearchedWord;
 	NSMutableArray* savedWordsArray;
 	DictionaryVersion appVersion;
+	
+	NSToolbarItem* testToolbarItem;//TEST!!
 }
 
 
