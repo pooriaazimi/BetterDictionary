@@ -56,6 +56,7 @@ static IMP originalClearSearchResult; // Lion
 		[self createMenuItems];
 		[self initSavedWordsArray];	
 		[self startInterceptingSearchTextMethod];
+		[self searchedWord];
 		[self setSaveOrRemoveToolbarButtonAccordingly];
 		
 	}
