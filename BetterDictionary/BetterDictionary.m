@@ -13,8 +13,9 @@
 /*
  Original implementation of setSearchText:/asyncDictionarySearchDidFound: methods
  */
-static IMP originalSetSearchText;
-
+static IMP originalSetSearchText; // Snow Leopard
+static IMP originalAsyncDictionarySearchDidFound; // Lion
+static IMP originalClearSearchResult; // Lion
 
 @synthesize savedWordsArray;
 
@@ -38,6 +39,7 @@ static IMP originalSetSearchText;
 		
 		sidebarWidth = 130;
 		sidebarIsVisible = NO;
+		searchedWord = @"";
 		
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
@@ -45,7 +47,7 @@ static IMP originalSetSearchText;
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
 		dictionaryController = [dictionaryBrowserWindowController _dictionaryController];
-		dictionaryBrowserToolbar = [dictionaryBrowserWindow toolbar];
+		dictionaryBrowserToolbar = [[mainApplication mainWindow] toolbar];
 		
 		[self determineApplicationVersion];
 		
@@ -66,26 +68,26 @@ static IMP originalSetSearchText;
  */
 - (void)determineApplicationVersion
 {
-	if ([dictionaryController respondsToSelector:@selector(_cleanupBindings)]) { // Leopard
-		appVersion = LEOPARD;
-	} else if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
+
+	if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
 		appVersion = SNOW_LEOPARD;
 	} else if ([dictionaryController respondsToSelector:@selector(_loadMainFramePage)]) { // Lion
 		appVersion = LION;
 	}
 	
-	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":(appVersion==SNOW_LEOPARD?@"SNOW LEOPARD":@"LEOPARD")));
+	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":@"SNOW LEOPARD"));
 }
 
-- (IBAction)test:(id)sender
+- (void)test:(id)sender
 {
 	NSButton *button = (NSButton *)[testToolbarItem view];
-	NSLog(@"LLLLL: %@", button);
     
-    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"OptionPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
+    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"FavoritesPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
     //NSView *buttonView = [optionsButton view];
     //NSRect buttonFrame = [optionsButton view]->_frame;
     [optionPopover showPopup:button];
+	[dictionaryController _clearSearchResult];
+	
 }
 
 #pragma mark -
@@ -100,7 +102,7 @@ static IMP originalSetSearchText;
 
 	NSString* sampleItemIentifier = [[[dictionaryBrowserToolbar items] objectAtIndex:0] itemIdentifier];
 	
-	// -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------
 	// Add 'Show all saved words' button to the toolbar
 	//
 	
@@ -123,7 +125,7 @@ static IMP originalSetSearchText;
 	[showAllToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
-	// -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------
 	// Add 'Save word' button to the toolbar
 	//
 	
@@ -144,7 +146,7 @@ static IMP originalSetSearchText;
 	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
 	[saveWordToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
-	// -----------------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------
 	// TEST
 	//
 	
@@ -163,7 +165,7 @@ static IMP originalSetSearchText;
 	
 	
 	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
-		// -----------------------------------------------------------------------------------------
+		// -------------------------------------------------------------------------------
 		// Add a seperator between our items and dectionary's default items
 		//
 		[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
@@ -230,6 +232,7 @@ static IMP originalSetSearchText;
 			break;
 	}
 	
+	// -------------------------------------------------------------------------------
 	// Add items to edit menu
 	[editMenu insertItem:[NSMenuItem separatorItem] atIndex:startIndex];
 	
@@ -251,6 +254,7 @@ static IMP originalSetSearchText;
 	[showSidebarMenuItem setTarget:self];
 	[editMenu insertItem:showSidebarMenuItem atIndex:startIndex+4];
 	
+	// -------------------------------------------------------------------------------
 	// Add items to application ('Dictionary') menu.	
 	NSMenuItem* defaultApplicationMenuItem = [[mainApplication mainMenu] itemWithTitle:@"Dictionary"];
 	NSMenu* aboutMenu = [defaultApplicationMenuItem submenu];
@@ -314,6 +318,7 @@ static IMP originalSetSearchText;
 	dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
 
 	
+	// -------------------------------------------------------------------------------
 	NSRect scrollFrame = NSMakeRect( -5, 0, 5, self.viewHeight );
     dictionarySidebarScrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
 	
@@ -336,6 +341,7 @@ static IMP originalSetSearchText;
 	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebarScrollView];
 	
 	
+	// -------------------------------------------------------------------------------
 	// create sidebar's context menu
 	NSMenuItem* sidebarRemoveMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
 	[sidebarRemoveMenuItem setTarget:self];
@@ -383,9 +389,6 @@ static IMP originalSetSearchText;
 	[showAllToolbarButton setImage:sidebarShowAllImageLightImage];
 	
 	sidebarIsVisible = YES;
-	
-	// XXX: Not working
-	[dictionarySidebarScrollView becomeFirstResponder];
 }
 
 /*
@@ -425,9 +428,7 @@ static IMP originalSetSearchText;
 			searchedWord = lastSearchText;
 		}
 	} else if (appVersion == SNOW_LEOPARD) {
-		object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);
-	} else if (appVersion == LEOPARD) {
-		
+		object_getInstanceVariable(dictionaryBrowserWindowController, "_searchText", (void**)&searchedWord);		
 	} else {
 		// should not happen!
 	}
@@ -442,7 +443,7 @@ static IMP originalSetSearchText;
  */
 - (NSString*)searchedWordCapitalized
 {
-	return [[[self searchedWord] capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+	return [[searchedWord capitalizedString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
 }
 
 /*
@@ -603,9 +604,7 @@ static IMP originalSetSearchText;
 		for (id doc in removedDictionaries) {
 			[dictionaryList addObject:doc];
 		}
-		// -----------------------------------------------------------------------------------
-	} else if (appVersion == LEOPARD) {
-		
+		// -----------------------------------------------------------------------------------		
 	} else {
 		// should not happen!
 	}
@@ -715,19 +714,22 @@ static IMP originalSetSearchText;
 	if (appVersion == LION) {
 		DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFound:'");
 		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:)));
-		originalSetSearchText = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:), (IMP)interceptSetSearchText, types);
+		originalAsyncDictionarySearchDidFound = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:), (IMP)interceptAsyncDictionarySearchDidFound, types);
+		
+		DebugLog(@"STARTED INTERCEPTING CALLS TO '_clearSearchResult:'");
+		const char *types2 = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(_clearSearchResult)));
+		originalClearSearchResult = class_replaceMethod([dictionaryController class], @selector(_clearSearchResult), (IMP)interceptClearSearchResult, types2);
 		
 	} else if (appVersion == SNOW_LEOPARD) {
 		DebugLog(@"STARTED INTERCEPTING CALLS TO 'setSearchText:'");
 		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:)));
 		originalSetSearchText = class_replaceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:), (IMP)interceptSetSearchText, types);
-	} else if (appVersion == LEOPARD) {
-		
 	} else {
 		// should not happen!
 	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"searchTextChanged" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"searchTextCleared" object:nil];
 }
 
 /*
@@ -738,19 +740,37 @@ static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...)
 	originalSetSearchText(self, oldSelector, arg1);
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"searchTextChanged" object:self];
 }
+static void interceptAsyncDictionarySearchDidFound(id self, SEL oldSelector, id arg1, ...)
+{
+	originalAsyncDictionarySearchDidFound(self, oldSelector, arg1);
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"searchTextChanged" object:self];
+}
+static void interceptClearSearchResult(id self, SEL oldSelector, ...)
+{
+	originalClearSearchResult(self, oldSelector);
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"searchTextCleared" object:self];
+}
 
 /*
  This method handles notifications. We are only interested in notifications with name=searchTextChanged.
  */
 - (void)handleNotification:(NSNotification*)note {
-	if (![[note name] isEqualToString:@"searchTextChanged"])
-		return;
-	
-	searchedWord = [self searchedWord];
-	if (lastSearchedWord != searchedWord) { // not a duplicate notification
-		lastSearchedWord = searchedWord;
+	if ([[note name] isEqualToString:@"searchTextChanged"]) {
+		searchedWord = [self searchedWord];
+		if (lastSearchedWord != searchedWord) { // not a duplicate notification
+			lastSearchedWord = searchedWord;
+			DebugLog(@"Searched word has changed: %@", searchedWord);
+			[self setSaveOrRemoveToolbarButtonAccordingly];
+		}
+	} else if ([[note name] isEqualToString:@"searchTextCleared"]) {
+		searchedWord = @"";
+		lastSearchedWord = @"";
+		DebugLog(@"Searched word has been cleared.");
 		[self setSaveOrRemoveToolbarButtonAccordingly];
+	} else {
+		return;
 	}
+
 }
 
 

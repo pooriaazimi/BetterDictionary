@@ -15,29 +15,24 @@
 
 #import "../Headers/Lion/DictionaryController.h"
 #import "../Headers/Lion/BrowserWindowController.h"
-
-
-
-
-#import "OptionPopover.h"
+#import "FavoritesPopover.h"
 
 
 
 
 
 typedef enum {
-	LEOPARD, SNOW_LEOPARD, LION
+	SNOW_LEOPARD, LION
 } DictionaryVersion;
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
 	NSBundle* betterDictionaryBundle;
 	
 	NSApplication* mainApplication;
-    NSToolbar* dictionaryBrowserToolbar;
-	
-	NSWindow* dictionaryBrowserWindow;
 	BrowserWindowController* dictionaryBrowserWindowController;
+	NSWindow* dictionaryBrowserWindow;
 	DictionaryController* dictionaryController;
+    NSToolbar* dictionaryBrowserToolbar;
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;
 	
@@ -102,6 +97,8 @@ typedef enum {
 
 - (void)startInterceptingSearchTextMethod;
 static void interceptSetSearchText(id self, SEL oldSelector, id arg1, ...);
+static void interceptAsyncDictionarySearchDidFound(id self, SEL oldSelector, id arg1, ...);
+static void interceptClearSearchResult(id self, SEL oldSelector, ...);
 
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
