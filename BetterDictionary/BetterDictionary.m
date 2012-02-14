@@ -155,18 +155,18 @@ static IMP originalClearSearchResult; // Lion
 	// TEST
 	//
 	
-        [dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-        testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
-
-        NSButton* testButton = [[NSButton alloc] init];
-        [testButton setBordered:YES];
-        [testButton setBezelStyle:NSTexturedSquareBezelStyle];
-        [testButton setTarget:self];
-        [testButton setAction:@selector(test:)];
-
-        [testToolbarItem setView: testButton];
-        [testToolbarItem setMaxSize:NSMakeSize(25, 25)];
-        [testToolbarItem setMinSize:NSMakeSize(25, 25)];
+//        [dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
+//        testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
+//
+//        NSButton* testButton = [[NSButton alloc] init];
+//        [testButton setBordered:YES];
+//        [testButton setBezelStyle:NSTexturedSquareBezelStyle];
+//        [testButton setTarget:self];
+//        [testButton setAction:@selector(test:)];
+//
+//        [testToolbarItem setView: testButton];
+//        [testToolbarItem setMaxSize:NSMakeSize(25, 25)];
+//        [testToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
 	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
