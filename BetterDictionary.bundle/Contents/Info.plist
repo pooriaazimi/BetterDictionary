@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.99</string>
+        <string>0.95</string>
 	<key>CFBundleSignature</key>
 	<string>BDPA</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+        <string>0.95</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -44,10 +44,12 @@
 			<key>BundleIdentifier</key>
 			<string>com.apple.Dictionary</string>
 			<key>MinBundleVersion</key>
-			<string>51.1</string>
+                        <string>80</string>
 		</dict>
 	</array>
+        <key>SUEnableAutomaticChecks</key>
+        <true/>
 	<key>SUFeedURL</key>
-	<string>http://www.haystacksoftware.com/arq/arq.xml</string>
+        <string>https://github.com/pooriaazimi/BetterDictionary/raw/lion-toolbar/appcast.xml</string>
 </dict>
 </plist>

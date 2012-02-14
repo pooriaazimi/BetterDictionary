@@ -39,9 +39,13 @@
         }
         if ([updater respondsToSelector:@selector(resetUpdateCycle)])
         {
-            [updater performSelector:@selector(resetUpdateCycle) withObject:nil];
+            [updater performSelector:@selector(resetUpdateCycle)];
         }
-    }
+        if ([updater respondsToSelector:@selector(checkForUpdatesInBackground)])
+        {
+            [updater performSelector:@selector(checkForUpdatesInBackground)];
+        }
+        }
 }
 
 + (NSString *)pathToRelaunchForUpdater:(id)updater

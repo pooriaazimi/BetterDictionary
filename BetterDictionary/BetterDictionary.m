@@ -83,13 +83,15 @@ static IMP originalClearSearchResult; // Lion
 
 - (void)test:(id)sender
 {
-	NSButton *button = (NSButton *)[testToolbarItem view];
-    
-    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"FavoritesPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
-    //NSView *buttonView = [optionsButton view];
-    //NSRect buttonFrame = [optionsButton view]->_frame;
-    [optionPopover showPopup:button];
-	[dictionaryController performSelector:@selector(_clearSearchResult)];
+//	NSButton *button = (NSButton *)[testToolbarItem view];
+//
+//    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"FavoritesPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
+//    //NSView *buttonView = [optionsButton view];
+//    //NSRect buttonFrame = [optionsButton view]->_frame;
+//    [optionPopover showPopup:button];
+//	[dictionaryController performSelector:@selector(_clearSearchResult)];
+
+        [SparkleHelper initUpdater];
 	
 }
 
@@ -153,18 +155,18 @@ static IMP originalClearSearchResult; // Lion
 	// TEST
 	//
 	
-//	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-//	testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
-//	
-//	NSButton* testButton = [[NSButton alloc] init];		
-//	[testButton setBordered:YES];	
-//	[testButton setBezelStyle:NSTexturedSquareBezelStyle];
-//	[testButton setTarget:self];	
-//	[testButton setAction:@selector(test:)];
-//	
-//	[testToolbarItem setView: testButton];
-//	[testToolbarItem setMaxSize:NSMakeSize(25, 25)];
-//	[testToolbarItem setMinSize:NSMakeSize(25, 25)];
+        [dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
+        testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
+
+        NSButton* testButton = [[NSButton alloc] init];
+        [testButton setBordered:YES];
+        [testButton setBezelStyle:NSTexturedSquareBezelStyle];
+        [testButton setTarget:self];
+        [testButton setAction:@selector(test:)];
+
+        [testToolbarItem setView: testButton];
+        [testToolbarItem setMaxSize:NSMakeSize(25, 25)];
+        [testToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
 	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion

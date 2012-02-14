@@ -32,10 +32,12 @@
 			<key>BundleIdentifier</key>
 			<string>com.apple.Dictionary</string>
 			<key>MinBundleVersion</key>
-			<string>51.1</string>
+                        <string>80</string>
 		</dict>
 	</array>
 	<key>SUFeedURL</key>
-	<string>https://github.com/pooriaazimi/BetterDictionary/tree/lion-toolbar/appcast.xml</string>
+        <string>https://github.com/pooriaazimi/BetterDictionary/raw/lion-toolbar/appcast.xml</string>
+        <key>SUEnableAutomaticChecks</key>
+        <true/>
 </dict>
 </plist>

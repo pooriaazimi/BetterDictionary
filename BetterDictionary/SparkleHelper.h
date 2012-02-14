@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface SparkleHelper : NSObject
-{
-	
-}
 
 + (void)initUpdater;
++ (NSString *)pathToRelaunchForUpdater:(id)updater;
 
 @end
