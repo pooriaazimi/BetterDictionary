@@ -15,6 +15,7 @@
 		9F1F192814EA664600571A44 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1F192714EA664600571A44 /* Sparkle.framework */; };
 		9F1F192B14EA66F000571A44 /* SparkleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F192A14EA66F000571A44 /* SparkleHelper.m */; };
 		9F1F192D14EA6BE900571A44 /* appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F192C14EA6BE900571A44 /* appcast.xml */; };
+		9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F193514EA81F100571A44 /* Dictionary.icns */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F8E19AA14E5F8460091E865 /* FavoritesPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E19A814E5F8450091E865 /* FavoritesPopover.m */; };
 		9F8E19AB14E5F8460091E865 /* FavoritesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E19A914E5F8450091E865 /* FavoritesPopover.xib */; };
@@ -36,6 +37,7 @@
 		9F1F192914EA66F000571A44 /* SparkleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkleHelper.h; sourceTree = "<group>"; };
 		9F1F192A14EA66F000571A44 /* SparkleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkleHelper.m; sourceTree = "<group>"; };
 		9F1F192C14EA6BE900571A44 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = appcast.xml; sourceTree = SOURCE_ROOT; };
+		9F1F193514EA81F100571A44 /* Dictionary.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Dictionary.icns; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		9F8E19A714E5F8450091E865 /* FavoritesPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesPopover.h; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 		9FED757E14047E8B008195D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9F1F193514EA81F100571A44 /* Dictionary.icns */,
 				9F05038D1409067700F586E6 /* sidebar-dark.png */,
 				9F05038E1409067700F586E6 /* remove.png */,
 				9F05038F1409067700F586E6 /* sidebar-light.png */,
@@ -522,6 +525,7 @@
 				9F0503941409067700F586E6 /* add.png in Resources */,
 				9F8E19AB14E5F8460091E865 /* FavoritesPopover.xib in Resources */,
 				9F1F192D14EA6BE900571A44 /* appcast.xml in Resources */,
+				9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +543,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-                        shellScript = "# Close all instances of Dictionary.app\nkillall Dictionary\n\n# Remove the existing bundle from SIMBL plugins folder\nrm -rf /Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\nrm -rd ${SRCROOT}/${PRODUCT_NAME}.bundle\n\n# Get version from Info.plist\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" BetterDictionary/BetterDictionary-Info.plist)\n\n# Copy the bundle to SIMBL plugins folder, and to bundle source folder\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle /Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle ${SRCROOT}/${PRODUCT_NAME}.bundle\n\n# Run Dictionary.app\n#open /Applications/Dictionary.app/\n\n# Zip bundle and installer\n#rm -f ${PRODUCT_NAME}.zip\n#zip -r ${PRODUCT_NAME}.zip ${PRODUCT_NAME}.bundle\n\n# Create installer package\n/Developer/usr/bin/packagemaker --doc Installer/Installer.pmdoc/ --out Installer/BetterDictionary-${VERSION}.pkg";
+			shellScript = "# Close all instances of Dictionary.app\nkillall Dictionary\n\n# Remove the existing bundle from SIMBL plugins folder\nrm -rf /Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\nrm -rd ${SRCROOT}/${PRODUCT_NAME}.bundle\n\n# Get version from Info.plist\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" BetterDictionary/BetterDictionary-Info.plist)\n\n# Copy the bundle to SIMBL plugins folder, and to bundle source folder\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle /Library/Application\\ Support/SIMBL/Plugins/${PRODUCT_NAME}.bundle\ncp -R ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.bundle ${SRCROOT}/${PRODUCT_NAME}.bundle\n\n# Run Dictionary.app\n#open /Applications/Dictionary.app/\n\n# Zip bundle and installer\n#rm -f ${PRODUCT_NAME}.zip\n#zip -r ${PRODUCT_NAME}.zip ${PRODUCT_NAME}.bundle\n\n# Create installer package\n/Developer/usr/bin/packagemaker --doc Installer/Installer.pmdoc/ --out Installer/BetterDictionary-${VERSION}.pkg";
 		};
 /* End PBXShellScriptBuildPhase section */
 

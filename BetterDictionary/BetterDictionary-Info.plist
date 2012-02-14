@@ -6,8 +6,6 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pooriaazimi.betterdictionary</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -32,12 +30,14 @@
 			<key>BundleIdentifier</key>
 			<string>com.apple.Dictionary</string>
 			<key>MinBundleVersion</key>
-                        <string>80</string>
+			<string>80</string>
 		</dict>
 	</array>
 	<key>SUFeedURL</key>
-        <string>https://github.com/pooriaazimi/BetterDictionary/raw/lion-toolbar/appcast.xml</string>
-        <key>SUEnableAutomaticChecks</key>
-        <true/>
+	<string>https://github.com/pooriaazimi/BetterDictionary/raw/lion-toolbar/appcast.xml</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>CFBundleIconFile</key>
+	<string>Dictionary.icns</string>
 </dict>
 </plist>
