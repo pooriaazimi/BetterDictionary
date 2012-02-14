@@ -14,6 +14,7 @@
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
 		9F1F192814EA664600571A44 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1F192714EA664600571A44 /* Sparkle.framework */; };
 		9F1F192B14EA66F000571A44 /* SparkleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F192A14EA66F000571A44 /* SparkleHelper.m */; };
+		9F1F192D14EA6BE900571A44 /* appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F192C14EA6BE900571A44 /* appcast.xml */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F8E19AA14E5F8460091E865 /* FavoritesPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E19A814E5F8450091E865 /* FavoritesPopover.m */; };
 		9F8E19AB14E5F8460091E865 /* FavoritesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E19A914E5F8450091E865 /* FavoritesPopover.xib */; };
@@ -35,6 +36,7 @@
 		9F1F192714EA664600571A44 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		9F1F192914EA66F000571A44 /* SparkleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparkleHelper.h; sourceTree = "<group>"; };
 		9F1F192A14EA66F000571A44 /* SparkleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SparkleHelper.m; sourceTree = "<group>"; };
+		9F1F192C14EA6BE900571A44 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = appcast.xml; sourceTree = SOURCE_ROOT; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		9F8E19A714E5F8450091E865 /* FavoritesPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesPopover.h; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		9FED757D14047E8B008195D4 /* BetterDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				9F1F192C14EA6BE900571A44 /* appcast.xml */,
 				9F8E19A714E5F8450091E865 /* FavoritesPopover.h */,
 				9F8E19A814E5F8450091E865 /* FavoritesPopover.m */,
 				9F8E19A914E5F8450091E865 /* FavoritesPopover.xib */,
@@ -520,6 +523,7 @@
 				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
 				9F0503941409067700F586E6 /* add.png in Resources */,
 				9F8E19AB14E5F8460091E865 /* FavoritesPopover.xib in Resources */,
+				9F1F192D14EA6BE900571A44 /* appcast.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
