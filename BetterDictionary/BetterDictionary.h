@@ -12,14 +12,8 @@
 #import "NSObjectAdditions.h"
 #import "NSAttributedString+Hyperlink.h"
 #import "NSView+ExploreViews.h"
-
-#import "../Headers/Lion/DictionaryController.h"
-#import "../Headers/Lion/BrowserWindowController.h"
+#import "SparkleHelper.h"
 #import "FavoritesPopover.h"
-
-
-
-
 
 typedef enum {
 	SNOW_LEOPARD, LION
@@ -29,9 +23,9 @@ typedef enum {
 	NSBundle* betterDictionaryBundle;
 	
 	NSApplication* mainApplication;
-	BrowserWindowController* dictionaryBrowserWindowController;
+	NSWindowController* dictionaryBrowserWindowController;
 	NSWindow* dictionaryBrowserWindow;
-	DictionaryController* dictionaryController;
+	NSObject* dictionaryController;
     NSToolbar* dictionaryBrowserToolbar;
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;

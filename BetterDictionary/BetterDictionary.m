@@ -46,7 +46,7 @@ static IMP originalClearSearchResult; // Lion
 		mainApplication = [NSApplication sharedApplication];
 		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
 		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
-		dictionaryController = [dictionaryBrowserWindowController _dictionaryController];
+		dictionaryController = [dictionaryBrowserWindowController performSelector:@selector(_dictionaryController)];
 		dictionaryBrowserToolbar = [[mainApplication mainWindow] toolbar];
 		
 		[self determineApplicationVersion];
@@ -58,6 +58,8 @@ static IMP originalClearSearchResult; // Lion
 		[self startInterceptingSearchTextMethod];
 		[self searchedWord];
 		[self setSaveOrRemoveToolbarButtonAccordingly];
+		
+		[SparkleHelper initUpdater];
 		
 	}
 	
@@ -87,7 +89,7 @@ static IMP originalClearSearchResult; // Lion
     //NSView *buttonView = [optionsButton view];
     //NSRect buttonFrame = [optionsButton view]->_frame;
     [optionPopover showPopup:button];
-	[dictionaryController _clearSearchResult];
+	[dictionaryController performSelector:@selector(_clearSearchResult)];
 	
 }
 
@@ -151,18 +153,18 @@ static IMP originalClearSearchResult; // Lion
 	// TEST
 	//
 	
-	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-	testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
-	
-	NSButton* testButton = [[NSButton alloc] init];		
-	[testButton setBordered:YES];	
-	[testButton setBezelStyle:NSTexturedSquareBezelStyle];
-	[testButton setTarget:self];	
-	[testButton setAction:@selector(test:)];
-	
-	[testToolbarItem setView: testButton];
-	[testToolbarItem setMaxSize:NSMakeSize(25, 25)];
-	[testToolbarItem setMinSize:NSMakeSize(25, 25)];
+//	[dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
+//	testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
+//	
+//	NSButton* testButton = [[NSButton alloc] init];		
+//	[testButton setBordered:YES];	
+//	[testButton setBezelStyle:NSTexturedSquareBezelStyle];
+//	[testButton setTarget:self];	
+//	[testButton setAction:@selector(test:)];
+//	
+//	[testToolbarItem setView: testButton];
+//	[testToolbarItem setMaxSize:NSMakeSize(25, 25)];
+//	[testToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
 	
 	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
@@ -564,7 +566,7 @@ static IMP originalClearSearchResult; // Lion
 	
 	if (appVersion == LION) {
 		
-		[dictionaryBrowserWindowController setSearchStringValue:wordToSearch displayString:wordToSearch triggerSearch:YES];
+		[dictionaryBrowserWindowController performSelector:@selector(setSearchStringValue:displayString:triggerSearch:) withObject:wordToSearch withObject:wordToSearch withObject:[NSNumber numberWithBool:YES]];
 		
 	} else if (appVersion == SNOW_LEOPARD) {
 

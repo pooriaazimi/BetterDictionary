@@ -47,5 +47,7 @@
 			<string>51.1</string>
 		</dict>
 	</array>
+	<key>SUFeedURL</key>
+	<string>http://www.haystacksoftware.com/arq/arq.xml</string>
 </dict>
 </plist>
