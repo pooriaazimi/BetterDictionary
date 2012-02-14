@@ -12,10 +12,11 @@
 		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
-		9F1F192814EA664600571A44 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1F192714EA664600571A44 /* Sparkle.framework */; };
 		9F1F192B14EA66F000571A44 /* SparkleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1F192A14EA66F000571A44 /* SparkleHelper.m */; };
 		9F1F192D14EA6BE900571A44 /* appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F192C14EA6BE900571A44 /* appcast.xml */; };
 		9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F193514EA81F100571A44 /* Dictionary.icns */; };
+		9F3124A014EA8B73004C96DB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F1F192714EA664600571A44 /* Sparkle.framework */; };
+		9F3124A214EA8C64004C96DB /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F1F192714EA664600571A44 /* Sparkle.framework */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F8E19AA14E5F8460091E865 /* FavoritesPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8E19A814E5F8450091E865 /* FavoritesPopover.m */; };
 		9F8E19AB14E5F8460091E865 /* FavoritesPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8E19A914E5F8450091E865 /* FavoritesPopover.xib */; };
@@ -25,6 +26,19 @@
 		9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FED758014047E8B008195D4 /* InfoPlist.strings */; };
 		9FFF9AC3141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFF9AC2141AA5C700F1A8DA /* NSAttributedString+Hyperlink.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9F3124A114EA8C52004C96DB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F3124A214EA8C64004C96DB /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9F0503511408D92F00F586E6 /* BetterDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterDictionary.h; sourceTree = "<group>"; };
@@ -203,8 +217,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F3124A014EA8B73004C96DB /* Sparkle.framework in Frameworks */,
 				9FED757814047E8B008195D4 /* Cocoa.framework in Frameworks */,
-				9F1F192814EA664600571A44 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +491,7 @@
 				9FED757114047E8B008195D4 /* Frameworks */,
 				9FED757214047E8B008195D4 /* Resources */,
 				9FED758F14047FA9008195D4 /* ShellScript */,
+				9F3124A114EA8C52004C96DB /* CopyFiles */,
 			);
 			buildRules = (
 			);

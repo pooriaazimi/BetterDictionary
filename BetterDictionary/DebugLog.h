@@ -10,7 +10,7 @@
 
 #define DEBUG 0
 
-#ifdef DEBUG
+#if DEBUG
 	#define DebugLog(args...) _DebugLog(__FILE__,__LINE__,args);
 #else
 	#define DebugLog(x...)

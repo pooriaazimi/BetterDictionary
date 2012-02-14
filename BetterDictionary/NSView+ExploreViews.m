@@ -7,6 +7,7 @@
 //  Copyright (c) 2012 Pooria Azimi. All rights reserved.
 //
 
+#import "DebugLog.h"
 #import "NSView+ExploreViews.h"
 
 @implementation NSView (ExploreViews)
@@ -20,7 +21,7 @@
 	
     [mutableString appendFormat:@"%@ | %@", [self className], NSStringFromRect(NSRectFromCGRect([self frame]))];
 	
-	NSLog(@"%@", mutableString);
+	DebugLog(@"%@", mutableString);
 	[mutableString release];
 	
 	for (NSView *subview in [self subviews])
@@ -29,9 +30,9 @@
 
 - (void)exploreView
 {
-	NSLog(@"=========================================");
+	DebugLog(@"=========================================");
 	[self _exploreViewAtLevel:0];
-	NSLog(@"=========================================");
+	DebugLog(@"=========================================");
 }
 
 
