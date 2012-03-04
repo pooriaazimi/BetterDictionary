@@ -19,11 +19,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.95</string>
+	<string>0.96</string>
 	<key>CFBundleSignature</key>
 	<string>BDPA</string>
 	<key>CFBundleVersion</key>
-	<string>0.95</string>
+	<string>0.96</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>

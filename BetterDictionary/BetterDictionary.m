@@ -81,20 +81,6 @@ static IMP originalClearSearchResult; // Lion
 	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":@"SNOW LEOPARD"));
 }
 
-- (void)test:(id)sender
-{
-//	NSButton *button = (NSButton *)[testToolbarItem view];
-//
-//    OptionPopover* optionPopover = [[OptionPopover alloc] initWithNibName:@"FavoritesPopover" bundle:[NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"]];
-//    //NSView *buttonView = [optionsButton view];
-//    //NSRect buttonFrame = [optionsButton view]->_frame;
-//    [optionPopover showPopup:button];
-//	[dictionaryController performSelector:@selector(_clearSearchResult)];
-
-        [SparkleHelper initUpdater];
-	
-}
-
 #pragma mark -
 #pragma mark Toolbar
 
@@ -151,28 +137,12 @@ static IMP originalClearSearchResult; // Lion
 	[saveWordToolbarItem setMaxSize:NSMakeSize(25, 25)];
 	[saveWordToolbarItem setMinSize:NSMakeSize(25, 25)];
 	
+	
 	// -------------------------------------------------------------------------------
-	// TEST
-	//
-	
-//        [dictionaryBrowserToolbar insertItemWithItemIdentifier:sampleItemIentifier atIndex:2];
-//        testToolbarItem = [[dictionaryBrowserToolbar items] objectAtIndex:2];
-//
-//        NSButton* testButton = [[NSButton alloc] init];
-//        [testButton setBordered:YES];
-//        [testButton setBezelStyle:NSTexturedSquareBezelStyle];
-//        [testButton setTarget:self];
-//        [testButton setAction:@selector(test:)];
-//
-//        [testToolbarItem setView: testButton];
-//        [testToolbarItem setMaxSize:NSMakeSize(25, 25)];
-//        [testToolbarItem setMinSize:NSMakeSize(25, 25)];
-	
 	
 	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
-		// -------------------------------------------------------------------------------
+		
 		// Add a seperator between our items and dectionary's default items
-		//
 		[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
 	}
 }
@@ -279,7 +249,7 @@ static IMP originalClearSearchResult; // Lion
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"Acknowledgements:"]];
 	[credits applyFontTraits:NSBoldFontMask range:NSMakeRange(0, [credits length])];	
 	
-	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nAli Rastegar\nIlia Faghfouri\nAlireza Shafaei\nJavad Khorasani"]];
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nAli Rastegar\nIlia Faghfouri\nAlireza Shafaei"]];
 	
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nSteve Nygard ("]];
 	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"class-dump" withURL:[NSURL URLWithString:@"http://www.codethecode.com/projects/class-dump/"]]];

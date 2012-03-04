@@ -1,14 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
-  <channel>
-    <title>Safari Omnibar Updates</title>
-    <language>en</language>
-    <item>
-        <title>Safari Omnibar 1.6</title>
-        <pubDate>Sat Jan 7 16:06:57 2012 +0200</pubDate>
-        <sparkle:releaseNotesLink>http://rsparkle.herokuapp.com/SafariOmnibar/changes.html</sparkle:releaseNotesLink>
-                <sparkle:minimumSystemVersion>10.6.0</sparkle:minimumSystemVersion>
-        <enclosure sparkle:md5Sum="e2cf4290718ff9bbb3cbc464caf91a2e" sparkle:version="1.6" url="https://github.com/downloads/rs/SafariOmnibar/Safari Omnibar-1.6.zip" length="442561" type="application/octet-stream"/>
-    </item>
-  </channel>
 </rss>

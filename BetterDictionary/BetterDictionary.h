@@ -13,7 +13,6 @@
 #import "NSAttributedString+Hyperlink.h"
 #import "NSView+ExploreViews.h"
 #import "SparkleHelper.h"
-#import "FavoritesPopover.h"
 
 typedef enum {
 	SNOW_LEOPARD, LION
@@ -97,9 +96,6 @@ static void interceptClearSearchResult(id self, SEL oldSelector, ...);
 - (void)addMethod:(IMP)newMethodIMP forSelector:(SEL)oldMethodSelector toClass:(Class)class;
 - (void)addMethod:(SEL)newMethodSelector toClass:(Class)class;
 - (void)swizzleMethodWithSelector:(SEL)origSelector fromClass:(Class)origClass WithMwthodWithSelector:(SEL)replSelector fromClass:(Class)replClass;
-
-
-- (void)test:(id)sender; //TEST!!!
 
 @property (assign) NSMutableArray* savedWordsArray;
 
