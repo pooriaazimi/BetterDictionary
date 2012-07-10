@@ -1,6 +1,7 @@
 ##
 ## from http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects/349129#349129
 ##
+BetterDictionary.bundle/
 
 # Mac OS X
 .DS_Store
