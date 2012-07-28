@@ -49,9 +49,16 @@ The installer package first installs [SIMBL](http://www.culater.net/software/SIM
 
 Uninstalling
 ------------
-Open Terminal.app (from Applications -> Utititles). type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
+
+#### Removing BetterDictionary
+
+Open Terminal.app (from Applications -> Utititles). Type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
 
 Remove 'BetterDictionary.bundle' from this directory.
+
+#### Removing SIMBL
+
+Just download, unzip and run [SIMBL Uninstaller](https://raw.github.com/pooriaazimi/BetterDictionary/master/Installers/SIMBL%20Uninstaller.zip) (86 KB). 
 
 
 Release Notes
