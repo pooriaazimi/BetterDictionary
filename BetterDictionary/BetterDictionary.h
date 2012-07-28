@@ -15,7 +15,7 @@
 #import "SparkleHelper.h"
 
 typedef enum {
-	SNOW_LEOPARD, LION
+	SNOW_LEOPARD, LION, MOUNTAIN_LION
 } DictionaryVersion;
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
@@ -49,8 +49,6 @@ typedef enum {
 	NSString* lastSearchedWord;
 	NSMutableArray* savedWordsArray;
 	DictionaryVersion appVersion;
-	
-	NSToolbarItem* testToolbarItem;//TEST!!
 }
 
 

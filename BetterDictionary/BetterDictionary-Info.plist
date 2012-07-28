@@ -38,6 +38,6 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/pooriaazimi/BetterDictionary/raw/lion-toolbar/appcast.xml</string>
+	<string>https://raw.github.com/pooriaazimi/BetterDictionary/master/appcast.xml</string>
 </dict>
 </plist>

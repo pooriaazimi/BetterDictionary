@@ -7,7 +7,7 @@ It works perfectly on Snow Leopard and Lion.
 
 Download
 --------
-You can always download the latest version from [Downloads](https://github.com/pooriaazimi/BetterDictionary/downloads) tab. Currently it's [v0.96](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.96.pkg).
+You can always download the latest version from [Downloads](https://github.com/pooriaazimi/BetterDictionary/downloads) tab. Currently it's [v0.97](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg).
 
 
 Install

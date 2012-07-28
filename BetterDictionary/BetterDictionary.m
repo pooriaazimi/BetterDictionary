@@ -72,7 +72,9 @@ static IMP originalClearSearchResult; // Lion
 - (void)determineApplicationVersion
 {
 
-	if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
+	if ([[[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1] isKindOfClass:[NSTextField class]]) { // Mountain Lion
+		appVersion = MOUNTAIN_LION;
+	} else if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
 		appVersion = SNOW_LEOPARD;
 	} else if ([dictionaryController respondsToSelector:@selector(_loadMainFramePage)]) { // Lion
 		appVersion = LION;
@@ -268,11 +270,11 @@ static IMP originalClearSearchResult; // Lion
 	
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.99", @"Version",
+							 @"0.97", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
 							 @"Copyright © 2012 Pooria Azimi.\nAll rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.99", @"ApplicationVersion",
+							 @"BetterDictionary v0.97", @"ApplicationVersion",
 							 nil];
 	
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
@@ -289,8 +291,19 @@ static IMP originalClearSearchResult; // Lion
 {
 	DebugLog(@"ADD SIDEBAR");
 	
-	dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
-	dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
+	if (appVersion == MOUNTAIN_LION) {
+		// Subviews: [<DictionaryScopeBar>, <NSTextField>, <NSPopUpButton>, <DSIndexSplitView>, <DSShadowOverlay>, <DSShadowOverlay>]
+		//                                  (search-view)                       (web-view)
+		//
+		dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:3];
+		dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
+	} else {
+		// Subviews: [<DictionaryScopeBar>, <DSIndexSplitView>, <NSTextField>, <NSPopUpButton>, <DSShadowOverlay>, <DSShadowOverlay>]
+		//                                      (web-view)      (search-view)
+		//
+		dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
+		dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
+	}
 
 	
 	// -------------------------------------------------------------------------------
@@ -674,7 +687,7 @@ static IMP originalClearSearchResult; // Lion
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	return [savedWordsArray objectAtIndex:row];
+	return [savedWordsArray objectAtIndex:([savedWordsArray count]-row-1)];
 }
 
 
