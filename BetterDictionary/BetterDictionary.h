@@ -12,7 +12,6 @@
 #import "NSObjectAdditions.h"
 #import "NSAttributedString+Hyperlink.h"
 #import "NSView+ExploreViews.h"
-#import "SparkleHelper.h"
 
 typedef enum {
 	SNOW_LEOPARD, LION, MOUNTAIN_LION

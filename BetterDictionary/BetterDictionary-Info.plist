@@ -35,10 +35,6 @@
 			<string>80</string>
 		</dict>
 	</array>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://raw.github.com/pooriaazimi/BetterDictionary/master/appcast.xml</string>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
 </dict>

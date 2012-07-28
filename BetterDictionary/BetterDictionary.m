@@ -58,9 +58,7 @@ static IMP originalClearSearchResult; // Lion
 		[self startInterceptingSearchTextMethod];
 		[self searchedWord];
 		[self setSaveOrRemoveToolbarButtonAccordingly];
-		
-		[SparkleHelper initUpdater];
-		
+				
 	}
 	
 	return self;
