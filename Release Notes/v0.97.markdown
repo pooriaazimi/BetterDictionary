@@ -1,6 +1,0 @@
-BetterDictionary v0.97
-----------------------
-
-- Mountain Lion compatibility
-
-- Newer words are now shown on top

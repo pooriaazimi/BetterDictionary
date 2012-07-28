@@ -24,6 +24,24 @@ Open Terminal.app (from Applications -> Utititles). type `open /Library/Applicat
 Remove 'BetterDictionary.bundle' from this directory.
 
 
+Release Notes
+-------------
+
+### v0.97
+
+- Mountain Lion compatibility
+
+- Newer words are now shown on top
+
+### v0.96
+
+- Lion compatibility
+
+### v0.95
+
+- Initial release
+
+
 Keyboard Shortcuts
 ------------------
 **⌘+S**: Save word
@@ -37,6 +55,8 @@ Keyboard Shortcuts
 
 Screenshots
 -----------
+![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-MountainLion.png)
+
 ![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Lion.png)
 
 ![Screenshot2](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-SnowLeopard.png)
