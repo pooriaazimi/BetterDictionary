@@ -10,15 +10,33 @@ Download
 You can always download the latest version from [Downloads](https://github.com/pooriaazimi/BetterDictionary/downloads) tab. Currently it's [v0.97](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg).
 
 
-Install
--------
-Just run BetterDictionary-0.96.pkg.
+Installation
+------------
+
+- **Moutain Lion:**
+
+  - Download the [installer](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg);
+	
+  - Right click on the downloaded file and select "Open".
+	
+  - Select "Open" in the alert box.
+	
+  - Proceed as usual. You'll be prompted to enter your password in the next screen.
+	
+- **Lion and Snow Leopard:**
+
+  - Download the [installer](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg);
+	
+  - Double click on the downloaded file to install. You'll be prompted to enter your password in the next screen.
+
+  
 
 The installer package first installs [SIMBL](http://www.culater.net/software/SIMBL/SIMBL.php), and then copies BetterDictionary.bundle to `/Library/Application Support/SIMBL/Plugins/`.
 
 
-Uninstall
----------
+
+Uninstalling
+------------
 Open Terminal.app (from Applications -> Utititles). type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
 
 Remove 'BetterDictionary.bundle' from this directory.
