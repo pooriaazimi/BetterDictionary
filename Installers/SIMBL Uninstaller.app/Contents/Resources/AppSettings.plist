@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppPathAsFirstArg</key>
+	<false/>
+	<key>Creator</key>
+	<string>Platypus-4.4</string>
+	<key>Droppable</key>
+	<false/>
+	<key>InterpreterParams</key>
+	<array/>
+	<key>OutputType</key>
+	<string>Text Window</string>
+	<key>RemainRunningAfterCompletion</key>
+	<true/>
+	<key>RequiresAdminPrivileges</key>
+	<true/>
+	<key>ScriptInterpreter</key>
+	<string>/bin/sh</string>
+	<key>Secure</key>
+	<true/>
+	<key>TextBackground</key>
+	<string>#ffffff</string>
+	<key>TextEncoding</key>
+	<integer>4</integer>
+	<key>TextFont</key>
+	<string>Monaco</string>
+	<key>TextForeground</key>
+	<string>#000000</string>
+	<key>TextSettings</key>
+	<data>
+	YnBsaXN0MDDUAQIDBAUICwxUJHRvcFgkb2JqZWN0c1gkdmVyc2lvblkkYXJjaGl2ZXLR
+	BgdUcm9vdIABogkKVSRudWxsTxECHiMhL2Jpbi9zaAojIENvcHlyaWdodCAyMDAzLTIw
+	MDksIE1pa2UgU29sb21vbiA8bWFzNjNAY29ybmVsbC5lZHU+CiMgU0lNQkwgaXMgcmVs
+	ZWFzZWQgdW5kZXIgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHYyLgojIGh0
+	dHA6Ly93d3cub3BlbnNvdXJjZS5vcmcvbGljZW5zZXMvZ3BsLTIuMC5waHAKCkxBVU5D
+	SERfUExJU1Q9Ii9MaWJyYXJ5L0xhdW5jaEFnZW50cy9uZXQuY3VsYXRlci5TSU1CTC5B
+	Z2VudC5wbGlzdCIKIyBzdG9wIGFueSBydW5uaW5nIGFnZW50IGJ5IHVubG9hZGluZyBp
+	dAplY2hvICJTdG9wcGluZyBTSU1CTCBBZ2VudC4uLiIKL2Jpbi9sYXVuY2hjdGwgdW5s
+	b2FkIC1GIC1TIEFxdWEgIiR7TEFVTkNIRF9QTElTVH0iCgplY2hvICJSZW1vdmluZyBT
+	SU1CTCBmcm9tIExhdW5jaEFnZW50cy4uLiIKcm0gLWYgIiRMQVVOQ0hEX1BMSVNUIgoK
+	ZWNobyAiUmVtb3ZpbmcgU0lNQkwub3NheC4uLiIKcm0gLXJmICIvTGlicmFyeS9TY3Jp
+	cHRpbmdBZGRpdGlvbnMvU0lNQkwub3NheCIKCmVjaG8gIlNJTUJMIHVuaW5zdGFsbGVk
+	LiIKEgABhqBfEA9OU0tleWVkQXJjaGl2ZXIACAARABYAHwAoADIANQA6ADwAPwBFAmcC
+	bAAAAAAAAAIBAAAAAAAAAA0AAAAAAAAAAAAAAAAAAAJ+
+	</data>
+	<key>TextSize</key>
+	<real>10</real>
+</dict>
+</plist>

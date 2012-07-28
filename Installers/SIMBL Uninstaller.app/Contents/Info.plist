@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>SIMBL Uninstaller</string>
+	<key>CFBundleExecutable</key>
+	<string>SIMBL Uninstaller</string>
+	<key>CFBundleGetInfoString</key>
+	<string>SIMBL Uninstaller 1.2 Copyright 2010 Mike Solomon</string>
+	<key>CFBundleIconFile</key>
+	<string>appIcon.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.mike.SIMBLUninstaller</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>SIMBL Uninstaller</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2</string>
+	<key>CFBundleSignature</key>
+	<string>SIMu</string>
+	<key>LSEnvironment</key>
+	<dict/>
+	<key>LSHasLocalizedDisplayName</key>
+	<false/>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.4</string>
+	<key>LSUIElement</key>
+	<false/>
+	<key>NSAppleScriptEnabled</key>
+	<false/>
+	<key>NSHumanReadableCopyright</key>
+	<string>SIMBL Uninstaller 1.2 Copyright 2010 Mike Solomon</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+</dict>
+</plist>
