@@ -42,8 +42,7 @@ Due to new security features in Mountain Lion, it's significantly harder to inst
   - Double click on the downloaded file to install. You'll be prompted to enter your password in the next screen.
 
   
-
-The installer package first installs [SIMBL](http://www.culater.net/software/SIMBL/SIMBL.php), and then copies BetterDictionary.bundle to `/Library/Application Support/SIMBL/Plugins/`.
+The installer package copies BetterDictionary.bundle to `/Library/Application Support/SIMBL/Plugins/`.
 
 
 
