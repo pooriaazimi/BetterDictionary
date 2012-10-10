@@ -525,7 +525,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		9FED758F14047FA9008195D4 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -535,7 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "### Close all instances of Dictionary.app\nkillall Dictionary\n\n### Remove the existing bundle from SIMBL plugins folder\nrm -rf ~/Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle\n#rm -rf ${SRCROOT}/BetterDictionary.bundle\n\n### Get version from Info.plist\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" BetterDictionary/BetterDictionary-Info.plist)\n\n### Copy the bundle to SIMBL plugins folder, and to bundle source folder\ncp -R ${BUILT_PRODUCTS_DIR}/BetterDictionary.bundle ~/Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle\n#cp -R ${BUILT_PRODUCTS_DIR}/BetterDictionary.bundle ${SRCROOT}/BetterDictionary.bundle\n\n### Run Dictionary.app\n#open /Applications/Dictionary.app/\n\n### Zip bundle and installer\n#rm -f BetterDictionary.zip\n#zip -r BetterDictionary.zip BetterDictionary.bundle\n\n\n### Create installer package\n\n## Lion, Snow Leopard\n# -----------------\n#/Developer/usr/bin/packagemaker --doc Installers/Installer.pmdoc/ --out Installers/BetterDictionary-${VERSION}.pkg\n\n\n## Mountain Lion\n# -----------------\n#pkgbuild --analyze --root ${SRCROOT}/BetterDictionary.bundle/ ${SRCROOT}/BetterDictionaryComponents.plist\n\n#pkgbuild --root ${SRCROOT}/BetterDictionary.bundle/ --component-plist ${SRCROOT}/BetterDictionaryComponents.plist --version ${VERSION} --install-location /Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle/ Installers/BetterDictionary-${VERSION}.pkg\n\n#rm -f ${SRCROOT}/BetterDictionaryComponents.plist\n";
+			shellScript = "### Close all instances of Dictionary.app\n#killall Dictionary\n\n### Remove the existing bundle from SIMBL plugins folder\n#rm -rf ~/Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle\n#rm -rf ${SRCROOT}/BetterDictionary.bundle\n\n### Get version from Info.plist\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" BetterDictionary/BetterDictionary-Info.plist)\necho $VERSION\n\n### Copy the bundle to SIMBL plugins folder, and to bundle source folder\n#cp -R ${BUILT_PRODUCTS_DIR}/BetterDictionary.bundle ~/Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle\ncp -R \"${BUILT_PRODUCTS_DIR}/BetterDictionary.bundle\" \"${SRCROOT}/\"\n\n### Run Dictionary.app\n#open /Applications/Dictionary.app/\n\n### Zip bundle and installer\n#rm -f BetterDictionary.zip\n#zip -r BetterDictionary.zip BetterDictionary.bundle\n\n\n### Create installer package\n\n## Lion, Snow Leopard\n# -----------------\n#/Developer/usr/bin/packagemaker --doc Installers/Installer.pmdoc/ --out Installers/BetterDictionary-${VERSION}.pkg\n\n\n## Mountain Lion\n# -----------------\n#pkgbuild --analyze --root ${SRCROOT}/BetterDictionary.bundle/ ${SRCROOT}/BetterDictionaryComponents.plist\n\n#pkgbuild --root ${SRCROOT}/BetterDictionary.bundle/ --component-plist ${SRCROOT}/BetterDictionaryComponents.plist --version ${VERSION} --install-location /Library/Application\\ Support/SIMBL/Plugins/BetterDictionary.bundle/ Installers/BetterDictionary-${VERSION}.pkg\n\n#rm -f ${SRCROOT}/BetterDictionaryComponents.plist\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
