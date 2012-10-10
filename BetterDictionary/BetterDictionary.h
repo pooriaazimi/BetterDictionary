@@ -19,6 +19,7 @@ typedef enum {
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
 	NSBundle* betterDictionaryBundle;
+    NSFileManager* fileManager;
 	
 	NSApplication* mainApplication;
 	NSWindowController* dictionaryBrowserWindowController;
@@ -76,6 +77,8 @@ typedef enum {
 - (void)removeWord:(NSString*)wordToRemove;
 - (void)_removeAllSavedWords:(id)sender;
 - (void)removeAllSavedWords;
+
+-(NSString *)wordAtReversedIndex:(NSInteger)index;
 
 - (BOOL)hasAlreadySavedWord:(NSString*)word;
 

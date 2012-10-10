@@ -8,14 +8,16 @@
 
 #import "BetterDictionary.h"
 
+#define SAVED_WORDS_ARRAY @"savedWordsArray"
+
 @implementation BetterDictionary
 
 /*
  Original implementation of setSearchText:/asyncDictionarySearchDidFound: methods
  */
 static IMP originalSetSearchText; // Snow Leopard
-static IMP originalAsyncDictionarySearchDidFound; // Lion
-static IMP originalClearSearchResult; // Lion
+static IMP originalAsyncDictionarySearchDidFound; // (Mountain) Lion
+static IMP originalClearSearchResult; // (Mountain) Lion
 
 @synthesize savedWordsArray;
 
@@ -54,6 +56,7 @@ static IMP originalClearSearchResult; // Lion
 - (void)pollMainWindow {
     
     NSWindow *mainWindow = [mainApplication mainWindow];
+    DebugLog(@"mainWindow: %@", mainWindow);
     
     if (!mainWindow) {
         DebugLog(@"No Main Menu... Idling");
@@ -61,8 +64,6 @@ static IMP originalClearSearchResult; // Lion
     } else {
         [idleWhileNoMainMenu invalidate];
     }
-    
-    DebugLog(@"mainWindow: %@", mainWindow);
     
     dictionaryBrowserWindowController = [mainWindow windowController];
     DebugLog(@"dictionaryBrowserWindowController: %@", dictionaryBrowserWindowController);
@@ -77,7 +78,6 @@ static IMP originalClearSearchResult; // Lion
     DebugLog(@"dictionaryBrowserToolbar: %@", dictionaryBrowserToolbar);
     
     
-    
     [self determineApplicationVersion];
     
     [self initToolbarItems];
@@ -90,7 +90,7 @@ static IMP originalClearSearchResult; // Lion
 }
 
 /*
- Checks the application version (Leopard, Snow Leopard or Lion), by checking whether DictionaryController responds to certain selectors or not.
+ Checks the application version (Snow Leopard, Lion or Mountain Lion), by checking whether DictionaryController responds to certain selectors or not.
  */
 - (void)determineApplicationVersion
 {
@@ -166,7 +166,7 @@ static IMP originalClearSearchResult; // Lion
 	
 	// -------------------------------------------------------------------------------
 	
-	if (appVersion != LION) { // NSToolbarSeparatorItem is deprecated in Lion
+	if (appVersion == SNOW_LEOPARD) { // NSToolbarSeparatorItem is deprecated in Lion
 		
 		// Add a seperator between our items and dectionary's default items
 		[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
@@ -427,12 +427,22 @@ static IMP originalClearSearchResult; // Lion
 
 #pragma mark -
 
+/* Return the word in reversed 'savedWordsArray'
+ */
+-(NSString *)wordAtReversedIndex:(NSInteger)index
+{
+    if (index > -1 && index < [savedWordsArray count])
+        return (NSString *)[savedWordsArray objectAtIndex:([savedWordsArray count]-index-1)];
+    else
+        return nil;
+}
+
 /*
  Returns the searched word (what user has typed in the search bar).
  */
 - (NSString*)searchedWord
 {
-	if (appVersion == LION) {
+	if (appVersion == MOUNTAIN_LION || appVersion == LION) {
 		object_getInstanceVariable(dictionaryController, "_lastSelectedIndexText", (void**)&searchedWord);
 		if (!searchedWord) {
 			NSString* lastSearchText;
@@ -490,7 +500,6 @@ static IMP originalClearSearchResult; // Lion
 	[savedWordsArray addObject:wordToSave];
 	[dictionarySidebar reloadData];
 	[self writeSavedWordsArrayToDisk];
-//	[dictionarySidebar selectRowIndexes:[NSIndexSet indexSetWithIndex:[savedWordsArray count]-1] byExtendingSelection:NO];
 	
 	[self setSaveOrRemoveToolbarButtonAccordingly];
 	
@@ -504,13 +513,13 @@ static IMP originalClearSearchResult; // Lion
  Wrapper. Checks the sender; If it's from the menubar or shortcut key equivalent, it removes search bar's text. If it's from the context menu, it removes the selected word.
  */
 - (void)_removeWord:(id)sender
-{
-	
+{	
 	if ([[[(NSMenuItem*)sender menu] title] isEqualToString:@"SIDEBAR_CONTEXT_MENU"]) {
 		// it's from the sidebar context menu bar
 		NSInteger clickedRow = [dictionarySidebar clickedRow];
-		if (clickedRow != -1)
-			[self removeWord:[savedWordsArray objectAtIndex:clickedRow]];
+		if (clickedRow != -1) {
+			[self removeWord:[self wordAtReversedIndex:clickedRow]];
+        }
 	} else {
 		// it's from the application menu bar
 		[self removeWord:[self searchedWord]];
@@ -528,7 +537,7 @@ static IMP originalClearSearchResult; // Lion
 	if (![self hasAlreadySavedWord:wordToRemove])
 		return;
 	
-	DebugLog(@"CLICKED ROW: %ld, SELECTED ROW: %ld",[dictionarySidebar selectedRow],[dictionarySidebar clickedRow]);
+	DebugLog(@"CLICKED ROW: %ld, SELECTED ROW: %ld",[dictionarySidebar selectedRow], [dictionarySidebar clickedRow]);
 	
 	[savedWordsArray removeObject:wordToRemove];
 	[dictionarySidebar reloadData];
@@ -573,7 +582,7 @@ static IMP originalClearSearchResult; // Lion
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
 	
-	if (appVersion == LION) {
+	if (appVersion == MOUNTAIN_LION || appVersion == LION) {
 		
 		[dictionaryBrowserWindowController performSelector:@selector(setSearchStringValue:displayString:triggerSearch:) withObject:wordToSearch withObject:wordToSearch withObject:[NSNumber numberWithBool:YES]];
 		
@@ -653,11 +662,37 @@ static IMP originalClearSearchResult; // Lion
  */
 - (void)initSavedWordsArray
 {
-	DebugLog(@"READ SAVED WORDS ARRAY FROM DISK");
-	savedWordsArray = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"savedWordsArray"];
+    
+    fileManager = [NSFileManager defaultManager];
+    NSArray* urls = [fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    NSURL* applicationSupportDirectory = urls[0];
+    NSURL* betterDictionaryApplicationSupportDirectory = [applicationSupportDirectory URLByAppendingPathComponent:@"BetterDictionary" isDirectory:YES];
+    NSURL *betterDictionaryApplicationSupportFile = [betterDictionaryApplicationSupportDirectory URLByAppendingPathComponent:@"saved-words.plist" isDirectory:NO];
+    
+    if ([fileManager fileExistsAtPath:[betterDictionaryApplicationSupportFile path] isDirectory:nil]) {
+        // Already upgraded to the new "database". Don't load NSUserDefaults
+        savedWordsArray = [[NSArray arrayWithContentsOfURL:betterDictionaryApplicationSupportFile] mutableCopy];
+        DebugLog(@"READ SAVED WORDS ARRAY FROM '%@'", betterDictionaryApplicationSupportFile);
+    } else {
+        // First load the data from NSUserDefaults
+        savedWordsArray = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:SAVED_WORDS_ARRAY];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:SAVED_WORDS_ARRAY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        DebugLog(@"READ SAVED WORDS ARRAY FROM NSUSERDEFAULTS");
+        
+        // Then check if the betterDictionaryApplicationSupportDirectory exists or not. If not, create it.
+        if (![fileManager fileExistsAtPath:[betterDictionaryApplicationSupportDirectory path] isDirectory:nil]) {
+            [fileManager createDirectoryAtURL:betterDictionaryApplicationSupportDirectory withIntermediateDirectories:NO attributes:nil error:nil];
+            DebugLog(@"CREATED SUPPORT DIRECTORY ('%@')", betterDictionaryApplicationSupportDirectory);
+        }
+        
+        [self writeSavedWordsArrayToDisk];
+    }
 	
-	if (savedWordsArray == nil)
+	if (!savedWordsArray || [savedWordsArray isMemberOfClass:[NSMutableArray class]])
 		savedWordsArray = [[NSMutableArray alloc] init];
+    
+    DebugLog(@"SAVED WORDS ARRAY IS: %@", savedWordsArray);
 
 	[dictionarySidebar reloadData];
 }
@@ -667,8 +702,13 @@ static IMP originalClearSearchResult; // Lion
  */
 - (void)writeSavedWordsArrayToDisk
 {
+    NSArray* urls = [fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    NSURL* applicationSupportDirectory = urls[0];
+    NSURL* betterDictionaryApplicationSupportDirectory = [applicationSupportDirectory URLByAppendingPathComponent:@"BetterDictionary" isDirectory:YES];
+    NSURL *betterDictionaryApplicationSupportFile = [betterDictionaryApplicationSupportDirectory URLByAppendingPathComponent:@"saved-words.plist" isDirectory:NO];
+    DebugLog(@"URL TO WRITE TO: %@", [betterDictionaryApplicationSupportFile path]);
+    [savedWordsArray writeToURL:betterDictionaryApplicationSupportFile atomically:NO];
 	DebugLog(@"WRITE SAVED WORDS ARRAY TO DISK");
-	[[NSUserDefaults standardUserDefaults] setObject:savedWordsArray forKey:@"savedWordsArray"];
 }
 
 
@@ -688,13 +728,13 @@ static IMP originalClearSearchResult; // Lion
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
 	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
-	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+	[self searchWord:[self wordAtReversedIndex:selectedRow]];
 }
 
 - (void)tableViewSelectionIsChanging:(NSNotification *)notification
 {
 	NSInteger selectedRow = [(NSTableView*)[notification object] selectedRow];
-	[self searchWord:[savedWordsArray objectAtIndex:selectedRow ]];
+	[self searchWord:[self wordAtReversedIndex:selectedRow]];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
@@ -711,7 +751,7 @@ static IMP originalClearSearchResult; // Lion
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	return [savedWordsArray objectAtIndex:([savedWordsArray count]-row-1)];
+	return [self wordAtReversedIndex:row];
 }
 
 
@@ -719,11 +759,24 @@ static IMP originalClearSearchResult; // Lion
 #pragma mark Runtime hacks
 
 /*
- Swaps implementaion of 'setSearchText:' with our 'interceptSetSearchText:' method IMP. And registers BetterDictionary for notifications (with name='searchTextChanged').
+ Swaps implementaion of set/clear search word with our 'interceptSetSearchText:' method IMP. And registers BetterDictionary for notifications (with name='searchTextChanged').
  */
 - (void)startInterceptingSearchTextMethod
 {
-	if (appVersion == LION) {
+	if (appVersion == MOUNTAIN_LION)
+    {
+        
+		DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFinished:'");
+		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFinished:)));
+		originalAsyncDictionarySearchDidFound = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFinished:), (IMP)interceptAsyncDictionarySearchDidFound, types);
+		
+		DebugLog(@"STARTED INTERCEPTING CALLS TO '_clearSearchResult:'");
+		const char *types2 = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(_clearSearchResult)));
+		originalClearSearchResult = class_replaceMethod([dictionaryController class], @selector(_clearSearchResult), (IMP)interceptClearSearchResult, types2);
+		
+	}
+    else if (appVersion == LION)
+    {
 		DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFound:'");
 		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:)));
 		originalAsyncDictionarySearchDidFound = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFound:), (IMP)interceptAsyncDictionarySearchDidFound, types);
@@ -732,12 +785,12 @@ static IMP originalClearSearchResult; // Lion
 		const char *types2 = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(_clearSearchResult)));
 		originalClearSearchResult = class_replaceMethod([dictionaryController class], @selector(_clearSearchResult), (IMP)interceptClearSearchResult, types2);
 		
-	} else if (appVersion == SNOW_LEOPARD) {
+	}
+    else if (appVersion == SNOW_LEOPARD)
+    {
 		DebugLog(@"STARTED INTERCEPTING CALLS TO 'setSearchText:'");
 		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:)));
 		originalSetSearchText = class_replaceMethod([dictionaryBrowserWindowController class], @selector(setSearchText:), (IMP)interceptSetSearchText, types);
-	} else {
-		// should not happen!
 	}
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:@"searchTextChanged" object:nil];
