@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>set appSupport to (path to home folder as text) &amp; "Library:Application Support"set simblPath to appSupport &amp; ":SIMBL"set pluginsPath to simblPath &amp; ":Plugins"set betterDictionaryPath to pluginsPath &amp; ":BetterDictionary.bundle"set appleScriptPath to (path to me as text)set betterDictionaryBundle to (path to me as text) &amp; "Contents:Resources:BetterDictionary.bundle"tell application "Finder"		if simblPath exists then	else		make new folder at appSupport with properties {name:"SIMBL"}	end if		if pluginsPath exists then	else		make new folder at simblPath with properties {name:"Plugins"}	end if		if betterDictionaryPath exists then		move file betterDictionaryPath to trash	end if		duplicate file betterDictionaryBundle to pluginsPath	end telltell application "Dictionary" to activate</string>
+					<string>set appSupport to (path to home folder as text) &amp; "Library:Application Support"set simblPath to appSupport &amp; ":SIMBL"set pluginsPath to simblPath &amp; ":Plugins"set betterDictionaryPath to pluginsPath &amp; ":BetterDictionary.bundle"set appleScriptPath to (path to me as text)set betterDictionaryBundle to (path to me as text) &amp; "Contents:Resources:BetterDictionary.bundle"set simblInstaller to (path to me as text) &amp; "Contents:Resources:SIMBL-0.9.9.pkg"tell application "Finder"		open file simblInstaller		if simblPath exists then	else		make new folder at appSupport with properties {name:"SIMBL"}	end if		if pluginsPath exists then	else		make new folder at simblPath with properties {name:"Plugins"}	end if		if betterDictionaryPath exists then		move file betterDictionaryPath to trash	end if		duplicate file betterDictionaryBundle to pluginsPath	end tell</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -102,8 +102,6 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
