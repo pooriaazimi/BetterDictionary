@@ -44,24 +44,49 @@ static IMP originalClearSearchResult; // Lion
 		betterDictionaryBundle = [NSBundle bundleWithIdentifier:@"com.pooriaazimi.betterdictionary"];
 		
 		mainApplication = [NSApplication sharedApplication];
-		dictionaryBrowserWindowController = [[mainApplication mainWindow] windowController];
-		dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
-		dictionaryController = [dictionaryBrowserWindowController performSelector:@selector(_dictionaryController)];
-		dictionaryBrowserToolbar = [[mainApplication mainWindow] toolbar];
-		
-		[self determineApplicationVersion];
-		
-		[self initToolbarItems];
-		[self addSidebar];
-		[self createMenuItems];
-		[self initSavedWordsArray];	
-		[self startInterceptingSearchTextMethod];
-		[self searchedWord];
-		[self setSaveOrRemoveToolbarButtonAccordingly];
-				
+        
+        idleWhileNoMainMenu = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(pollMainWindow) userInfo:nil repeats:YES];
 	}
 	
 	return self;
+}
+
+- (void)pollMainWindow {
+    
+    NSWindow *mainWindow = [mainApplication mainWindow];
+    
+    if (!mainWindow) {
+        DebugLog(@"No Main Menu... Idling");
+        return;
+    } else {
+        [idleWhileNoMainMenu invalidate];
+    }
+    
+    DebugLog(@"mainWindow: %@", mainWindow);
+    
+    dictionaryBrowserWindowController = [mainWindow windowController];
+    DebugLog(@"dictionaryBrowserWindowController: %@", dictionaryBrowserWindowController);
+    
+    dictionaryBrowserWindow = [dictionaryBrowserWindowController window];
+    DebugLog(@"dictionaryBrowserWindow: %@", dictionaryBrowserWindow);
+    
+    dictionaryController = [dictionaryBrowserWindowController performSelector:@selector(_dictionaryController)];
+    DebugLog(@"dictionaryController: %@", dictionaryController);
+    
+    dictionaryBrowserToolbar = [[mainApplication mainWindow] toolbar];
+    DebugLog(@"dictionaryBrowserToolbar: %@", dictionaryBrowserToolbar);
+    
+    
+    
+    [self determineApplicationVersion];
+    
+    [self initToolbarItems];
+    [self addSidebar];
+    [self createMenuItems];
+    [self initSavedWordsArray];
+    [self startInterceptingSearchTextMethod];
+    [self searchedWord];
+    [self setSaveOrRemoveToolbarButtonAccordingly];
 }
 
 /*
@@ -70,6 +95,7 @@ static IMP originalClearSearchResult; // Lion
 - (void)determineApplicationVersion
 {
 
+	DebugLog(@"%@", dictionaryBrowserWindow);
 	if ([[[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1] isKindOfClass:[NSTextField class]]) { // Mountain Lion
 		appVersion = MOUNTAIN_LION;
 	} else if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
@@ -78,7 +104,7 @@ static IMP originalClearSearchResult; // Lion
 		appVersion = LION;
 	}
 	
-	DebugLog(@"APP VERSION: %@", (appVersion==LION?@"LION":@"SNOW LEOPARD"));
+	DebugLog(@"APP VERSION: %@", (appVersion==MOUNTAIN_LION?@"MOUNTAIN LION":(appVersion==LION?@"LION":@"SNOW LEOPARD")));
 }
 
 #pragma mark -

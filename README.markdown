@@ -2,7 +2,7 @@ BetterDictionary
 ================
 BetterDictionary is a plugin for Apple's Dictionarry.app, that lets you bookmark searched words.
 
-It works on Mountain Lion, Lion and Snow Leopard. 
+It works on Lion and Snow Leopard. 
 
 
 Download
@@ -16,33 +16,6 @@ You can always download the latest version from [Downloads](https://github.com/p
 
 Installation
 ------------
-
-Due to new security features in Mountain Lion, it's significantly harder to install v0.97. Installing [v0.96](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.96.pkg) was just as easy as running the installer, but for installing v0.97, you must now follow these steps:
-
-- **Moutain Lion:**
-
-  - If you don't have SIMBL installed, first [download](http://www.culater.net/dl/files/SIMBL-0.9.9.zip) it.
-  
-  - Unzip "SIMBL-0.9.9.zip", right click on the installer ("SIMBL-0.9.9.pkg") and select "Open".
-  
-  - Select "Open" again in the alert box. Proceed as usual. You'll be prompted to enter your password in the next screen.
-  
-  - Then download [BetterDictionary installer](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg).
-	
-  - Right click on the downloaded file and select "Open".
-	
-  - Select "Open" again in the alert box. Proceed as usual. You'll be prompted to enter your password in the next screen.
-	
-- **Lion and Snow Leopard:**
-
-  - If you don't have SIMBL installed, first [download](http://www.culater.net/dl/files/SIMBL-0.9.9.zip) and install it.
-  
-  - Download [BetterDictionary installer](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.97.pkg).
-	
-  - Double click on the downloaded file to install. You'll be prompted to enter your password in the next screen.
-
-  
-The installer package copies BetterDictionary.bundle to `/Library/Application Support/SIMBL/Plugins/`.
 
 
 
@@ -64,8 +37,6 @@ Release Notes
 -------------
 
 ### v0.97
-
-- Mountain Lion compatibility
 
 - Newer words are now shown on top
 

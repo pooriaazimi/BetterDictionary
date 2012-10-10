@@ -48,12 +48,13 @@ typedef enum {
 	NSString* lastSearchedWord;
 	NSMutableArray* savedWordsArray;
 	DictionaryVersion appVersion;
+    NSTimer* idleWhileNoMainMenu;
 }
-
 
 + (void)load;
 
 - (void)determineApplicationVersion;
+- (void)pollMainWindow;
 
 - (void)initToolbarItems;
 - (void)setSaveOrRemoveToolbarButtonAccordingly;
