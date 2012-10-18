@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Betterdictionary : BetterDictionary is a plugin for Apple's Dictionarry.app, that lets you bookmark searched words." />
+    <meta name="description" content="BetterDictionary : BetterDictionary is a plugin for Apple's Dictionarry.app, that lets you bookmark searched words." />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Betterdictionary</title>
+    <title>BetterDictionary</title>
   </head>
 
   <body>
@@ -16,15 +16,15 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/pooriaazimi/BetterDictionary">Fork Me on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/pooriaazimi/BetterDictionary">View on GitHub</a>
 
-          <h1 id="project_title">Betterdictionary</h1>
+          <h1 id="project_title">BetterDictionary</h1>
           <h2 id="project_tagline">BetterDictionary is a plugin for Apple's Dictionarry.app, that lets you bookmark searched words.</h2>
 
-          <section id="downloads">
-            <a class="zip_download_link" href="https://github.com/pooriaazimi/BetterDictionary/zipball/master">Download this project as a .zip file</a>
-            <a class="tar_download_link" href="https://github.com/pooriaazimi/BetterDictionary/tarball/master">Download this project as a tar.gz file</a>
-          </section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pooriaazimi/BetterDictionary/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pooriaazimi/BetterDictionary/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
     </div>
 
@@ -35,25 +35,54 @@
 
 <p>BetterDictionary is a plugin for Apple's Dictionarry.app, that lets you bookmark searched words.</p>
 
-<p>It works perfectly on Snow Leopard and Lion. </p>
+<p>It works on Mountain Lion, Lion and Snow Leopard. </p>
 
 <h2>Download</h2>
 
-<p>You can always download the latest version from <a href="https://github.com/pooriaazimi/BetterDictionary/downloads">Downloads</a> tab. Currently it's <a href="https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.96.pkg">v0.96</a>.</p>
+<p>You can always download the latest version from <a href="https://github.com/pooriaazimi/BetterDictionary/downloads">Downloads</a> tab. Currently it's <a href="https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.98.zip">v0.98</a>.</p>
 
-<h2>Install</h2>
+<ul>
+<li><p>sha1sum: <code>33b71dee0215dfb304c68e94be70a89c13ff4002</code></p></li>
+<li><p>size: 1.5 MB</p></li>
+</ul><h2>Installation</h2>
 
-<p>Just run BetterDictionary-0.96.pkg.</p>
+<p>Download <a href="https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.98.zip">v0.98</a> from the <a href="https://github.com/pooriaazimi/BetterDictionary/downloads">Downloads</a> section. Then double-click on <code>BetterDictionary-0.98.zip</code> to unzip it. </p>
 
-<p>The installer package first installs <a href="http://www.culater.net/software/SIMBL/SIMBL.php">SIMBL</a>, and then copies BetterDictionary.bundle to <code>/Library/Application Support/SIMBL/Plugins/</code>.</p>
+<p>Right click on <code>BetterDictionary-0.98.app</code> and select 'Open'. In the net dialog, press 'Open' again. Then install the SIMBL plugin loader as instructed in the installer.</p>
 
-<h2>Uninstall</h2>
+<h2>Uninstalling</h2>
 
-<p>Open Terminal.app (from Applications -&gt; Utititles). type <code>open "/Library/Application Support/SIMBL/Plugins/"</code> and press return.</p>
+<h4>Removing BetterDictionary</h4>
+
+<p>Open Terminal.app (from Applications -&gt; Utititles). Type <code>open /Library/Application\ Support/SIMBL/Plugins/</code> and press return.</p>
 
 <p>Remove 'BetterDictionary.bundle' from this directory.</p>
 
-<h2>Keyboard Shortcuts</h2>
+<h4>Removing SIMBL</h4>
+
+<p>Just download, unzip and run <a href="https://raw.github.com/pooriaazimi/BetterDictionary/master/Installers/SIMBL%20Uninstaller.zip">SIMBL Uninstaller</a> (86 KB). It'll remove SIMBL and all its plugins from your system.</p>
+
+<h2>Version Hitory</h2>
+
+<h3>v0.98 (October 10th, 2012)</h3>
+
+<ul>
+<li><p>Now works on Mountain Lion</p></li>
+<li><p>Saved words database is now at <code>~/Library/Application Support/BetterDictionary/saved-words.plist</code></p></li>
+<li><p>Fixed a few bugs</p></li>
+</ul><h3>v0.97 (July 28th, 2012)</h3>
+
+<ul>
+<li>Newer words are now shown on top</li>
+</ul><h3>v0.96 (March 4th, 2012)</h3>
+
+<ul>
+<li>Lion compatibility</li>
+</ul><h3>v0.95 (September 22nd, 2011)</h3>
+
+<ul>
+<li>Initial release</li>
+</ul><h2>Keyboard Shortcuts</h2>
 
 <p><strong>⌘+S</strong>: Save word</p>
 
@@ -65,6 +94,8 @@
 
 <h2>Screenshots</h2>
 
+<p><img src="https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-MountainLion.png" alt="Screenshot1"></p>
+
 <p><img src="https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Lion.png" alt="Screenshot1"></p>
 
 <p><img src="https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-SnowLeopard.png" alt="Screenshot2"></p>
@@ -74,7 +105,7 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Betterdictionary maintained by <a href="https://github.com/pooriaazimi">pooriaazimi</a></p>
+        <p class="copyright">BetterDictionary maintained by <a href="https://github.com/pooriaazimi">pooriaazimi</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
