@@ -286,7 +286,7 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 //	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"NSAttributedString(Hyperlink)" withURL:[NSURL URLWithString:@"https://github.com/ChristianS/CloudPost/blob/master/NSAttributedString-Hyperlink.h"]]];
 
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nFor more information, please visit "]];
-	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"irmug.org" withURL:[NSURL URLWithString:@"http://www.irmug.org"]]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"pooriaazimi.github.com/BetterDictionary" withURL:[NSURL URLWithString:@"http://pooriaazimi.github.com/BetterDictionary"]]];
 	
 	NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
 	[mutParaStyle setAlignment:NSCenterTextAlignment];
@@ -294,11 +294,11 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.97", @"Version",
+							 @"0.98", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
 							 @"Copyright © 2012 Pooria Azimi.\nAll rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.97", @"ApplicationVersion",
+							 @"BetterDictionary v0.98", @"ApplicationVersion",
 							 nil];
 	
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
