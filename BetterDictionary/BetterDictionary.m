@@ -273,20 +273,24 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	NSMutableAttributedString *credits = [[NSMutableAttributedString alloc] init];
 
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"Acknowledgements:"]];
-	[credits applyFontTraits:NSBoldFontMask range:NSMakeRange(0, [credits length])];	
+	[credits applyFontTraits:NSBoldFontMask range:NSMakeRange(0, [credits length])];
 	
-	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nAli Rastegar\nIlia Faghfouri\nAlireza Shafaei"]];
-	
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nMike Solomon ("]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"SIMBL" withURL:[NSURL URLWithString:@"http://www.culater.net/software/SIMBL/SIMBL.php"]]];
+    [credits appendAttributedString:[[NSAttributedString alloc] initWithString:@")\n"]];
+
+    
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nSteve Nygard ("]];
 	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"class-dump" withURL:[NSURL URLWithString:@"http://www.codethecode.com/projects/class-dump/"]]];
+
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@")\nKarl Kraft ("]];
 	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"DebugLog" withURL:[NSURL URLWithString:@"http://www.karlkraft.com/index.php/2009/03/23/114/"]]];
-	
 	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@")\n"]];
-//	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"NSAttributedString(Hyperlink)" withURL:[NSURL URLWithString:@"https://github.com/ChristianS/CloudPost/blob/master/NSAttributedString-Hyperlink.h"]]];
 
-	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nFor more information, please visit "]];
-	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"pooriaazimi.github.com/BetterDictionary" withURL:[NSURL URLWithString:@"http://pooriaazimi.github.com/BetterDictionary"]]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"NSAttributedString+Hyperlink" withURL:[NSURL URLWithString:@"https://github.com/ChristianS/CloudPost/blob/master/NSAttributedString-Hyperlink.h"]]];
+
+	[credits appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\nFor more information, please visit "]];
+	[credits appendAttributedString:[NSAttributedString hyperlinkFromString:@"pooriaazimi.github.io/BetterDictionary" withURL:[NSURL URLWithString:@"http://pooriaazimi.github.io/BetterDictionary"]]];
 	
 	NSMutableParagraphStyle *mutParaStyle=[[NSMutableParagraphStyle alloc] init];
 	[mutParaStyle setAlignment:NSCenterTextAlignment];
