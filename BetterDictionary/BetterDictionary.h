@@ -3,7 +3,7 @@
 //  BetterDictionary
 //
 //  Created by Pooria Azimi on 27/8/2011.
-//  Copyright 2011-2012 Pooria Azimi. All rights reserved.
+//  Copyright 2011-2013 Pooria Azimi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

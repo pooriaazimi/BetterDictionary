@@ -3,7 +3,7 @@
 //  BetterDictionary
 //
 //  Created by Pooria Azimi on 27/8/2011.
-//  Copyright 2011-2012 Pooria Azimi. All rights reserved.
+//  Copyright 2011-2013 Pooria Azimi. All rights reserved.
 //
 
 #import "BetterDictionary.h"
@@ -298,11 +298,11 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	
 	
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.98", @"Version",
+							 @"0.99", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
-							 @"Copyright © 2012 Pooria Azimi.\nAll rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.98", @"ApplicationVersion",
+							 @"Copyright © 2013 Pooria Azimi.\nAll rights reserved.", @"Copyright",
+							 @"BetterDictionary v0.99", @"ApplicationVersion",
 							 nil];
 	
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
