@@ -12,9 +12,10 @@
 #import "NSObjectAdditions.h"
 #import "NSAttributedString+Hyperlink.h"
 #import "NSView+ExploreViews.h"
+#import "DrawerController.h"
 
 typedef enum {
-	SNOW_LEOPARD, LION, MOUNTAIN_LION
+	SNOW_LEOPARD, LION, MOUNTAIN_LION, MAVERICKS
 } DictionaryVersion;
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
@@ -23,11 +24,13 @@ typedef enum {
 	
 	NSApplication* mainApplication;
 	NSWindowController* dictionaryBrowserWindowController;
+    NSWindow *mainWindow;
 	NSWindow* dictionaryBrowserWindow;
 	NSObject* dictionaryController;
     NSToolbar* dictionaryBrowserToolbar;
 	NSView* dictionaryWebView;
 	NSView* dictionarySearchView;
+    DrawerController *dictionaryDrawer;
 	
 	NSButton* showAllToolbarButton;
 	NSButton* saveOrRemoveWordToolbarButton;

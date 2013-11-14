@@ -55,7 +55,7 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 
 - (void)pollMainWindow {
     
-    NSWindow *mainWindow = [mainApplication mainWindow];
+    mainWindow = [mainApplication mainWindow];
     DebugLog(@"mainWindow: %@", mainWindow);
     
     if (!mainWindow) {
@@ -94,9 +94,10 @@ static IMP originalClearSearchResult; // (Mountain) Lion
  */
 - (void)determineApplicationVersion
 {
-
 	DebugLog(@"%@", dictionaryBrowserWindow);
-	if ([[[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1] isKindOfClass:[NSTextField class]]) { // Mountain Lion
+	if ([dictionaryController respondsToSelector:@selector(updateHeadwordArrayStateAndWindowTitle)]) { // Mavericks
+		appVersion = MAVERICKS;
+    } else if ([[[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1] isKindOfClass:[NSTextField class]]) { // Mountain Lion
 		appVersion = MOUNTAIN_LION;
 	} else if ([dictionaryController respondsToSelector:@selector(dictionaryControllerDidClearPreviousResult:)]) { // Snow Leopard
 		appVersion = SNOW_LEOPARD;
@@ -104,7 +105,7 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 		appVersion = LION;
 	}
 	
-	DebugLog(@"APP VERSION: %@", (appVersion==MOUNTAIN_LION?@"MOUNTAIN LION":(appVersion==LION?@"LION":@"SNOW LEOPARD")));
+	DebugLog(@"APP VERSION: %@", appVersion==MAVERICKS?@"MAVERICKS":(appVersion==MOUNTAIN_LION?@"MOUNTAIN LION":(appVersion==LION?@"LION":@"SNOW LEOPARD")));
 }
 
 #pragma mark -
@@ -167,7 +168,6 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	// -------------------------------------------------------------------------------
 	
 	if (appVersion == SNOW_LEOPARD) { // NSToolbarSeparatorItem is deprecated in Lion
-		
 		// Add a seperator between our items and dectionary's default items
 		[dictionaryBrowserToolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:2];	
 	}
@@ -319,13 +319,18 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 {
 	DebugLog(@"ADD SIDEBAR");
 	
-	if (appVersion == MOUNTAIN_LION) {
+	if (appVersion == MAVERICKS) {
+        // Subviews: [<DictionaryScopeBar>, <NSPopUpButton>, <DSIndexSplitView>, <DSShadowOverlay>, <DSShadowOverlay>]
+        //
+		dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2];
+		dictionarySearchView = [[[[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:2] subviews] objectAtIndex:1]; //TODO: MAVERICKS!!!!!!
+	} else if (appVersion == MOUNTAIN_LION) {
 		// Subviews: [<DictionaryScopeBar>, <NSTextField>, <NSPopUpButton>, <DSIndexSplitView>, <DSShadowOverlay>, <DSShadowOverlay>]
 		//                                  (search-view)                       (web-view)
 		//
 		dictionaryWebView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:3];
 		dictionarySearchView = [[[dictionaryBrowserWindow contentView] subviews] objectAtIndex:1];
-	} else {
+	} else if (appVersion == LION || appVersion == SNOW_LEOPARD){
 		// Subviews: [<DictionaryScopeBar>, <DSIndexSplitView>, <NSTextField>, <NSPopUpButton>, <DSShadowOverlay>, <DSShadowOverlay>]
 		//                                      (web-view)      (search-view)
 		//
@@ -335,10 +340,15 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 
 	
 	// -------------------------------------------------------------------------------
-	NSRect scrollFrame = NSMakeRect( -5, 0, 5, self.viewHeight );
+    
+	NSRect scrollFrame = NSMakeRect(-5, 0, 5, self.viewHeight);
     dictionarySidebarScrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
 	
-    [dictionarySidebarScrollView setBorderType:2];
+    if (appVersion == MAVERICKS) {
+        [dictionarySidebarScrollView setBorderType:0];
+    } else {
+        [dictionarySidebarScrollView setBorderType:2];
+    }
     [dictionarySidebarScrollView setHasVerticalScroller:YES];
     [dictionarySidebarScrollView setAutohidesScrollers:YES];
 	
@@ -353,10 +363,17 @@ static IMP originalClearSearchResult; // (Mountain) Lion
     [dictionarySidebarScrollView setDocumentView:dictionarySidebar];
 	[dictionarySidebarScrollView setAutoresizesSubviews:YES];
 	[dictionarySidebarScrollView setAutoresizingMask:NSViewHeightSizable];
-	
-	[[dictionaryBrowserWindow contentView] addSubview:dictionarySidebarScrollView];
-	
-	
+
+    
+	if (appVersion == MAVERICKS) {
+        dictionaryDrawer = [[DrawerController alloc] init];
+        [dictionaryDrawer setupWithWindow:mainWindow];
+        [dictionaryDrawer setContentView:dictionarySidebarScrollView];
+    } else {
+        [[dictionaryBrowserWindow contentView] addSubview:dictionarySidebarScrollView];
+    }
+    
+
 	// -------------------------------------------------------------------------------
 	// create sidebar's context menu
 	NSMenuItem* sidebarRemoveMenuItem = [[NSMenuItem alloc] initWithTitle:@"Remove This Word" action:@selector(_removeWord:) keyEquivalent:@"r"];
@@ -396,9 +413,13 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
 	
-	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(0, 0, sidebarWidth, self.viewHeight)];
-	[[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
-	[[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
+    if (appVersion == MAVERICKS) {
+        [dictionaryDrawer toggleDrawer:nil];
+    } else {
+        [[dictionarySidebarScrollView animator] setFrame:CGRectMake(0, 0, sidebarWidth, self.viewHeight)];
+        [[dictionaryWebView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
+        [[dictionarySearchView animator] setFrame:CGRectMake(sidebarWidth, 0, self.viewWidth-sidebarWidth, self.viewHeight)];
+    }
 
 	[NSAnimationContext endGrouping];
 	
@@ -417,9 +438,13 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.08f]; 
 	
-	[[dictionarySidebarScrollView animator] setFrame:CGRectMake(-5, 0, 5, self.viewHeight)];
-	[[dictionaryWebView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
-	[[dictionarySearchView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
+    if (appVersion == MAVERICKS) {
+        [dictionaryDrawer closeDrawer:nil];
+    } else {
+        [[dictionarySidebarScrollView animator] setFrame:CGRectMake(-5, 0, 5, self.viewHeight)];
+        [[dictionaryWebView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
+        [[dictionarySearchView animator] setFrame:CGRectMake(0, 0, self.viewWidth, self.viewHeight)];
+    }
 
 	[NSAnimationContext endGrouping];
 	
@@ -446,7 +471,7 @@ static IMP originalClearSearchResult; // (Mountain) Lion
  */
 - (NSString*)searchedWord
 {
-	if (appVersion == MOUNTAIN_LION || appVersion == LION) {
+	if (appVersion == MAVERICKS || appVersion == MOUNTAIN_LION || appVersion == LION) {
 		object_getInstanceVariable(dictionaryController, "_lastSelectedIndexText", (void**)&searchedWord);
 		if (!searchedWord) {
 			NSString* lastSearchText;
@@ -586,7 +611,7 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
 	
-	if (appVersion == MOUNTAIN_LION || appVersion == LION) {
+	if (appVersion == MAVERICKS || appVersion == MOUNTAIN_LION || appVersion == LION) {
 		
 		[dictionaryBrowserWindowController performSelector:@selector(setSearchStringValue:displayString:triggerSearch:) withObject:wordToSearch withObject:wordToSearch withObject:[NSNumber numberWithBool:YES]];
 		
@@ -767,10 +792,9 @@ static IMP originalClearSearchResult; // (Mountain) Lion
  */
 - (void)startInterceptingSearchTextMethod
 {
-	if (appVersion == MOUNTAIN_LION)
+	if (appVersion == MAVERICKS || appVersion == MOUNTAIN_LION)
     {
-        
-		DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFinished:'");
+        DebugLog(@"STARTED INTERCEPTING CALLS TO 'asyncDictionarySearchDidFinished:'");
 		const char *types = method_getTypeEncoding(class_getInstanceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFinished:)));
 		originalAsyncDictionarySearchDidFound = class_replaceMethod([dictionaryController class], @selector(asyncDictionarySearchDidFinished:), (IMP)interceptAsyncDictionarySearchDidFound, types);
 		

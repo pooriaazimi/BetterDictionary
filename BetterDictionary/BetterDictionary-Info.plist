@@ -30,18 +30,6 @@
 	<array>
 		<dict>
 			<key>BundleIdentifier</key>
-			<string>com.apple.LookupFramework</string>
-			<key>MinBundleVersion</key>
-			<string>27</string>
-		</dict>
-		<dict>
-			<key>BundleIdentifier</key>
-			<string>com.apple.lookupd</string>
-			<key>MinBundleVersion</key>
-			<string>27</string>
-		</dict>
-		<dict>
-			<key>BundleIdentifier</key>
 			<string>com.apple.Dictionary</string>
 			<key>MinBundleVersion</key>
 			<string>80</string>
