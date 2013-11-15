@@ -14,7 +14,7 @@ Download and Installation
 ### OS X 10.9 (Mavericks)
 
 
-1. Download the lates verrsion of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.5.1](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.5.1/EasySIMBL-1.5.1.zip)
+1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.5.1](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.5.1/EasySIMBL-1.5.1.zip)
 
 2. Extract `EasySIMBL-1.5.1.zip` and move `EasySIMBL.app` into the Applications folder.
 
@@ -50,7 +50,7 @@ Simply disable BetterDictionary in EasySIMBL.
 
 #### OS X 10.8, 10.7, and 10.6
 
-Open Terminal.app (from Applications -> Utititles). Type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
+Open Terminal.app (from Applications -> Utilities). Type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
 
 Remove 'BetterDictionary.bundle' from this directory.
 
@@ -59,8 +59,8 @@ Remove 'BetterDictionary.bundle' from this directory.
 Just download, unzip and run [SIMBL Uninstaller](https://raw.github.com/pooriaazimi/BetterDictionary/master/Installers/SIMBL%20Uninstaller.zip) (86 KB). It will remove SIMBL and all its plugins from your system.
 
 
-Version Hitory
---------------
+Version History
+---------------
 
 ### [v0.99](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.99) (November 15th, 2013)
 
