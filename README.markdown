@@ -1,8 +1,11 @@
 BetterDictionary
 ================
-BetterDictionary is a plugin for Apple's Dictionarry.app and lets you bookmark words.
+BetterDictionary is a plugin for Apple's Dictionarry.app that allows you to bookmark words.
 
 It works on Mavericks, Mountain Lion, Lion and Snow Leopard. 
+
+![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Mavericks.png)
+
 
 
 Download and Installation
