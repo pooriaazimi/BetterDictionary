@@ -6,7 +6,7 @@ from_dir = File.expand_path("~/Library/Application Support/BetterDictionary")
 to_dir = File.expand_path("~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary")
 file_name = "saved-words.plist"
 
-if (File.exists? from_dir) # does not have any saved words
+if (File.exists? from_dir) # has already saved words with BetterDictionary
   if (!File.exists? to_dir) # has not yet run BetterDictionary after installing SIMBL/EasySIMBL
     FileUtils.mkdir to_dir
   end
