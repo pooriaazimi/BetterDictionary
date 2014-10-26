@@ -18,9 +18,9 @@ Download and Installation
 
 2. Extract `EasySIMBL-1.6.zip` and move `EasySIMBL.app` into the Applications folder.
 
-3. Run EasySIMBL
+3. Download and extract [BetterDictionary-v0.991.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
 
-4. Download and extract [BetterDictionary-v0.991.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
+4. Run EasySIMBL
 
 5. Make sure "Use SIMBL" is checked.
 
