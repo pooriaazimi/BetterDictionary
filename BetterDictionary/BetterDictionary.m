@@ -391,6 +391,9 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 	[sidebarItemMenu setTitle:@"SIDEBAR_CONTEXT_MENU"];
 
 	[dictionarySidebar setMenu:sidebarItemMenu];
+    
+    
+    [showAllToolbarButton performClick:self];
 }
 
 /*
