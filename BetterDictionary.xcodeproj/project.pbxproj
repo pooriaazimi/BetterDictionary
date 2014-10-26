@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0503521408D92F00F586E6 /* BetterDictionary.m */; };
 		9F0503911409067700F586E6 /* sidebar-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038D1409067700F586E6 /* sidebar-dark.png */; };
-		9F0503921409067700F586E6 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
 		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
-		9F0503941409067700F586E6 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
 		9F07AE61183544870086FCEC /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07AE60183544870086FCEC /* DrawerController.m */; };
 		9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F193514EA81F100571A44 /* Dictionary.icns */; };
+		9F834D4A19FCD90800D42ED1 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F834D4819FCD90800D42ED1 /* add.png */; };
+		9F834D4B19FCD90800D42ED1 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F834D4919FCD90800D42ED1 /* remove.png */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F9149B614E3592600075D91 /* NSView+ExploreViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9149B514E3592500075D91 /* NSView+ExploreViews.m */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
@@ -323,6 +323,9 @@
 		9F5547E5183492710027836B /* NSTextInputClient-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextInputClient-Protocol.h"; sourceTree = "<group>"; };
 		9F5547E6183492710027836B /* NSURLConnectionDelegate-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnectionDelegate-Protocol.h"; sourceTree = "<group>"; };
 		9F5547E7183492710027836B /* NSWindow-LUWindowExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow-LUWindowExtensions.h"; sourceTree = "<group>"; };
+		9F834D4619FCD83800D42ED1 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = BetterDictionary/add.png; sourceTree = "<group>"; };
+		9F834D4819FCD90800D42ED1 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add.png; path = BetterDictionary/add.png; sourceTree = "<group>"; };
+		9F834D4919FCD90800D42ED1 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = remove.png; path = BetterDictionary/remove.png; sourceTree = "<group>"; };
 		9F8A4D1A1409BF2100092589 /* NSObjectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjectAdditions.h; sourceTree = "<group>"; };
 		9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjectAdditions.m; sourceTree = "<group>"; };
 		9F9149B414E3592500075D91 /* NSView+ExploreViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ExploreViews.h"; sourceTree = "<group>"; };
@@ -722,6 +725,9 @@
 		9FED756914047E8B008195D4 = {
 			isa = PBXGroup;
 			children = (
+				9F834D4819FCD90800D42ED1 /* add.png */,
+				9F834D4919FCD90800D42ED1 /* remove.png */,
+				9F834D4619FCD83800D42ED1 /* add.png */,
 				9FED757D14047E8B008195D4 /* BetterDictionary */,
 				9FED757614047E8B008195D4 /* Frameworks */,
 				9FED757514047E8B008195D4 /* Products */,
@@ -840,10 +846,10 @@
 			files = (
 				9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */,
 				9F0503911409067700F586E6 /* sidebar-dark.png in Resources */,
-				9F0503921409067700F586E6 /* remove.png in Resources */,
 				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
-				9F0503941409067700F586E6 /* add.png in Resources */,
 				9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */,
+				9F834D4A19FCD90800D42ED1 /* add.png in Resources */,
+				9F834D4B19FCD90800D42ED1 /* remove.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

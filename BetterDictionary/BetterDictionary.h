@@ -15,7 +15,7 @@
 #import "DrawerController.h"
 
 typedef enum {
-	SNOW_LEOPARD, LION, MOUNTAIN_LION, MAVERICKS
+	SNOW_LEOPARD, LION, MOUNTAIN_LION, MAVERICKS, YOSEMITE
 } DictionaryVersion;
 
 @interface BetterDictionary : NSObject<NSTableViewDelegate, NSTableViewDataSource> {
