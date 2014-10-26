@@ -26,9 +26,14 @@ Download and Installation
 
 	![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/EasySIMBL.png)
 
-6. If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on `migrate-data` and select 'Open'. In the next dialog, select 'Open' again.
+6. Make sure "Use SIMBL" checkbox is ticked!
 
-7. Dictionary.app should open now, with all your previous words intact. If it didn't work, simply copy `~/Library/Application Support/BetterDictionary/saved-words.plist` to `~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary/saved-words.plist`.
+
+#### To migrate your data (from Mountain Lion)
+
+1. If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on `migrate-data` and select 'Open'. In the next dialog, select 'Open' again.
+
+2. Dictionary.app should open now, with all your previous saved words intact. If it didn't work, simply copy `~/Library/Application Support/BetterDictionary/saved-words.plist` to `~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary/saved-words.plist`.
 
 
 ### OS X 10.8 (Mountain Lion), 10.7 (Lion), and 10.6 (Snow Leopard)
