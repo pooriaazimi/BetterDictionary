@@ -2,16 +2,16 @@ BetterDictionary
 ================
 BetterDictionary is a plugin for Apple's Dictionarry.app that allows you to bookmark words.
 
-It works on Mavericks, Mountain Lion, Lion and Snow Leopard. 
+It works on Yosemite, Mavericks, Mountain Lion, Lion, and Snow Leopard.
 
-![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Mavericks.png)
+![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Yosemite.png)
 
 
 
 Download and Installation
 -------------------------
 
-### OS X 10.9 (Mavericks)
+### OS X 10.10 (Yosemite) and 10.9 (Mavericks)
 
 
 1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.6](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.6/EasySIMBL-1.6.zip)
@@ -20,20 +20,20 @@ Download and Installation
 
 3. Run EasySIMBL
 
-4. Download and extract [BetterDictionary-v0.99.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.99/BetterDictionary-v0.99.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`. 
+4. Download and extract [BetterDictionary-v0.991.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
 
 5. Drag and drop `BetterDictionary.bundle` into EasySIMBL:
 
 	![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/EasySIMBL.png)
 
-6. If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on `migrate-data` and select 'Open'. In the next dialog, select 'Open' again. 
+6. If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on `migrate-data` and select 'Open'. In the next dialog, select 'Open' again.
 
-7. Dictionary.app should open now, with all your previous words intact. If it didn't work, simply copy `~/Library/Application Support/BetterDictionary/saved-words.plist` to `~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionarysaved-words.plist`.
+7. Dictionary.app should open now, with all your previous words intact. If it didn't work, simply copy `~/Library/Application Support/BetterDictionary/saved-words.plist` to `~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary/saved-words.plist`.
 
 
-### OS X 10.8, 10.7, and 10.6
+### OS X 10.8 (Mountain Lion), 10.7 (Lion), and 10.6 (Snow Leopard)
 
-Download [v0.98](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.98.zip) from the [Downloads](https://github.com/pooriaazimi/BetterDictionary/downloads) section. Then double-click on `BetterDictionary-0.98.zip` to unzip it. 
+Download [v0.98](https://github.com/downloads/pooriaazimi/BetterDictionary/BetterDictionary-0.98.zip) from the [Downloads](https://github.com/pooriaazimi/BetterDictionary/downloads) section. Then double-click on `BetterDictionary-0.98.zip` to unzip it.
 
 Right click on `BetterDictionary-0.98.app` and select 'Open'. In the next dialog, select 'Open' again. Then install the SIMBL plugin loader as instructed in the installer.
 
@@ -44,7 +44,7 @@ Uninstalling
 
 ## Removing BetterDictionary
 
-#### OS X 10.9 (Mavericks)
+#### OS X 10.10 and 10.9
 
 Simply disable BetterDictionary in EasySIMBL.
 
@@ -61,6 +61,16 @@ Just download, unzip and run [SIMBL Uninstaller](https://raw.github.com/pooriaaz
 
 Version History
 ---------------
+
+### [v0.991](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.991) (October 26th, 2014)
+
+- Updated for OS X 10.10 Yosemite
+
+- Automatically display the drawer when Dictionary.app is opened
+
+- Remove the occasionally-troublesome "⌘+⇧+R" shortcut
+
+
 
 ### [v0.99](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.99) (November 15th, 2013)
 
@@ -83,17 +93,23 @@ Version History
 - Fixed a few bugs
 
 
+
 ### [v0.97](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.97) (July 28th, 2012)
 
 - Newer words are now shown on top
+
+
 
 ### [v0.96](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.96) (March 4th, 2012)
 
 - Lion compatibility
 
+
+
 ### [v0.95](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.95) (September 22nd, 2011)
 
 - Initial release
+
 
 
 Keyboard Shortcuts
@@ -104,15 +120,29 @@ Keyboard Shortcuts
 
 **⌘+⇧+D**: Display sidebar
 
-**⌘+⇧+R**: Remove all saved words
-
 
 Screenshots
 -----------
+### Yosemite
+
+![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Yosemite.png)
+
+
+### Mavericks
+
 ![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Mavericks.png)
+
+
+### Mountain Lion
 
 ![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-MountainLion.png)
 
+
+### Lion
+
 ![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-Lion.png)
+
+
+### Snow Leopard
 
 ![Screenshot2](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/BetterDictionary-SnowLeopard.png)

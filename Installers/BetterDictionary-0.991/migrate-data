@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+
+require "fileutils"
+
+from_dir = File.expand_path("~/Library/Application Support/BetterDictionary")
+to_dir = File.expand_path("~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary")
+file_name = "saved-words.plist"
+
+if (File.exists? from_dir) # has already saved words with BetterDictionary
+  if (!File.exists? to_dir) # has not yet run BetterDictionary after installing SIMBL/EasySIMBL
+    FileUtils.mkdir to_dir
+  end
+
+  FileUtils.cp File.join(from_dir, file_name), File.join(to_dir, file_name)
+end
+
+system 'killall Dictionary'
+system 'open -a Dictionary'
