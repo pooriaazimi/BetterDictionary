@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="BetterDictionary : BetterDictionary is a plugin for Apple&#39;s Dictionarry.app that allows you to bookmark words.">
+    <meta name="description" content="BetterDictionary : Bookmark words in Apple&#39;s Dictionarry.app">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/pooriaazimi/BetterDictionary">View on GitHub</a>
 
           <h1 id="project_title">BetterDictionary</h1>
-          <h2 id="project_tagline">BetterDictionary is a plugin for Apple&#39;s Dictionarry.app that allows you to bookmark words.</h2>
+          <h2 id="project_tagline">Bookmark words in Apple&#39;s Dictionarry.app</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/pooriaazimi/BetterDictionary/zipball/master">Download this project as a .zip file</a>
@@ -34,7 +34,7 @@
         <h1>
 <a name="betterdictionary" class="anchor" href="#betterdictionary"><span class="octicon octicon-link"></span></a>BetterDictionary</h1>
 
-<p>BetterDictionary is a plugin for Apple's Dictionarry.app that allows you to bookmark words.</p>
+<p>With BetterDictionary, you can bookmark words in Apple's Dictionarry.app.</p>
 
 <p>It works on Yosemite, Mavericks, Mountain Lion, Lion, and Snow Leopard.</p>
 
@@ -51,13 +51,20 @@
 <li><p>Extract <code>EasySIMBL-1.6.zip</code> and move <code>EasySIMBL.app</code> into the Applications folder.</p></li>
 <li><p>Run EasySIMBL</p></li>
 <li><p>Download and extract <a href="https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip">BetterDictionary-v0.991.zip</a>. It contains two files: <code>BetterDictionary.bundle</code> and <code>migrate-data</code>.</p></li>
+<li><p>Make sure "Use SIMBL" is checked.</p></li>
 <li>
 <p>Drag and drop <code>BetterDictionary.bundle</code> into EasySIMBL:</p>
 
 <p><img src="https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/EasySIMBL.png" alt="Screenshot1"></p>
 </li>
+</ol>
+
+<h5>
+<a name="to-migrate-your-data-from-mountain-lion" class="anchor" href="#to-migrate-your-data-from-mountain-lion"><span class="octicon octicon-link"></span></a>To migrate your data (from Mountain Lion)</h5>
+
+<ol>
 <li><p>If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on <code>migrate-data</code> and select 'Open'. In the next dialog, select 'Open' again.</p></li>
-<li><p>Dictionary.app should open now, with all your previous words intact. If it didn't work, simply copy <code>~/Library/Application Support/BetterDictionary/saved-words.plist</code> to <code>~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary/saved-words.plist</code>.</p></li>
+<li><p>Dictionary.app should open now, with all your previous saved words intact. If it didn't work, simply copy <code>~/Library/Application Support/BetterDictionary/saved-words.plist</code> to <code>~/Library/Containers/com.apple.Dictionary/Data/Library/Application Support/BetterDictionary/saved-words.plist</code>.</p></li>
 </ol>
 
 <h3>
@@ -68,27 +75,39 @@
 <p>Right click on <code>BetterDictionary-0.98.app</code> and select 'Open'. In the next dialog, select 'Open' again. Then install the SIMBL plugin loader as instructed in the installer.</p>
 
 <h2>
-<a name="uninstalling" class="anchor" href="#uninstalling"><span class="octicon octicon-link"></span></a>Uninstalling</h2>
+<a name="uninstall" class="anchor" href="#uninstall"><span class="octicon octicon-link"></span></a>Uninstall</h2>
 
-<h2>
-<a name="removing-betterdictionary" class="anchor" href="#removing-betterdictionary"><span class="octicon octicon-link"></span></a>Removing BetterDictionary</h2>
+<h3>
+<a name="removing-betterdictionary" class="anchor" href="#removing-betterdictionary"><span class="octicon octicon-link"></span></a>Removing BetterDictionary</h3>
 
-<h4>
-<a name="os-x-1010-and-109" class="anchor" href="#os-x-1010-and-109"><span class="octicon octicon-link"></span></a>OS X 10.10 and 10.9</h4>
+<ul>
+<li>
+<p><strong>OS X 10.10 and 10.9</strong></p>
 
 <p>Simply disable BetterDictionary in EasySIMBL.</p>
-
-<h4>
-<a name="os-x-108-107-and-106" class="anchor" href="#os-x-108-107-and-106"><span class="octicon octicon-link"></span></a>OS X 10.8, 10.7, and 10.6</h4>
+</li>
+<li>
+<p><strong>OS X 10.8, 10.7, and 10.6</strong></p>
 
 <p>Open Terminal.app (from Applications -&gt; Utilities). Type <code>open /Library/Application\ Support/SIMBL/Plugins/</code> and press return.</p>
 
-<p>Remove 'BetterDictionary.bundle' from this directory.</p>
+<p>Then Remove 'BetterDictionary.bundle' from this directory.</p>
+</li>
+</ul>
 
-<h4>
-<a name="removing-simbl" class="anchor" href="#removing-simbl"><span class="octicon octicon-link"></span></a>Removing SIMBL</h4>
+<h3>
+<a name="removing-simbl" class="anchor" href="#removing-simbl"><span class="octicon octicon-link"></span></a>Removing SIMBL</h3>
 
 <p>Just download, unzip and run <a href="https://raw.github.com/pooriaazimi/BetterDictionary/master/Installers/SIMBL%20Uninstaller.zip">SIMBL Uninstaller</a> (86 KB). It will remove SIMBL and all its plugins from your system.</p>
+
+<h2>
+<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard Shortcuts</h2>
+
+<p><strong>⌘+S</strong>: Save word</p>
+
+<p><strong>⌘+R</strong>: Remove word</p>
+
+<p><strong>⌘+⇧+D</strong>: Display sidebar</p>
 
 <h2>
 <a name="version-history" class="anchor" href="#version-history"><span class="octicon octicon-link"></span></a>Version History</h2>
@@ -147,15 +166,6 @@
 <ul>
 <li>Initial release</li>
 </ul>
-
-<h2>
-<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard Shortcuts</h2>
-
-<p><strong>⌘+S</strong>: Save word</p>
-
-<p><strong>⌘+R</strong>: Remove word</p>
-
-<p><strong>⌘+⇧+D</strong>: Display sidebar</p>
 
 <h2>
 <a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h2>
