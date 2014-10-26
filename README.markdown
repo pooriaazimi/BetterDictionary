@@ -22,14 +22,14 @@ Download and Installation
 
 4. Download and extract [BetterDictionary-v0.991.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
 
-5. Drag and drop `BetterDictionary.bundle` into EasySIMBL:
+5. Make sure "Use SIMBL" is checked.
+
+6. Drag and drop `BetterDictionary.bundle` into EasySIMBL:
 
 	![Screenshot1](https://github.com/pooriaazimi/BetterDictionary/raw/master/Images/EasySIMBL.png)
 
-6. Make sure "Use SIMBL" checkbox is ticked!
 
-
-#### To migrate your data (from Mountain Lion)
+##### To migrate your data (from Mountain Lion)
 
 1. If you were already using BetterDictionary under Mountain Lion (or older versions) and wish to migrate your data, right-click on `migrate-data` and select 'Open'. In the next dialog, select 'Open' again.
 
@@ -44,24 +44,26 @@ Right click on `BetterDictionary-0.98.app` and select 'Open'. In the next dialog
 
 
 
-Uninstalling
-------------
+Uninstall
+---------
 
-## Removing BetterDictionary
+### Removing BetterDictionary
 
-#### OS X 10.10 and 10.9
+- **OS X 10.10 and 10.9**
 
-Simply disable BetterDictionary in EasySIMBL.
+  Simply disable BetterDictionary in EasySIMBL.
 
-#### OS X 10.8, 10.7, and 10.6
+- **OS X 10.8, 10.7, and 10.6**
 
-Open Terminal.app (from Applications -> Utilities). Type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
+  Open Terminal.app (from Applications -> Utilities). Type `open /Library/Application\ Support/SIMBL/Plugins/` and press return.
 
-Remove 'BetterDictionary.bundle' from this directory.
+  Then Remove 'BetterDictionary.bundle' from this directory.
 
-#### Removing SIMBL
+### Removing SIMBL
 
 Just download, unzip and run [SIMBL Uninstaller](https://raw.github.com/pooriaazimi/BetterDictionary/master/Installers/SIMBL%20Uninstaller.zip) (86 KB). It will remove SIMBL and all its plugins from your system.
+
+
 
 
 Version History
