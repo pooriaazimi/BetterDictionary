@@ -66,6 +66,18 @@ Just download, unzip and run [SIMBL Uninstaller](https://raw.github.com/pooriaaz
 
 
 
+
+Keyboard Shortcuts
+------------------
+**⌘+S**: Save word
+
+**⌘+R**: Remove word
+
+**⌘+⇧+D**: Display sidebar
+
+
+
+
 Version History
 ---------------
 
@@ -117,15 +129,6 @@ Version History
 
 - Initial release
 
-
-
-Keyboard Shortcuts
-------------------
-**⌘+S**: Save word
-
-**⌘+R**: Remove word
-
-**⌘+⇧+D**: Display sidebar
 
 
 Screenshots
