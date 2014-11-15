@@ -14,13 +14,13 @@ Download and Installation
 ### OS X 10.10 (Yosemite) and 10.9 (Mavericks)
 
 
-1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.6](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.6/EasySIMBL-1.6.zip)
+1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.6](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.6/EasySIMBL-1.6.zip).
 
 2. Extract `EasySIMBL-1.6.zip` and move `EasySIMBL.app` into the Applications folder.
 
 3. Download and extract [BetterDictionary-v0.992.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.992/BetterDictionary-v0.992.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
 
-4. Run EasySIMBL
+4. Run EasySIMBL.
 
 5. Make sure "Use SIMBL" is checked.
 
