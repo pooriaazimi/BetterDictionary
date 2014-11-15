@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		920DD4011A0BC107003AB83C /* sidebar-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD3FF1A0BC107003AB83C /* sidebar-dark@2x.png */; };
-		920DD4021A0BC107003AB83C /* sidebar-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4001A0BC107003AB83C /* sidebar-light@2x.png */; };
-		920DD4051A0BC3B7003AB83C /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4031A0BC3B7003AB83C /* add@2x.png */; };
-		920DD4061A0BC3B7003AB83C /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4041A0BC3B7003AB83C /* remove@2x.png */; };
 		9F0503531408D92F00F586E6 /* BetterDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F0503521408D92F00F586E6 /* BetterDictionary.m */; };
-		9F0503911409067700F586E6 /* sidebar-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038D1409067700F586E6 /* sidebar-dark.png */; };
-		9F0503931409067700F586E6 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
 		9F07AE61183544870086FCEC /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F07AE60183544870086FCEC /* DrawerController.m */; };
 		9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */ = {isa = PBXBuildFile; fileRef = 9F1F193514EA81F100571A44 /* Dictionary.icns */; };
+		9F60716D1A18086100795C09 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F0503901409067700F586E6 /* add.png */; };
+		9F60716E1A18086100795C09 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4031A0BC3B7003AB83C /* add@2x.png */; };
+		9F60716F1A18086100795C09 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038E1409067700F586E6 /* remove.png */; };
+		9F6071701A18086100795C09 /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4041A0BC3B7003AB83C /* remove@2x.png */; };
+		9F6071711A18086100795C09 /* sidebar-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038D1409067700F586E6 /* sidebar-dark.png */; };
+		9F6071721A18086100795C09 /* sidebar-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD3FF1A0BC107003AB83C /* sidebar-dark@2x.png */; };
+		9F6071731A18086100795C09 /* sidebar-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F05038F1409067700F586E6 /* sidebar-light.png */; };
+		9F6071741A18086100795C09 /* sidebar-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD4001A0BC107003AB83C /* sidebar-light@2x.png */; };
 		9F8A4D1C1409BF2200092589 /* NSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8A4D1B1409BF2200092589 /* NSObjectAdditions.m */; };
 		9F9149B614E3592600075D91 /* NSView+ExploreViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9149B514E3592500075D91 /* NSView+ExploreViews.m */; };
 		9FD7F530141033970009935F /* DebugLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7F52F141033970009935F /* DebugLog.m */; };
@@ -848,13 +850,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920DD4021A0BC107003AB83C /* sidebar-light@2x.png in Resources */,
+				9F60716D1A18086100795C09 /* add.png in Resources */,
+				9F60716E1A18086100795C09 /* add@2x.png in Resources */,
+				9F60716F1A18086100795C09 /* remove.png in Resources */,
+				9F6071701A18086100795C09 /* remove@2x.png in Resources */,
+				9F6071711A18086100795C09 /* sidebar-dark.png in Resources */,
+				9F6071721A18086100795C09 /* sidebar-dark@2x.png in Resources */,
+				9F6071731A18086100795C09 /* sidebar-light.png in Resources */,
+				9F6071741A18086100795C09 /* sidebar-light@2x.png in Resources */,
 				9FED758214047E8B008195D4 /* InfoPlist.strings in Resources */,
-				920DD4061A0BC3B7003AB83C /* remove@2x.png in Resources */,
-				920DD4051A0BC3B7003AB83C /* add@2x.png in Resources */,
-				920DD4011A0BC107003AB83C /* sidebar-dark@2x.png in Resources */,
-				9F0503911409067700F586E6 /* sidebar-dark.png in Resources */,
-				9F0503931409067700F586E6 /* sidebar-light.png in Resources */,
 				9F1F193614EA81F100571A44 /* Dictionary.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
