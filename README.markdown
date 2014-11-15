@@ -18,7 +18,7 @@ Download and Installation
 
 2. Extract `EasySIMBL-1.6.zip` and move `EasySIMBL.app` into the Applications folder.
 
-3. Download and extract [BetterDictionary-v0.991.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.991.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
+3. Download and extract [BetterDictionary-v0.992.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.991/BetterDictionary-v0.992.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
 
 4. Run EasySIMBL
 
@@ -80,6 +80,11 @@ Keyboard Shortcuts
 
 Version History
 ---------------
+
+### [v0.992](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.992) (November 14th, 2014)
+
+- @tonyseek: [Added retina graphics](https://github.com/pooriaazimi/BetterDictionary/pull/4)
+
 
 ### [v0.991](https://github.com/pooriaazimi/BetterDictionary/releases/tag/v0.991) (October 26th, 2014)
 

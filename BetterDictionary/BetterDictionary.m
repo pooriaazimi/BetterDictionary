@@ -299,11 +299,11 @@ static IMP originalClearSearchResult; // (Mountain) Lion
 
 
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"0.991", @"Version",
+							 @"0.992", @"Version",
 							 @"BetterDictionary", @"ApplicationName",
 							 credits, @"Credits",
 							 @"2011-2014 by Pooria Azimi.\nNo rights reserved.", @"Copyright",
-							 @"BetterDictionary v0.991", @"ApplicationVersion",
+							 @"BetterDictionary v0.992", @"ApplicationVersion",
 							 nil];
 
 	[[NSApplication sharedApplication] orderFrontStandardAboutPanelWithOptions:options];
