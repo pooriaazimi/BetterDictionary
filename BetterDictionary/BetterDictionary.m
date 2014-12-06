@@ -615,13 +615,24 @@ static IMP originalClearSearchResult; // (Mountain) Lion
  This method is used whenever we want to show a word's definitions (when the user clicks on an item in the sidebar for example).
  Because wikipedia is extremely slow, we need to remove all instances of wikipedia before searching, and restore them afterwards.
  */
+
+-(NSString*) parseNihongoWord:(NSString*)word
+{
+    NSRange result;
+    result = [word rangeOfString:@"【"];
+    if (result.location == NSNotFound) return word;
+
+    NSString* parsedword = [word substringToIndex:result.location];
+    return parsedword;
+}
+
 -(void) searchWord:(NSString*)wordToSearch
 {
 	DebugLog(@"SEARCH WORD: %@", wordToSearch);
 
 	if (appVersion == YOSEMITE || appVersion == MAVERICKS || appVersion == MOUNTAIN_LION || appVersion == LION) {
 
-		[dictionaryBrowserWindowController performSelector:@selector(setSearchStringValue:displayString:triggerSearch:) withObject:wordToSearch withObject:wordToSearch withObject:[NSNumber numberWithBool:YES]];
+        [dictionaryBrowserWindowController performSelector:@selector(setSearchStringValue:displayString:triggerSearch:) withObject:[self parseNihongoWord:wordToSearch] withObject:[self parseNihongoWord:wordToSearch] withObject:[NSNumber numberWithBool:YES]];
 
 	} else if (appVersion == SNOW_LEOPARD) {
 
