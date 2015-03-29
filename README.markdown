@@ -14,7 +14,7 @@ Download and Installation
 ### OS X 10.10 (Yosemite) and 10.9 (Mavericks)
 
 
-1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.6](http://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.6/EasySIMBL-1.6.zip).
+1. Download the latest version of [EasySIMBL](https://github.com/norio-nomura/EasySIMBL). Currently it is [version 1.7.1](https://github.com/norio-nomura/EasySIMBL/releases/download/EasySIMBL-1.7.1/EasySIMBL-1.7.1.zip).
 
 2. Extract `EasySIMBL-1.6.zip` and move `EasySIMBL.app` into the Applications folder.
 
