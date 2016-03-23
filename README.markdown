@@ -11,6 +11,14 @@ It works on Yosemite, Mavericks, Mountain Lion, Lion, and Snow Leopard.
 Download and Installation
 -------------------------
 
+### OS X 10.11 (El Capitan)
+1. Follow the instruction on [Notes for using SIMBL-0.9.9 on OS X 10.11](https://github.com/norio-nomura/EasySIMBL/issues/26#issuecomment-117028426) to install EasySIMBL-0.9.9 on El Capitan
+
+2. Download and extract [BetterDictionary-v0.992.zip](https://github.com/pooriaazimi/BetterDictionary/releases/download/v0.992/BetterDictionary-v0.992.zip). It contains two files: `BetterDictionary.bundle` and `migrate-data`.
+
+3. Move `BetterDictionary.bundle` to `/Library/Application Support/SIMBL/Plugins`.
+
+
 ### OS X 10.10 (Yosemite) and 10.9 (Mavericks)
 
 
